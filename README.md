@@ -2685,6 +2685,1298 @@
 
 || Dirección de memoria
 
+    En informática, una dirección de memoria es una referencia a una ubicación de memoria específica utilizada en varios niveles por el software y el hardware.
+
+    Las direcciones de memoria son secuencias de dígitos de longitud fija que se muestran y manipulan convencionalmente como enteros sin signo. 
+
+    Esta semántica numérica se basa en características de la CPU (como el puntero de instrucción y los registros de direcciones incrementales), así como en el uso de la memoria como una matriz respaldada por varios lenguajes de programación.
+
+
+    Diagrama:
+
+        En una computadora que utiliza memoria virtual, acceder a la ubicación correspondiente a una dirección de memoria puede implicar muchos niveles.
+
+
+    Direcciones físicas:
+
+        La memoria principal de una computadora digital consta de muchas ubicaciones de memoria. 
+
+        Cada ubicación de memoria tiene una dirección física que es un código. 
+
+        La CPU (u otro dispositivo) puede usar el código para acceder a la ubicación de memoria correspondiente.
+
+        Generalmente, sólo el software del sistema, es decir, el BIOS, los sistemas operativos y algunos programas de utilidad especializados (por ejemplo, probadores de memoria), direccionan la memoria física utilizando operandos de código de máquina o registros de procesador, instruyendo a la CPU para que dirija un dispositivo de hardware, llamado controlador de memoria, a utilice el bus de memoria o el bus del sistema, o buses de control, dirección y datos separados, para ejecutar los comandos del programa. 
+
+        El bus de los controladores de memoria consta de varias líneas paralelas, cada una representada por un dígito binario (bit). 
+
+        El ancho del bus y, por tanto, el número de unidades de almacenamiento direccionables y el número de bits en cada unidad, varían entre computadoras.
+
+
+    Direcciones lógicas:
+        
+        Un programa de computadora utiliza direcciones de memoria para ejecutar código de máquina y para almacenar y recuperar datos. 
+
+        En las primeras computadoras, las direcciones lógicas y físicas correspondían, pero desde la introducción de la memoria virtual la mayoría de los programas de aplicación no conocen las direcciones físicas. 
+
+        Más bien, abordan direcciones lógicas, o direcciones virtuales, utilizando la unidad de administración de memoria de la computadora y el mapeo de memoria del sistema operativo.
+
+
+    Unidad de resolución de direcciones
+
+        La mayoría de las computadoras modernas son direccionables por bytes.
+
+        Cada dirección identifica un único byte (ocho bits) de almacenamiento. 
+
+        Los datos de más de un byte se pueden almacenar en una secuencia de direcciones consecutivas. 
+
+        Existen computadoras direccionables por palabra, donde la unidad mínima de almacenamiento direccionable es exactamente la palabra del procesador. 
+
+        Por ejemplo, la minicomputadora Data General Nova y las microcomputadoras Texas Instruments TMS9900 y National Semiconductor IMP-16 usaban palabras de 16 bits, y había muchas computadoras centrales de 36 bits (por ejemplo, PDP-10) que usaban direccionamiento de palabras de 18 bits, no direccionamiento de bytes, lo que da un espacio de direcciones de 2^18 palabras de 36 bits, aproximadamente 1 megabyte de almacenamiento.
+
+        La eficiencia del direccionamiento de la memoria depende del tamaño de bits del bus utilizado para las direcciones: cuantos más bits se utilicen, más direcciones estarán disponibles para la computadora. 
+
+        Por ejemplo, una máquina direccionable de 8 bits con un bus de direcciones de 20 bits (por ejemplo, Intel 8086) puede direccionar 2^20 (1,048,576) ubicaciones de memoria, o un MiB de memoria, mientras que un bus de 32 bits (por ejemplo, Intel 80386) direcciones 2^32 (4,294,967,296) ubicaciones, o un espacio de direcciones de 4 GiB. 
+
+        Por el contrario, una máquina direccionable por palabras de 36 bits con un bus de direcciones de 18 bits dirige sólo 2^18 (262,144) ubicaciones de 36 bits (9,437,184 bits), equivalente a 1,179,648 bytes de 8 bits, o 1152 KiB, o 1,125 MiB, ligeramente más que el 8086.
+
+
+    Tamaño de palabra versus tamaño de dirección
+
+        El tamaño de palabra es una característica de la arquitectura de la computadora que indica la cantidad de bits que una CPU puede procesar al mismo tiempo. 
+
+        Los procesadores modernos, incluidos los sistemas integrados, suelen tener un tamaño de palabra de 8, 16, 24, 32 o 64 bits; la mayoría de las computadoras de uso general actuales utilizan 32 o 64 bits. 
+
+        Históricamente se han utilizado muchos tamaños diferentes, incluidos 8, 9, 10, 12, 18, 24, 36, 39, 40, 48 y 60 bits.
+
+        Muy a menudo, cuando nos referimos al tamaño de las palabras de una computadora moderna, también se describe el tamaño del espacio de direcciones en esa computadora. 
+
+        Por ejemplo, una computadora que se dice que es de "32 bits" también suele permitir direcciones de memoria de 32 bits; una computadora de 32 bits direccionable por bytes puede direccionar 2^32 = 4.294.967.296 bytes de memoria, o 4 gibibytes (GiB).
+
+        Esto permite almacenar eficientemente una dirección de memoria en una palabra.
+
+        Sin embargo, esto no siempre es cierto. 
+
+        Las computadoras pueden tener direcciones de memoria mayores o menores que el tamaño de sus palabras. 
+
+        Por ejemplo, muchos procesadores de 8 bits, como el MOS Technology 6502, admitían direcciones de 16 bits; de lo contrario, se habrían limitado a tan solo 256 bytes de direccionamiento de memoria. 
+
+        Los Intel 8088 e Intel 8086 de 16 bits admitían direccionamiento de 20 bits mediante segmentación, lo que les permitía acceder a 1 MiB en lugar de 64 KiB de memoria. 
+
+        Todos los procesadores Intel Pentium desde el Pentium Pro incluyen Extensiones de direcciones físicas (PAE) que admiten la asignación de direcciones físicas de 36 bits a direcciones virtuales de 32 bits. 
+
+        Muchos de los primeros procesadores tenían 2 direcciones por palabra, como los procesadores de 36 bits.
+
+        En teoría, las computadoras modernas de 64 bits direccionables por bytes pueden direccionar 2^64 bytes (16 exbibytes), pero en la práctica la cantidad de memoria está limitada por la CPU, el controlador de memoria o el diseño de la placa de circuito impreso (por ejemplo, la cantidad de memoria física, conectores o cantidad de memoria soldada).
+
+
+    Contenido de cada ubicación de memoria.
+
+        Cada ubicación de memoria en una computadora con programa almacenado contiene un número binario o decimal de algún tipo. 
+
+        Su interpretación, como dato de algún tipo de datos o como instrucción, y su uso están determinados por las instrucciones que los recuperan y manipulan.
+
+        Algunos de los primeros programadores combinaban instrucciones y datos en palabras como una forma de ahorrar memoria, cuando era caro: el Manchester Mark 1 tenía espacio en sus palabras de 40 bits para almacenar pequeños fragmentos de datos; su procesador ignoraba una pequeña sección en medio de una palabra, y eso a menudo se explotaba como almacenamiento de datos adicional. 
+
+        Los programas autorreplicantes, como los virus, se tratan a sí mismos a veces como datos y otras veces como instrucciones. 
+
+        El código de modificación automática generalmente está en desuso hoy en día, ya que dificulta desproporcionadamente las pruebas y el mantenimiento en comparación con el ahorro de unos pocos bytes, y también puede dar resultados incorrectos debido a las suposiciones del compilador o del procesador sobre el estado de la máquina, pero a veces todavía se usa deliberadamente, con gran cuidado.
+
+
+    Espacio de direcciones en la programación de aplicaciones.
+
+        En un entorno multitarea moderno, un proceso de aplicación generalmente tiene en su espacio (o espacios) de direcciones fragmentos de memoria de los siguientes tipos:
+
+
+        Código de máquina, que incluye:
+
+
+            código propio del programa (históricamente conocido como segmento de código o segmento de texto);
+            
+            bibliotecas compartidas.
+        
+
+        Datos, incluyendo:
+
+            datos inicializados (segmento de datos);
+            
+            variables no inicializadas (pero asignadas);
+            
+            pila de tiempo de ejecución;
+             
+            heap/montón;
+            
+            Memoria compartida y archivos mapeados en memoria.
+
+
+        Es posible que algunas partes del espacio de direcciones no estén asignadas en absoluto.
+
+        Algunos sistemas tienen una arquitectura de memoria "dividida" donde el código de máquina, las constantes y los datos se encuentran en diferentes ubicaciones y pueden tener diferentes tamaños de direcciones. 
+
+        Por ejemplo, los microcontroladores PIC18 tienen un contador de programa de 21 bits para direccionar el código de máquina y las constantes en la memoria Flash, y registros de direcciones de 12 bits para direccionar los datos en SRAM.
+
+
+    Esquemas de direccionamiento:
+
+        Un programa de computadora puede acceder a una dirección dada explícitamente; en programación de bajo nivel, esto generalmente se denomina dirección absoluta o, a veces, dirección específica, y se conoce como tipo de datos de puntero en lenguajes de nivel superior. 
+
+        Pero un programa también puede usar una dirección relativa que especifica una ubicación en relación con otro lugar (la dirección base). 
+
+        Hay muchos más modos de direccionamiento indirecto.
+
+        La asignación de direcciones lógicas a la memoria física y virtual también agrega varios niveles de direccionamiento indirecto.
+
+
+    Modelos de memoria:
+
+        Muchos programadores prefieren abordar la memoria de manera que no haya distinción entre el espacio de código y el espacio de datos, así como entre la memoria física y virtual; en otras palabras, los punteros numéricamente idénticos se refieren exactamente al mismo byte de RAM.
+
+        Sin embargo, muchas de las primeras computadoras no soportaban un modelo de memoria tan plana; en particular, las máquinas de arquitectura Harvard obligaban a que el almacenamiento de programas estuviera completamente separado del almacenamiento de datos. 
+
+        Muchos DSP modernos (como el Motorola 56000) tienen tres áreas de almacenamiento separadas: almacenamiento de programas, almacenamiento de coeficientes y almacenamiento de datos. 
+
+        Algunas instrucciones de uso común se obtienen de las tres áreas simultáneamente; menos áreas de almacenamiento (incluso si hubiera el mismo total de bytes de almacenamiento) harían que esas instrucciones se ejecutaran más lentamente.
+
+
+        Modelos de memoria en arquitectura x86.
+
+            Los primeros procesadores x86 utilizan direcciones de modelo de memoria segmentada basadas en una combinación de dos números: un segmento de memoria y un desplazamiento dentro de ese segmento.
+
+            Algunos segmentos se tratan implícitamente como segmentos de código, dedicados a instrucciones, segmentos de pila o segmentos de datos normales. 
+
+            Aunque los usos son diferentes, los segmentos no tienen diferentes protecciones de memoria que reflejen esto. 
+
+            En el modelo de memoria plana, todos los segmentos (registros de segmentos) generalmente se establecen en cero y solo los desplazamientos son variables.
+
+
+    Memoria: 
+
+        La memoria de la computadora almacena información, como datos y programas, para su uso inmediato en la computadora. 
+
+        El término memoria suele ser sinónimo de los términos RAM, memoria principal o almacenamiento primario. 
+
+        Los sinónimos arcaicos de memoria principal incluyen núcleo (para memoria de núcleo magnético) y almacén.
+
+        La memoria principal funciona a alta velocidad en comparación con el almacenamiento masivo, que es más lento pero menos costoso por bit y de mayor capacidad.
+
+        Además de almacenar programas abiertos y datos que se procesan activamente, la memoria de la computadora sirve como caché de almacenamiento masivo y búfer de escritura para mejorar el rendimiento de lectura y escritura. 
+
+        Los sistemas operativos toman prestada capacidad de RAM para el almacenamiento en caché siempre que no la necesite el software en ejecución. 
+
+        Si es necesario, el contenido de la memoria de la computadora se puede transferir al almacenamiento; Una forma común de hacerlo es mediante una técnica de gestión de memoria llamada memoria virtual.
+
+        La memoria de las computadoras modernas se implementa como una memoria semiconductora, donde los datos se almacenan dentro de celdas de memoria construidas a partir de transistores MOS y otros componentes en un circuito integrado. 
+
+        Hay dos tipos principales de memoria semiconductora: volátil y no volátil.
+
+        Ejemplos de memoria no volátil son la memoria flash y la memoria ROM, PROM, EPROM y EEPROM. 
+
+        Ejemplos de memoria volátil son la memoria dinámica de acceso aleatorio (DRAM) utilizada para el almacenamiento primario y la memoria estática de acceso aleatorio (SRAM) utilizada principalmente para el caché de la CPU.
+
+        La mayor parte de la memoria de semiconductores está organizada en celdas de memoria, cada una de las cuales almacena un bit (0 o 1). 
+
+        La organización de la memoria flash incluye tanto un bit por celda de memoria como una celda de varios niveles capaz de almacenar múltiples bits por celda. 
+
+        Las celdas de memoria se agrupan en palabras de longitud fija, por ejemplo, 1, 2, 4, 8, 16, 32, 64 o 128 bits. 
+
+        Se puede acceder a cada palabra mediante una dirección binaria de N bits, lo que permite almacenar 2^N palabras en la memoria.
+
+
+    Memoria volatil:
+
+        La memoria volátil es la memoria de la computadora que requiere energía para mantener la información almacenada. 
+
+        La mayoría de la memoria volátil de semiconductores modernos es RAM estática (SRAM) o RAM dinámica (DRAM).
+
+        La DRAM domina la memoria del sistema de escritorio. 
+
+        SRAM se utiliza para el caché de la CPU. 
+
+        La SRAM también se encuentra en pequeños sistemas integrados que requieren poca memoria.
+
+        SRAM conserva su contenido mientras la energía esté conectada y puede usar una interfaz más simple, pero comúnmente usa seis transistores por bit. 
+
+        La RAM dinámica es más complicada para la interfaz y el control, ya que necesita ciclos de actualización regulares para evitar perder su contenido, pero utiliza sólo un transistor y un condensador por bit, lo que le permite alcanzar densidades mucho más altas y costos por bit mucho más económicos.
+
+
+    Memoria no volátil:
+
+        La memoria no volátil puede retener la información almacenada incluso cuando no está alimentada. 
+
+        Ejemplos de memoria no volátil incluyen memoria de sólo lectura, memoria flash, la mayoría de los tipos de dispositivos magnéticos de almacenamiento informático (por ejemplo, unidades de disco duro, disquetes y cintas magnéticas), discos ópticos y los primeros métodos de almacenamiento informático, como tambores magnéticos y cintas de papel. y tarjetas perforadas.
+
+        Las tecnologías de memoria no volátil en desarrollo incluyen RAM ferroeléctrica, celda de metalización programable (PMC), RAM magnética de par de transferencia de giro, SONOS, memoria resistiva de acceso aleatorio, memoria racetrack (DWM), Nano-RAM, 3D XPoint y memoria millipede.
+
+
+    Memoria semivolátil:
+
+        Una tercera categoría de memoria es semivolátil. 
+
+        El término se utiliza para describir una memoria que tiene una duración no volátil limitada después de que se corta la energía, pero luego finalmente se pierden los datos. 
+
+        Un objetivo típico al utilizar una memoria semivolátil es proporcionar el alto rendimiento y la durabilidad asociados con las memorias volátiles y, al mismo tiempo, proporcionar algunos beneficios de la memoria no volátil.
+
+        Por ejemplo, algunos tipos de memoria no volátil se desgastan al escribir. 
+
+        Una celda desgastada tiene una mayor volatilidad pero por lo demás continúa funcionando. 
+
+        De este modo, las ubicaciones de datos que se escriben con frecuencia pueden orientarse hacia el uso de circuitos desgastados. 
+
+        Siempre que la ubicación se actualice dentro de un tiempo de retención conocido, los datos seguirán siendo válidos. 
+
+        Después de un período de tiempo sin actualización, el valor se copia a un circuito menos desgastado con una retención más larga. 
+
+        Escribir primero en el área desgastada permite una alta velocidad de escritura y al mismo tiempo evita el desgaste en los circuitos no desgastados.
+
+        Como segundo ejemplo, una STT-RAM puede volverse no volátil construyendo celdas grandes, pero hacerlo aumenta el costo por bit y los requisitos de energía y reduce la velocidad de escritura. 
+
+        El uso de celdas pequeñas mejora el costo, la potencia y la velocidad, pero conduce a un comportamiento semivolátil. 
+
+        En algunas aplicaciones, el aumento de la volatilidad se puede gestionar para proporcionar muchos beneficios de una memoria no volátil, por ejemplo, cortando la energía pero forzando una reactivación antes de que se pierdan los datos; o almacenando en caché datos de solo lectura y descartando los datos almacenados en caché si el tiempo de apagado excede el umbral no volátil.
+
+        El término semivolátil también se utiliza para describir el comportamiento semivolátil construido a partir de otros tipos de memoria, como nvSRAM, que combina SRAM y una memoria no volátil en el mismo chip, donde una señal externa copia datos de la memoria volátil al memoria no volátil, pero si se corta la alimentación antes de que se produzca la copia, los datos se pierden.
+
+        Otro ejemplo es la RAM respaldada por batería, que utiliza una batería externa para alimentar el dispositivo de memoria en caso de una pérdida de energía externa.
+
+        Si la energía está apagada durante un período prolongado, la batería puede agotarse y provocar la pérdida de datos.
+
+
+    Gestión de memoria:
+
+        La gestión adecuada de la memoria es vital para que un sistema informático funcione correctamente. 
+
+        Los sistemas operativos modernos cuentan con sistemas complejos para administrar adecuadamente la memoria. 
+
+        No hacerlo puede provocar errores o un rendimiento lento.
+
+
+    Bugs: 
+
+        La gestión inadecuada de la memoria es una causa común de errores y vulnerabilidades de seguridad, incluidos los siguientes tipos:
+
+            Una pérdida de memoria ocurre cuando un programa solicita memoria del sistema operativo y nunca la devuelve cuando termina con ella. Un programa con este error requerirá gradualmente más y más memoria hasta que el programa falle cuando el sistema operativo se agote.
+
+            Se produce un error de segmentación cuando un programa intenta acceder a una memoria a la que no tiene permiso de acceso. Generalmente, el sistema operativo finalizará un programa que haga esto.
+
+            Un desbordamiento del búfer ocurre cuando un programa escribe datos hasta el final de su espacio asignado y luego continúa escribiendo datos más allá de este en la memoria que ha sido asignada para otros fines. Esto puede provocar un comportamiento errático del programa, incluidos errores de acceso a la memoria, resultados incorrectos, un bloqueo o una violación de la seguridad del sistema. Por tanto, son la base de muchas vulnerabilidades de software y pueden explotarse maliciosamente.
+
+
+    Memoria virtual:
+
+        La memoria virtual es un sistema en el que el sistema operativo administra la memoria física, generalmente con la ayuda de una unidad de administración de memoria, que forma parte de muchas CPU modernas. 
+
+        Permite utilizar múltiples tipos de memoria. 
+
+        Por ejemplo, algunos datos se pueden almacenar en la RAM mientras que otros se almacenan en un disco duro (por ejemplo, en un archivo de intercambio/swapfile/memory paging), funcionando como una extensión de la jerarquía de caché. 
+
+        Esto ofrece varias ventajas.
+
+        Los programadores de computadoras ya no necesitan preocuparse por dónde se almacenan físicamente sus datos o si la computadora del usuario tendrá suficiente memoria. 
+
+        El sistema operativo colocará los datos utilizados activamente en la RAM, que es mucho más rápida que los discos duros. 
+
+        Cuando la cantidad de RAM no es suficiente para ejecutar todos los programas actuales, puede resultar en una situación en la que la computadora pasa más tiempo moviendo datos de la RAM al disco y viceversa que realizando tareas; esto se conoce como paliza/thrashing.
+
+
+    Memoria protegida:
+
+        La memoria protegida es un sistema en el que a cada programa se le asigna un área de memoria para usar y se le impide salir de ese rango. 
+
+        Si el sistema operativo detecta que un programa ha intentado alterar la memoria que no le pertenece, el programa se finaliza (o se restringe o redirige de otro modo). 
+
+        De esta manera, sólo el programa infractor falla y otros programas no se ven afectados por el mal comportamiento (ya sea accidental o intencional). 
+
+        El uso de memoria protegida mejora enormemente tanto la confiabilidad como la seguridad de un sistema informático.
+
+        Sin memoria protegida, es posible que un error en un programa altere la memoria utilizada por otro programa.
+
+        Esto hará que ese otro programa se ejecute en la memoria dañada con resultados impredecibles. 
+
+        Si la memoria del sistema operativo está dañada, es posible que todo el sistema informático falle y sea necesario reiniciarlo. 
+
+        En ocasiones, los programas alteran intencionadamente la memoria utilizada por otros programas. 
+
+        Esto lo hacen virus y malware para apoderarse de las computadoras. 
+
+        También puede ser utilizado de forma benigna por programas deseables destinados a modificar otros programas, depuradores, por ejemplo, para insertar puntos de interrupción o ganchos/hooks.
+
+
+|| Unidades de información
+    
+    En informática y telecomunicaciones digitales una unidad de información es la capacidad de algún sistema de almacenamiento de datos estándar o canal de comunicación, utilizado para medir las capacidades de otros sistemas y canales. 
+
+    En teoría de la información, las unidades de información también se utilizan para medir la información contenida en los mensajes y la entropía de variables aleatorias.
+
+    Las unidades de capacidad de almacenamiento de datos más utilizadas son el bit, la capacidad de un sistema que tiene sólo dos estados, y el byte (u octeto), que equivale a ocho bits. 
+
+    Se pueden formar múltiplos de estas unidades a partir de éstas con los prefijos SI (prefijos de potencia de diez) o los prefijos binarios IEC más nuevos (prefijos de potencia de dos).
+
+
+    Unidades primarias
+
+        En 1928, Ralph Hartley observó un principio fundamental de almacenamiento, que fue formalizado aún más por Claude Shannon en 1945: la información que se puede almacenar en un sistema es proporcional al logaritmo de N posibles estados de ese sistema, denotado logb N.
+
+        Cambiar la base del logaritmo de b a un número diferente c tiene el efecto de multiplicar el valor del logaritmo por una constante fija, es decir logc N = (logc b)*logb N. 
+
+        Por lo tanto, la elección de la base b determina la unidad utilizada para medir información. 
+
+        En particular, si b es un número entero positivo, entonces la unidad es la cantidad de información que se puede almacenar en un sistema con b estados posibles.
+
+        Cuando b es 2, la unidad es el shannon, igual al contenido de información de un "bit" (un acrónimo de dígito binario). 
+
+        Un sistema con 8 estados posibles, por ejemplo, puede almacenar hasta log2 8 = 3 bits de información. 
+
+        Otras unidades que han sido nombradas incluyen:
+
+        Base b = 3
+             
+            la unidad se llama "trit" y es igual a log2 3 (≈ 1,585) bits.
+
+
+        Base b = 10
+
+            la unidad se llama dígito decimal, hartley, ban, decit o dit, y es igual a log2 10 (≈ 3,322) bits.
+
+
+        Base b = e, la base de los logaritmos naturales
+            
+            la unidad se llama nat, nit o nepit (del neperiano) y vale log2 e (≈ 1,443) bits.
+
+
+        Los términos trit, ban y nat rara vez se utilizan para medir la capacidad de almacenamiento; pero el nat, en particular, se usa a menudo en teoría de la información, porque los logaritmos naturales son matemáticamente más convenientes que los logaritmos en otras bases.
+
+
+    Unidades derivadas del bit
+
+        Se utilizan varios nombres convencionales para colecciones o grupos de bits.
+
+
+        Byte:
+
+            Históricamente, un byte era la cantidad de bits utilizados para codificar un carácter de texto en la computadora, lo que dependía de la arquitectura del hardware de la computadora; pero hoy casi siempre significa ocho bits, es decir, un octet. 
+
+            Un byte puede representar 256 (2^8) valores distintos, como números enteros no negativos de 0 a 255 o enteros con signo de −128 a 127. 
+
+            El estándar IEEE 1541-2002 especifica "B" (mayúscula) como símbolo del byte. 
+
+            (IEC 80000-13 usa "o" para octeto en francés, pero también permite "B" en inglés, que es lo que realmente se usa). 
+
+            Los bytes, o múltiplos de ellos, casi siempre se utilizan para especificar el tamaño de los archivos informáticos y la capacidad de las unidades de almacenamiento. 
+
+            La mayoría de las computadoras y dispositivos periféricos modernos están diseñados para manipular datos en bytes completos o grupos de bytes, en lugar de bits individuales.
+
+
+        Nibble:
+
+            Un grupo de cuatro bits, o medio byte, a veces se denomina nibble, nybble o nyble. 
+
+            Esta unidad se utiliza con mayor frecuencia en el contexto de representaciones de números hexadecimales, ya que un nibble tiene la misma cantidad de información que un dígito hexadecimal.
+
+
+        Crumb:
+
+            Un grupo de dos bits o un cuarto de byte se llamaba crumb, y se usaba a menudo en las primeras computadoras de 8 bits (ver Atari 2600, ZX Spectrum).
+
+            Ahora está en gran parte desaparecido.
+
+
+        Word, block y page:
+
+            Las computadoras suelen manipular bits en grupos de un tamaño fijo, llamados convencionalmente 'word'. 
+
+            La cantidad de bits en una palabra generalmente se define por el tamaño de los registros en la CPU de la computadora o por la cantidad de bits de datos que se obtienen de su memoria principal en una sola operación. 
+
+            En la arquitectura IA-32 más comúnmente conocida como x86-32, una palabra tiene 32 bits, pero otras arquitecturas pasadas y actuales usan palabras con 4, 8, 9, 12, 13, 16, 18, 20, 21, 22, 24. , 25, 29, 30, 31, 32, 33, 35, 36, 38, 39, 40, 42, 44, 48, 50, 52, 54, 56, 60, 64, 72 bits u otros.
+
+            Algunas instrucciones de máquina y formatos de números de computadora utilizan dos palabras (una "palabra doble" o "dword") o cuatro palabras (una "quad word" o "quad").
+
+            Los cachés de memoria de las computadoras generalmente operan en bloques de memoria que constan de varias palabras consecutivas.
+
+            Estas unidades se denominan habitualmente bloques de caché o, en los cachés de CPU, líneas de caché.
+
+            Los sistemas de memoria virtual dividen el almacenamiento principal de la computadora en unidades aún más grandes, tradicionalmente llamadas páginas.
+
+
+        Sistemas de multiplos:
+
+            Los términos para grandes cantidades de bits se pueden formar usando el rango estándar de prefijos SI para potencias de 10, por ejemplo, kilo = 10^3 = 1000 (como kilobit o kbit), mega = 10^6 = 1000000 (como megabit o Mbit) y giga = 10^9 = 1000000000 (como en gigabit o Gbit). 
+
+            Estos prefijos se utilizan con mayor frecuencia para múltiplos de bytes, como en kilobyte (1 kB = 8000 bits), megabyte (1 MB = 8000000 bits) y gigabyte (1 GB = 8000000000 bits).
+
+            Sin embargo, por razones técnicas, las capacidades de las memorias de las computadoras y de algunas unidades de almacenamiento suelen ser múltiplos de una potencia grande de dos, como 2^28 = 268435456 bytes. 
+
+            Para evitar números tan difíciles de manejar, la gente a menudo ha reutilizado los prefijos SI para que signifiquen la potencia de dos más cercana, por ejemplo, usando el prefijo kilo para 2^10 = 1.024, mega para 2^20 = 1.048.576 y giga para 2^30 = 1.073.741.824, etc. 
+
+            Por ejemplo, un chip de memoria de acceso aleatorio con una capacidad de 228 bytes se denominaría chip de 256 megabytes. 
+
+            k   kilo    10^3   = 1.000^1   2^10 = 1.024^1     2.40%
+
+            M   mega    10^6   = 1.000^2   2^20 = 1.024^2     4.86%
+
+            G   giga    10^9   = 1.000^3   2^30 = 1.024^3     7.37%
+
+            T   tera    10^12 = 1.000^4    2^40 = 1.024^4     9.95%
+
+            P   peta    1015 = 1.000^5    2^50 = 1.024^5     12.59%
+
+            E   exa     10^18 = 1.000^6    2^60 = 1.024^6     15.29%
+
+            Z   zetta   10^21 = 1.000^7    2^70 = 1.024^7     18.06%
+
+            Y   yotta   10^24 = 1.000^8    2^80 = 1.024^8     20.89%
+
+            R   ronna   10^27 = 1.000^9    2^90 = 1.024^9     23.79%
+
+            Q   quetta  10^30 = 1.000^10   2^100 = 1.024^10   26.77% 
+
+            En el pasado, se usaba la K mayúscula en lugar de la k minúscula para indicar 1024 en lugar de 1000. 
+
+            Sin embargo, este uso nunca se aplicó de manera consistente.
+
+            Por otro lado, para los sistemas de almacenamiento externo (como los discos ópticos), se suelen utilizar los prefijos SI con sus valores decimales (potencias de 10). 
+
+            Muchos intentos han buscado resolver la confusión proporcionando notaciones alternativas para múltiplos de potencia de dos. 
+
+
+            En 1998, la Comisión Electrotécnica Internacional (IEC) emitió un estándar para este propósito definiendo una serie de prefijos binarios que utilizan 1024 en lugar de 1000 como base principal.
+
+            Ki  kibi, binary kilo   1 kibibyte (KiB)    2^10 bytes   1024 B
+
+            Mi  mebi, binary mega   1 mebibyte (MiB)    2^20 bytes   1024 KiB
+
+            Gi  gibi, binary giga   1 gibibyte (GiB)    2^30 bytes   1024 MiB
+
+            Ti  tebi, binary tera   1 tebibyte (TiB)    2^40 bytes   1024 GiB
+
+            Pi  pebi, binary peta   1 pebibyte (PiB)    2^50 bytes   1024 TiB
+
+            Ei  exbi, binary exa    1 exbibyte (EiB)    2^60 bytes   1024 PiB 
+
+
+        Ejemplos actuales y obsoletos: 
+
+            Actuales: 
+
+            1 bit: respuesta a una pregunta de sí/no
+
+            1 byte: un número del 0 al 255
+
+            90 bytes: suficiente para almacenar una línea típica de texto de un libro
+
+            512 bytes = 0,5 KiB: el sector típico de un disco duro
+
+            1024 bytes = 1 KiB: el tamaño de bloque clásico en los sistemas de archivos UNIX
+            
+            2048 bytes = 2 KiB: un sector de CD-ROM
+            
+            4096 bytes = 4 KiB: una página de memoria en x86 (desde Intel 80386)
+            
+            4 kB: Aproximadamente una página de texto de una novela
+            
+            120 kB: El texto de un típico libro de bolsillo.
+            
+            1 MiB: una imagen de mapa de bits de 1024 × 1024 píxeles con 256 colores (profundidad de color de 8 bpp)
+
+            3 MB: una canción de tres minutos (133 kbit/s)
+
+            650–900 MB: un CD-ROM
+            
+            1 GB: 114 minutos de audio con calidad de CD sin comprimir a 1,4 Mbit/s
+             
+            32/64/128 GB: tres tamaños comunes de unidades flash USB
+             
+            6 TB: el tamaño de un disco duro de 100 dólares (a principios de 2022)
+            
+            20 TB: unidad de disco duro más grande (a principios de 2022)
+            
+            100 TB: la unidad de estado sólido más grande disponible comercialmente (a principios de 2022)
+            
+            200 TB: la unidad de estado sólido más grande construida (predicción para mediados de 2022)
+            
+            1.3 ZB: Predicción del volumen de todo Internet en 2016
+
+
+            Obsoletos:  
+
+            1 bit: unibit, sniff
+
+            2 bits: dibit, crumb, quartic digit, quad, quarter, taste, tayste, tidbit, tydbit, lick, lyck, semi-nibble, snort, nyp
+
+            3 bits: tribit, triad, triade, tribble
+
+            4 bits: character (on Intel 4004 – however, characters are typically 8 bits wide or larger on other processors),
+
+            5 bits: pentad, pentade, nickel, nyckle
+
+            6 bits: byte (in early IBM machines using BCD alphamerics), hexad, hexade, sextet
+            
+            7 bits: heptad, heptade
+            
+            8 bits: octet, commonly also called byte
+
+
+    Bit: 
+
+        El bit es la unidad de información más básica en informática y comunicaciones digitales. 
+
+        El nombre es un acrónimo de dígito binario. 
+
+        El bit representa un estado lógico con uno de dos valores posibles.
+
+        Estos valores se representan más comúnmente como "1" o "0", pero también se utilizan ampliamente otras representaciones como verdadero/falso, sí/no, activado/desactivado o +/−.
+
+        La relación entre estos valores y los estados físicos del almacenamiento o dispositivo subyacente es una cuestión de convención y se pueden utilizar diferentes asignaciones incluso dentro del mismo dispositivo o programa. 
+
+        Puede implementarse físicamente con un dispositivo de dos estados.
+
+        Un grupo contiguo de dígitos binarios se denomina comúnmente cadena de bits (bit string), vector de bits o matriz de bits unidimensional (o multidimensional) -bit array/bitmap-. 
+
+        Un grupo de ocho bits se denomina byte, pero históricamente el tamaño del byte no está estrictamente definido. 
+
+        Con frecuencia, las palabras medias, completas, dobles y cuádruples constan de un número de bytes que es una potencia baja de dos. 
+
+        Una cadena de cuatro bits suele ser un nibble.
+
+        En teoría de la información, un bit es la entropía de información de una variable binaria aleatoria que es 0 o 1 con igual probabilidad, o la información que se obtiene cuando se conoce el valor de dicha variable. 
+
+        Como unidad de información, el bit también se conoce como Shannon, en honor a Claude E. Shannon.
+
+        El símbolo del dígito binario es "bit", según el estándar IEC 80000-13:2008, o el carácter minúsculo "b", según el estándar IEEE 1541-2002.
+
+        El uso de este último puede crear confusión con la "B" mayúscula, que es el símbolo estándar internacional para el byte.
+
+
+        Historia: 
+
+            La codificación de datos mediante bits discretos se utilizó en las tarjetas perforadas inventadas por Basile Bouchon y Jean-Baptiste Falcon (1732), desarrolladas por Joseph Marie Jacquard (1804) y adoptadas más tarde por Semyon Korsakov, Charles Babbage, Herman Hollerith y los primeros fabricantes de ordenadores como IBM. 
+
+            Una variante de esa idea fue la cinta de papel perforada. 
+
+            En todos esos sistemas, el medio (tarjeta o cinta) conceptualmente llevaba una serie de posiciones de agujeros; cada posición podría perforarse o no, transportando así un bit de información. 
+
+            La codificación de texto por bits también se utilizó en el código Morse (1844) y en las primeras máquinas de comunicaciones digitales, como los teletipos y las máquinas de teletipo (1870).
+
+            Ralph Hartley sugirió el uso de una medida de información logarítmica en 1928.
+
+            Claude E. Shannon utilizó por primera vez la palabra "bit" en su artículo fundamental de 1948 "Una teoría matemática de la comunicación". 
+
+            Atribuyó su origen a John W. Tukey, quien había escrito un memorando de los Laboratorios Bell el 9 de enero de 1947 en el que contraía "dígito de información binaria" para simplemente "bit.
+
+
+        Representación física:
+
+            Un bit puede ser almacenado por un dispositivo digital u otro sistema físico que exista en cualquiera de dos posibles estados distintos. 
+
+            Estos pueden ser los dos estados estables de un flip-flop, dos posiciones de un interruptor eléctrico, dos niveles distintos de voltaje o corriente permitidos por un circuito, dos niveles distintos de intensidad de luz, dos direcciones de magnetización o polarización, la orientación de dobles reversibles ADN trenzado, etc.
+
+            Los bits se pueden implementar de varias formas. 
+
+            En la mayoría de los dispositivos informáticos modernos, un bit suele estar representado por un voltaje eléctrico o un pulso de corriente, o por el estado eléctrico de un circuito biestable (flip-flop).
+
+            Para dispositivos que usan lógica positiva, un valor de dígito de 1 (o un valor lógico de verdadero) se representa mediante un voltaje más positivo en relación con la representación de 0.
+
+            Diferentes familias lógicas requieren diferentes voltajes y se permiten variaciones para tener en cuenta el envejecimiento de los componentes y inmunidad al ruido. 
+
+            Por ejemplo, en lógica transistor-transistor (TTL) y circuitos compatibles, los valores de dígitos 0 y 1 en la salida de un dispositivo están representados por no más de 0,4 voltios ni menos de 2,6 voltios, respectivamente; mientras que las entradas TTL están especificadas para reconocer 0,8 voltios o menos como 0 y 2,2 voltios o más como 1.
+
+
+        Transmisión y procesamiento
+
+            Los bits se transmiten uno a la vez en la transmisión en serie y mediante un número múltiple de bits en la transmisión en paralelo.
+
+            Una operación bit a bit (bitwise operation) procesa opcionalmente los bits uno a la vez. 
+
+            Las velocidades de transferencia de datos generalmente se miden en múltiplos SI decimales de la unidad bit por segundo (bit/s), como kbit/s.
+
+
+        Almacenamiento
+
+            En los primeros dispositivos de procesamiento de información no electrónicos, como el telar de Jacquard o la máquina analítica de Babbage, un bit a menudo se almacenaba como la posición de una palanca o engranaje mecánico, o la presencia o ausencia de un agujero en un punto específico de una tarjeta de papel o cinta. 
+
+            Los primeros dispositivos eléctricos para lógica discreta (como los circuitos de control de ascensores y semáforos, interruptores telefónicos y la computadora de Konrad Zuse) representaban bits como los estados de relés eléctricos que podían estar "abiertos" o "cerrados". 
+
+            Cuando los relés fueron reemplazados por tubos de vacío, a partir de la década de 1940, los fabricantes de computadoras experimentaron con una variedad de métodos de almacenamiento, como pulsos de presión que viajaban a lo largo de una línea de retardo de mercurio, cargas almacenadas en la superficie interior de un tubo de rayos catódicos o puntos opacos, impreso en discos de vidrio mediante técnicas fotolitográficas.
+
+            En las décadas de 1950 y 1960, estos métodos fueron reemplazados en gran medida por dispositivos de almacenamiento magnético, como memorias de núcleo magnético, cintas magnéticas, tambores y discos, donde un bit estaba representado por la polaridad de magnetización de un área determinada de una película ferromagnética, o por un cambio de polaridad de una dirección a la otra. 
+
+            El mismo principio se utilizó más tarde en la memoria de burbuja magnética desarrollada en la década de 1980, y todavía se encuentra en varios artículos con banda magnética, como billetes de metro y algunas tarjetas de crédito.
+
+            En la memoria de semiconductores moderna, como la memoria dinámica de acceso aleatorio (DRAM), los dos valores de un bit pueden representarse mediante dos niveles de carga eléctrica almacenados en un condensador. 
+
+            En ciertos tipos de matrices lógicas programables y memorias de sólo lectura, un bit puede estar representado por la presencia o ausencia de una ruta conductora en un determinado punto de un circuito. 
+
+            En los discos ópticos, un bit se codifica como la presencia o ausencia de un hoyo microscópico en una superficie reflectante. 
+
+            En los códigos de barras unidimensionales, los bits se codifican como el grosor de líneas blancas y negras alternas.
+
+
+        Unidad y símbolo
+
+            El bit no está definido en el Sistema Internacional de Unidades (SI). 
+
+            Sin embargo, la Comisión Electrotécnica Internacional emitió la norma IEC 60027, que especifica que el símbolo del dígito binario debe ser "bit", y debe usarse en todos los múltiplos, como "kbit", para kilobit. 
+
+            Sin embargo, la letra minúscula 'b' también se usa ampliamente y fue recomendada por el estándar IEEE 1541 (2002). 
+
+            Por el contrario, la letra mayúscula 'B' es el símbolo estándar y habitual de byte.
+
+
+        Varios bits
+
+            Se pueden expresar y representar múltiples bits de varias maneras.
+
+            Por conveniencia de representar grupos de bits que se repiten comúnmente en la tecnología de la información, tradicionalmente se han utilizado varias unidades de información. 
+
+            El más común es el byte unitario, acuñado por Werner Buchholz en junio de 1956, que históricamente se utilizó para representar el grupo de bits utilizados para codificar un solo carácter de texto (hasta que tomó el relevo la codificación multibyte UTF-8) en una computadora y para ello razón por la que se utilizó como elemento direccionable básico en muchas arquitecturas de computadoras. 
+
+            La tendencia en el diseño de hardware convergió en la implementación más común de utilizar ocho bits por byte, como se usa ampliamente en la actualidad. Sin embargo, debido a la ambigüedad de depender del diseño del hardware subyacente, el octeto unitario se definió para denotar explícitamente una secuencia de ocho bits.
+
+            Las computadoras suelen manipular bits en grupos de un tamaño fijo, llamados convencionalmente "words". 
+
+            Al igual que el byte, el número de bits de una palabra también varía según el diseño del hardware y suele oscilar entre 8 y 80 bits, o incluso más en algunas computadoras especializadas. 
+
+            En el siglo XXI, las computadoras personales o de servidor minoristas tienen un tamaño de palabra de 32 o 64 bits.
+
+            El Sistema Internacional de Unidades define una serie de prefijos decimales para múltiplos de unidades estandarizadas que también se utilizan comúnmente con el bit y el byte. 
+
+            Los prefijos kilo (10^3) a yotta (102^4) se incrementan en múltiplos de mil, y las unidades correspondientes son del kilobit (kbit) al yottabit (Ybit).
+
+
+        Capacidad de información y compresión de información.
+
+            Cuando la capacidad de información de un sistema de almacenamiento o de un canal de comunicación se presenta en bits o bits por segundo, esto suele referirse a dígitos binarios (bit), que es una capacidad del hardware de una computadora para almacenar datos binarios (0 o 1, arriba o abajo, actuales o no, etc.)
+
+            La capacidad de información de un sistema de almacenamiento es sólo un límite superior a la cantidad de información almacenada en él. 
+
+            Si los dos valores posibles de un bit de almacenamiento no son igualmente probables, ese bit de almacenamiento contiene menos de un bit de información. 
+
+            Si el valor es completamente predecible, entonces la lectura de ese valor no proporciona ninguna información (bits entrópicos cero, porque no se produce ninguna resolución de la incertidumbre y, por lo tanto, no hay información disponible). 
+
+            Si un archivo de computadora que utiliza n bits de almacenamiento contiene sólo m < n bits de información, entonces esa información, en principio, puede codificarse en aproximadamente m bits, al menos en promedio.
+
+            Este principio es la base de la tecnología de compresión de datos.
+
+            Usando una analogía, los dígitos binarios del hardware se refieren a la cantidad de espacio de almacenamiento disponible (como la cantidad de cubos disponibles para almacenar cosas) y el contenido de información del relleno, que viene en diferentes niveles de granularidad (fino o grueso, es decir, información comprimida o sin comprimir). 
+
+            Cuando la granularidad es más fina (cuando la información está más comprimida), el mismo depósito puede contener más.
+
+
+        Computación basada en bits
+
+            Ciertas instrucciones de procesador de computadora bit a bit (como el conjunto de bits) operan al nivel de manipulación de bits en lugar de manipular datos interpretados como un agregado de bits.
+
+            En la década de 1980, cuando las pantallas de computadora con mapas de bits se hicieron populares, algunas computadoras proporcionaban instrucciones especializadas de transferencia de bloques de bits para configurar o copiar los bits que correspondían a un área rectangular determinada en la pantalla.
+
+            En la mayoría de las computadoras y lenguajes de programación, cuando se hace referencia a un bit dentro de un grupo de bits, como un byte o una palabra, generalmente se especifica mediante un número de 0 en adelante correspondiente a su posición dentro del byte o palabra. 
+
+            Sin embargo, 0 puede referirse al bit más o menos significativo según el contexto.
+
+
+    Byte: 
+
+        El byte es una unidad de información digital que normalmente consta de ocho bits. 
+
+        Históricamente, el byte era el número de bits utilizados para codificar un solo carácter de texto en una computadora y, por esta razón, es la unidad de memoria direccionable más pequeña en muchas arquitecturas de computadora.
+
+        Para eliminar la ambigüedad de los bytes de tamaño arbitrario de la definición común de 8 bits, los documentos de protocolo de red como el Protocolo de Internet (RFC 791) se refieren a un byte de 8 bits como octeto. 
+
+        Los bits de un octeto generalmente se cuentan con una numeración del 0 al 7 o del 7 al 0, dependiendo del endianidad de los bits.
+
+        Históricamente, el tamaño del byte ha dependido del hardware y no existían estándares definitivos que exigieran el tamaño. 
+
+        Se han utilizado tamaños de 1 a 48 bits. 
+
+        El código de caracteres de seis bits era una implementación de uso frecuente en los primeros sistemas de codificación, y las computadoras que usaban bytes de seis y nueve bits eran comunes en la década de 1960. 
+
+        Estos sistemas a menudo tenían palabras de memoria de 12, 18, 24, 30, 36, 48 o 60 bits, correspondientes a 2, 3, 4, 5, 6, 8 o 10 bytes de seis bits. 
+
+        En esta era, las agrupaciones de bits en el flujo de instrucciones a menudo se denominaban sílabas o slab, antes de que el término byte se volviera común.
+
+        El moderno estándar de facto de ocho bits, como se documenta en ISO/IEC 2382-1:1993, es una conveniente potencia de dos que permite valores codificados en binario del 0 al 255 para un byte, ya que 2 elevado a 8 es 256. 
+
+        La norma internacional IEC 80000-13 codificó este significado común. 
+
+        Muchos tipos de aplicaciones utilizan información representable en ocho o menos bits y los diseñadores de procesadores suelen optimizar para este uso. 
+
+        La popularidad de las principales arquitecturas informáticas comerciales ha contribuido a la aceptación ubicua del byte de 8 bits.
+
+        Las arquitecturas modernas suelen utilizar palabras de 32 o 64 bits, compuestas por cuatro u ocho bytes, respectivamente.
+
+        El símbolo de unidad del byte fue designado como la letra B mayúscula por la Comisión Electrotécnica Internacional (IEC) y el Instituto de Ingenieros Eléctricos y Electrónicos (IEEE). 
+
+        A nivel internacional, el octeto unitario, símbolo o, define explícitamente una secuencia de ocho bits, eliminando la posible ambigüedad del término "byte".
+
+
+        Multiples sistemas: 
+
+            Existe más de un sistema para definir múltiplos de unidades según el byte.
+
+            Algunos sistemas se basan en potencias de 10, siguiendo el Sistema Internacional de Unidades (SI), que define por ejemplo el prefijo kilo como 1000 (10^3); otros sistemas se basan en potencias de 2. 
+
+            La nomenclatura de estos sistemas es confusa. 
+
+            Los sistemas basados en potencias de 10 utilizan prefijos estándar del SI (kilo, mega, giga,...) y sus correspondientes símbolos (k, M, G,...). Los sistemas basados en potencias de 2, sin embargo, pueden utilizar prefijos binarios (kibi, mebi, gibi, ...) y sus símbolos correspondientes (Ki, Mi, Gi, ...) o pueden utilizar los prefijos K, M y G, creando ambigüedad cuando se utilizan los prefijos M o G.
+
+            Si bien la diferencia entre las interpretaciones decimal y binaria es relativamente pequeña para el kilobyte (aproximadamente un 2% más pequeño que el kibibyte), los sistemas se desvían cada vez más a medida que las unidades crecen (la desviación relativa crece un 2,4% por cada tres órdenes de magnitud). 
+
+            Por ejemplo, un terabyte basado en una potencia de 10 es aproximadamente un 9 % más pequeño que un tebibyte basado en una potencia de 2.
+
+
+        Unidades basadas en potencias de 10:
+
+            La Comisión Electrotécnica Internacional (IEC) recomienda la definición de prefijos utilizando potencias de 10, en la que 1 kilobyte (símbolo kB) se define como igual a 1.000 bytes. 
+
+            El estándar IEC define ocho de estos múltiplos, hasta 1 yottabyte (YB), equivalente a 1000^8 bytes. 
+
+            Los prefijos adicionales ronna- para 1000^9 y quetta- para 1000^10 fueron adoptados por la Oficina Internacional de Pesas y Medidas (BIPM) en 2022.
+
+            Esta definición se usa más comúnmente para unidades de velocidad de datos en redes de computadoras, bus interno, velocidades de transferencia de discos duros y medios flash, y para las capacidades de la mayoría de los medios de almacenamiento, particularmente discos duros, almacenamiento basado en flash y DVD.
+
+            Los sistemas operativos que utilizan esta definición incluyen macOS, iOS, Ubuntu y Debian. 
+
+            También es coherente con otros usos de los prefijos SI en informática, como velocidades de reloj de CPU o medidas de rendimiento.
+
+
+        Unidades basadas en potencias de 2
+
+            Un sistema de unidades basado en potencias de 2 en el que 1 kibibyte (KiB) es igual a 1.024 (es decir, 2^10) bytes está definido por la norma internacional IEC 80000-13 y está respaldado por organismos de normalización nacionales e internacionales (BIPM, IEC, NIST ). 
+
+            El estándar IEC define ocho de estos múltiplos, hasta 1 yobibyte (YiB), equivalente a 1024^8 bytes. 
+
+            Las contrapartes binarias naturales de ronna- y quetta- se dieron en un documento de consulta del Comité Consultivo de Unidades (CCU) del Comité Internacional de Pesas y Medidas como robi- (Ri, 1024^9) y quebi- (Qi, 1024^10), pero aún no han sido adoptados por IEC e ISO.
+
+            Un sistema alternativo de nomenclatura para las mismas unidades (denominado aquí convención habitual), en el que 1 kilobyte (KB) equivale a 1.024 bytes, 1 megabyte (MB) equivale a 1.024^2 bytes y 1 gigabyte (GB) equivale a a 1024^3 bytes se menciona en un estándar JEDEC de la década de 1990. 
+
+            El estándar JEDEC solo menciona los primeros tres múltiplos (hasta GB), que no menciona TB y mayores. 
+
+            Aunque confusa e incorrecta, la convención habitual es utilizada por el sistema operativo Microsoft Windows y la capacidad de la memoria de acceso aleatorio, como la memoria principal y el tamaño de la caché de la CPU, y en marketing y facturación por parte de empresas de telecomunicaciones, como Vodafone, AT&T, Orange y Telstra. 
+
+            Para la capacidad de almacenamiento, macOS e iOS utilizaron la convención habitual hasta Mac OS X 10.6 Snow Leopard e iOS 10, después de lo cual cambiaron a unidades basadas en potencias de 10.
+
+
+        Origen del conflicto: 
+
+            La memoria de las computadoras contemporáneas tiene una arquitectura binaria, lo que hace que una definición de unidades de memoria basada en potencias de 2 sea lo más práctico. 
+
+            El uso del prefijo métrico kilo para múltiplos binarios surgió por conveniencia, porque 1.024 es aproximadamente 1.000.
+
+            Esta definición fue popular en las primeras décadas de la informática personal, y productos como el formato de disquete DD Tandon de 51⁄4 pulgadas (con capacidad para 368.640 bytes) se anunciaban como "360 KB", siguiendo la convención de 1.024 bytes. 
+
+            Sin embargo, no fue universal. 
+
+            El disquete Shugart SA-400 de 51⁄4 pulgadas contenía 109.375 bytes sin formato,[47] y se anunciaba como "110 Kbyte", utilizando la convención 1000.
+
+            Asimismo, el disquete DEC RX01 de 8 pulgadas (1975) tenía 256.256 bytes formateados y se anunciaba como "256k".
+
+            Otros discos se anunciaron utilizando una combinación de las dos definiciones: en particular, 3+Los discos HD de 1⁄2 pulgadas anunciados como "1,44 MB" en realidad tienen una capacidad de 1440 KiB, el equivalente a 1,47 MB o 1,41 MiB.
+
+            En 1995, el Comité Interdivisional de Nomenclatura y Símbolos de la Unión Internacional de Química Pura y Aplicada (IUPAC) intentó resolver esta ambigüedad proponiendo un conjunto de prefijos binarios para las potencias de 1024, incluidos kibi (kilobinario), mebi (megabinario) y gibi (gigabinario).
+
+            En diciembre de 1998, la IEC abordó estos múltiples usos y definiciones adoptando los prefijos propuestos por la IUPAC (kibi, mebi, gibi, etc.) para denotar sin ambigüedades las potencias de 1024.
+
+            Así, un kibibyte (1 KiB) son 1024^1 bytes = 1024 bytes, un mebibyte (1 MiB) son 1024^2 bytes = 1.048.576 bytes, y así sucesivamente.
+
+
+        Usos comunes: 
+
+            Muchos lenguajes de programación definen el tipo de datos byte.
+
+            Los lenguajes de programación C y C++ definen byte como una "unidad direccionable de almacenamiento de datos lo suficientemente grande como para contener cualquier miembro del conjunto de caracteres básico del entorno de ejecución" (cláusula 3.6 del estándar C). 
+
+            El estándar C requiere que el tipo de datos integral unsigned char contenga al menos 256 valores diferentes y esté representado por al menos ocho bits (cláusula 5.2.4.2.1). 
+
+            Varias implementaciones de C y C++ reservan 8, 9, 16, 32 o 36 bits para el almacenamiento de un byt.
+
+            Además, los estándares C y C++ exigen que no haya espacios entre dos bytes. Esto significa que cada bit en la memoria es parte de un byte.
+
+            El tipo de datos primitivo de Java, byte, se define como ocho bits.
+
+            Es un tipo de datos con signo que contiene valores de −128 a 127.
+
+            Los lenguajes de programación .NET, como C#, definen byte como un tipo sin signo y sbyte como un tipo de datos con signo, con valores de 0 a 255 y −128 a 127, respectivamente.
+
+            En los sistemas de transmisión de datos, el byte se utiliza como una secuencia contigua de bits en un flujo de datos en serie, que representa la unidad de datos más pequeña distinguida. 
+
+            Para la comunicación asíncrona, una unidad de transmisión completa normalmente incluye además un bit de inicio, 1 o 2 bits de parada y posiblemente un bit de paridad y, por tanto, su tamaño puede variar de siete a doce bits para cinco a ocho bits de datos reales. 
+
+            Para la comunicación síncrona, la comprobación de errores suele utilizar bytes al final de un frame.
+
+
+    Binary number: 
+
+        Un número binario es un número expresado en el sistema de numeración de base 2 o sistema de numeración binario, un método de expresión matemática que utiliza sólo dos símbolos: normalmente "0" (cero) y "1" (uno).
+
+        El sistema numérico de base 2 es una notación posicional con una base de 2. 
+        
+        Cada dígito se denomina bit o dígito binario. 
+
+        Debido a su sencilla implementación en circuitos electrónicos digitales que utilizan puertas lógicas, el sistema binario es utilizado por casi todas las computadoras y dispositivos basados en computadoras modernos, como un sistema de uso preferido, sobre varias otras técnicas humanas de comunicación, debido a la simplicidad de la lenguaje y la inmunidad al ruido en la implementación física.
+
+        Los números negativos se representan comúnmente en binario usando two's complements. 
+
+
+        Representación:
+
+            Cualquier número puede representarse mediante una secuencia de bits (dígitos binarios), que a su vez puede representarse mediante cualquier mecanismo capaz de estar en dos estados mutuamente excluyentes.
+
+            Cualquiera de las siguientes filas de símbolos se puede interpretar como el valor numérico binario de 667
+
+            1 0 1 0 0 1 1 0 1 1
+            | - | ― ― | | - | |
+
+            El valor numérico representado en cada caso depende del valor asignado a cada símbolo.
+
+            En los primeros tiempos de la informática, se utilizaban interruptores, agujeros perforados y cintas de papel perforadas para representar valores binarios.
+
+            En una computadora moderna, los valores numéricos pueden estar representados por dos voltajes diferentes; en un disco magnético, se pueden utilizar polaridades magnéticas.
+
+            Un estado "positivo", "sí" o "encendido" no es necesariamente equivalente al valor numérico de uno; Depende de la arquitectura en uso.
+
+            De acuerdo con la representación habitual de los números arábigos, los números binarios se escriben comúnmente utilizando los símbolos 0 y 1. 
+
+            Cuando se escriben, los números binarios suelen tener subíndices, prefijos o sufijos para indicar su base o base.
+
+            Las siguientes notaciones son equivalentes:
+
+                100101 binario (declaración explícita de formato)
+                
+                100101b (un sufijo que indica formato binario; también conocido como convención Intel)
+                 
+                00101B (un sufijo que indica formato binario)
+                 
+                bin 100101 (un prefijo que indica formato binario)
+                
+                100101_2 (un subíndice que indica notación base 2 (binaria))
+                
+                %100101 (un prefijo que indica formato binario; también conocido como convención de Motorola[33][34])
+                
+                0b100101 (un prefijo que indica formato binario, común en lenguajes de programación)
+                
+                6b100101 (un prefijo que indica el número de bits en formato binario, común en los lenguajes de programación)
+                
+                #b100101 (un prefijo que indica formato binario, común en los lenguajes de programación Lisp)
+
+
+            Cuando se hablan, los números binarios generalmente se leen dígito por dígito para distinguirlos de los números decimales. 
+
+            Por ejemplo, el número binario 100 se pronuncia uno cero cero, en lugar de cien, para hacer explícita su naturaleza binaria y con fines de corrección. 
+
+            Dado que el número binario 100 representa el valor cuatro, sería confuso referirse al número como cien (una palabra que representa un valor o cantidad completamente diferente).
+
+            Alternativamente, el número binario 100 se puede leer como "cuatro" (el valor correcto), pero esto no hace explícita su naturaleza binaria.
+
+
+        Conteo en binario: 
+
+            Contar en binario es similar a contar en cualquier otro sistema numérico. 
+
+            Comenzando con un solo dígito, el conteo continúa a través de cada símbolo, en orden creciente. 
+
+            Antes de examinar el conteo binario, es útil analizar brevemente el sistema de conteo decimal, más familiar, como marco de referencia.
+
+
+            Conteo decimal:
+
+            El conteo decimal utiliza los diez símbolos del 0 al 9. 
+
+            El conteo comienza con la sustitución incremental del dígito menos significativo (el dígito más a la derecha), que a menudo se denomina primer dígito. 
+
+            Cuando se agotan los símbolos disponibles para esta posición, el dígito menos significativo se restablece a 0 y el siguiente dígito de mayor significado (una posición a la izquierda) se incrementa (desbordamiento) y se reanuda la sustitución incremental del dígito de orden inferior. 
+
+            Este método de reinicio y desbordamiento se repite para cada dígito de importancia. 
+
+            El conteo avanza de la siguiente manera:
+
+                 000, 001, 002, ... 007, 008, 009 (el dígito más a la derecha se restablece a cero y el dígito a su izquierda se incrementa)
+                 010, 011, 012, ...
+                    ...
+                 090, 091, 092, ... 097, 098, 099 (los dos dígitos más a la derecha se restablecen a cero y el siguiente dígito se incrementa)
+                 100, 101, 102, ...
+
+
+            El conteo binario sigue exactamente el mismo procedimiento y nuevamente la sustitución incremental comienza con el dígito o bit binario menos significativo (el que está más a la derecha, también llamado primer bit), excepto que solo los dos símbolos 0 y 1 están disponibles. 
+
+            Por lo tanto, después de que un bit llega a 1 en binario, un incremento lo restablece a 0 pero también provoca un incremento del siguiente bit a la izquierda:
+
+                 0000,
+                 0001, (el bit más a la derecha comienza de nuevo y se incrementa el siguiente bit)
+                 0010, 0011 (los dos bits más a la derecha comienzan de nuevo y el siguiente bit se incrementa)
+                 0100, 0101, 0110, 0111 (los tres bits más a la derecha comienzan de nuevo y el siguiente bit se incrementa)
+                 1000, 1001, 1010, 1011, 1100, 1101, 1110, 1111...
+
+            En el sistema binario, cada bit representa una potencia creciente de 2, donde el bit más a la derecha representa 2^0, el siguiente representa 2^1, luego 2^2 y así sucesivamente.
+
+            El valor de un número binario es la suma de las potencias de 2 representadas por cada bit "1". 
+
+            Por ejemplo, el número binario 100101 se convierte a formato decimal de la siguiente manera:
+
+                 100101_2 = [ ( 1 ) × 2^5 ] + [ ( 0 ) × 2^4 ] + [ ( 0 ) × 2^3 ] + [ ( 1 ) × 2^2 ] + [ ( 0 ) × 2^1 ] + [ ( 1 ) × 2^0 ]
+
+                 100101_2 = [1 × 32] + [0 × 16] + [0 × 8] + [1 × 4] + [0 × 2] + [1 × 1]
+
+                 100101_2 = 37_10
+
+
+    Bitwise/operación bit a bit:
+
+        Aunque no están directamente relacionados con la interpretación numérica de los símbolos binarios, las secuencias de bits pueden manipularse utilizando operadores lógicos booleanos.
+
+        Cuando una cadena de símbolos binarios se manipula de esta manera, se denomina operación bit a bit; los operadores lógicos AND, OR y XOR se pueden realizar en los bits correspondientes en dos números binarios proporcionados como entrada.
+
+        La operación lógica NOT se puede realizar en bits individuales en un único número binario proporcionado como entrada. 
+
+        A veces, estas operaciones pueden utilizarse como atajos aritméticos y también pueden tener otros beneficios computacionales. 
+
+        Por ejemplo, un desplazamiento aritmético hacia la izquierda de un número binario es equivalente a la multiplicación por una potencia (positiva, integral) de 2.
+
+
+    Two's complement: 
+
+        El complemento a dos es el método más común para representar números enteros con signo (positivos, negativos y cero) en computadoras y, más generalmente, valores binarios de punto fijo. 
+
+        El complemento a dos utiliza el dígito binario con el mayor valor posicional como signo para indicar si el número binario es positivo o negativo. 
+
+        Cuando el bit más significativo es 1, el número tiene signo negativo; y cuando el bit más significativo es 0 el número tiene signo positivo.
+
+        A diferencia del esquema de complemento a uno, el esquema de complemento a dos tiene una sola representación para el cero. 
+
+        Además, las implementaciones aritméticas se pueden utilizar tanto en enteros con signo como sin signo y difieren sólo en las situaciones de desbordamiento de enteros.
+
+
+        Enteros con signo/signed number: 
+
+            En informática, se requieren representaciones de números con signo para codificar números negativos en sistemas numéricos binarios.
+
+            En matemáticas, los números negativos en cualquier base se representan precediéndolos con un signo menos ("-"). 
+
+            Sin embargo, en los registros de RAM o CPU, los números se representan sólo como secuencias de bits, sin símbolos adicionales. 
+
+            Los cuatro métodos más conocidos para extender el sistema de numeración binaria para representar números con signo son: signo-magnitud, complemento a uno, complemento a dos y binario compensado.
+
+            Algunos de los métodos alternativos utilizan signos implícitos en lugar de explícitos, como el binario negativo, que utiliza la base −2. 
+
+            Se pueden idear métodos correspondientes para otras bases, ya sean elaboraciones positivas, negativas, fraccionarias u otras elaboraciones sobre dichos temas.
+
+            No existe un criterio definitivo por el cual alguna de las representaciones sea universalmente superior.
+
+            Para los números enteros, la representación utilizada en la mayoría de los dispositivos informáticos actuales es el complemento a dos, aunque los mainframes de la serie Unisys ClearPath Dorado utilizan el complemento a uno.
+
+
+        Binario punto fijo/fixed number binary
+
+            En informática, el punto fijo es un método para representar números fraccionarios (no enteros) almacenando un número fijo de dígitos de su parte fraccionaria.
+
+            Las cantidades en dólares, por ejemplo, a menudo se almacenan con exactamente dos dígitos fraccionarios, que representan los centavos (1/100 de dólar). 
+
+            De manera más general, el término puede referirse a la representación de valores fraccionarios como múltiplos enteros de alguna unidad pequeña fija, p. una cantidad fraccionaria de horas como un múltiplo entero de intervalos de diez minutos. 
+
+            La representación de números en punto fijo a menudo se contrasta con la representación en punto flotante, más complicada y exigente desde el punto de vista computacional.
+
+            En la representación de punto fijo, la fracción a menudo se expresa en la misma base numérica que la parte entera, pero usando potencias negativas de la base b.
+
+            Las variantes más comunes son decimal (base 10) y binaria (base 2).
+
+            Este último también se conoce comúnmente como escalado binario. 
+
+            Por lo tanto, si se almacenan n dígitos de fracción, el valor siempre será un múltiplo entero de b^−n. 
+
+            La representación de punto fijo también se puede utilizar para omitir los dígitos de orden inferior de valores enteros, p. al representar grandes valores en dólares como múltiplos de $1000.
+
+            Cuando se muestran números decimales de coma fija para lectura humana, los dígitos de fracción generalmente están separados de los de la parte entera por un carácter de base (generalmente '.' en inglés, pero ',' o algún otro símbolo en muchos otros idiomas).
+
+            Internamente, sin embargo, no hay separación y la distinción entre los dos grupos de dígitos está definida únicamente por los programas que manejan dichos números.
+
+            La representación de punto fijo era la norma en las calculadoras mecánicas. 
+
+            Dado que la mayoría de los procesadores modernos tienen una unidad de punto flotante (FPU) rápida, las representaciones de punto fijo en implementaciones basadas en procesadores ahora se utilizan sólo en situaciones especiales, como en microprocesadores y microcontroladores integrados de bajo costo; en aplicaciones que exigen alta velocidad o bajo consumo de energía o área de chip pequeña, como procesamiento de imágenes, video y señales digitales; o cuando su uso sea más natural para el problema. 
+
+            Ejemplos de esto último son la contabilidad de cantidades en dólares, cuando las fracciones de centavos deben redondearse a centavos enteros de maneras estrictamente prescritas; y la evaluación de funciones mediante búsqueda de tablas, o cualquier aplicación donde los números racionales deban representarse sin errores de redondeo (lo que hace el punto fijo, pero no el punto flotante). 
+
+            La representación de punto fijo sigue siendo la norma para las implementaciones de matrices de puertas programables en campo (FPGA), ya que el soporte de punto flotante en una FPGA requiere muchos más recursos que el soporte de punto fijo.
+
+
+
+        FPU: 
+
+            Una unidad de punto flotante (FPU, coloquialmente un coprocesador matemático) es una parte de un sistema informático especialmente diseñado para realizar operaciones con números de punto flotante. 
+
+            Las operaciones típicas son suma, resta, multiplicación, división y raíz cuadrada. 
+
+            Algunas FPU también pueden realizar varias funciones trascendentales, como cálculos exponenciales o trigonométricos, pero la precisión puede ser baja, por lo que algunos sistemas prefieren calcular estas funciones en software.
+
+            En arquitecturas informáticas de propósito general, se pueden integrar una o más FPU como unidades de ejecución dentro de la unidad central de procesamiento; sin embargo, muchos procesadores integrados no tienen soporte de hardware para operaciones de punto flotante (aunque cada vez más las tienen como estándar).
+
+            Cuando una CPU está ejecutando un programa que requiere una operación de punto flotante, existen tres formas de realizarlo:
+
+                 Un emulador de unidad de punto flotante (una biblioteca de punto flotante en software)
+                 
+                 Hardware FPU adicional
+                 
+                 FPU integrada (en hardware)
+
+
+        FPGA:
+
+            Una matriz de puertas programables en campo (FPGA) es un tipo de circuito integrado configurable que se puede programar o reprogramar después de la fabricación. 
+
+            Los FPGA son parte de un conjunto más amplio de dispositivos lógicos denominados dispositivos lógicos programables (PLD). 
+
+            Consisten en una serie de bloques lógicos programables e interconexiones que se pueden configurar para realizar diversas funciones digitales. 
+
+            Los FPGA se utilizan comúnmente en aplicaciones donde se requieren flexibilidad, velocidad y capacidades de procesamiento paralelo, como en los sectores de telecomunicaciones, automoción, aeroespacial e industrial.
+
+            La configuración de FPGA generalmente se especifica mediante un lenguaje de descripción de hardware (HDL), similar al utilizado para un circuito integrado de aplicación específica (ASIC). 
+
+            Anteriormente se utilizaban diagramas de circuitos para especificar la configuración.
+
+            Los bloques lógicos de una FPGA se pueden configurar para realizar funciones combinacionales complejas o actuar como puertas lógicas simples como AND y XOR. 
+
+            En la mayoría de los FPGA, los bloques lógicos también incluyen elementos de memoria, que pueden ser simples flip-flops o bloques de memoria más completos.
+
+            Muchos FPGA se pueden reprogramar para implementar diferentes funciones lógicas, lo que permite una computación flexible y reconfigurable como la que se realiza en el software de computadora.
+
+            Los FPGA también desempeñan un papel en el desarrollo de sistemas integrados debido a su capacidad para iniciar el desarrollo del software del sistema simultáneamente con el hardware, permitir simulaciones de rendimiento del sistema en una fase muy temprana del desarrollo y permitir varias pruebas del sistema e iteraciones de diseño antes de finalizar la arquitectura del sistema.
+
+            Los FPGA también se utilizan comúnmente durante el desarrollo de ASIC para acelerar el proceso de simulación.
+
+
+    Sistema numerico:
+
+        Un sistema de numeración es un conjunto de símbolos y reglas de generación que permiten construir todos los números válidos. Un sistema de numeración puede obtenerse como:
+
+            N = (S,R)
+
+        donde:
+
+            N: 
+                es el sistema de numeración considerado (p.ej. decimal, binario, hexadecimal, etc.).
+
+            S: 
+
+                es el conjunto de símbolos permitidos en el sistema. 
+
+                En el caso del sistema decimal son {0,1,2...9}; en el binario son {0,1}; en el octal son {0,1,...7}; en el hexadecimal son {0,1,...9,A,B,C,D,E,F}.
+            
+            R:
+
+                Son las reglas que nos indican qué números y qué operaciones son válidos en el sistema, y cuáles no.
+
+                En un sistema de numeración posicional las reglas son bastante simples, mientras que la numeración romana requiere reglas algo más elaboradas.
+
+        Estas reglas son diferentes para cada sistema de numeración considerado, pero una regla común a todos es que para construir números válidos en un sistema de numeración determinado solo se pueden utilizar los símbolos permitidos en ese sistema.
+
+        Para indicar en qué sistema de numeración se representa con una letra que se añade como subíndice a la derecha el número de símbolos que se pueden representar en dicho sistema.
+
+        Se conoce como un sistema de numeración a un conjunto finito de símbolos que se emplea con algún método para asignar numerales , o símbolos numéricos.
+
+        Pueden clasificarse en dos grandes grupos: posicionales y no posicionales:
+
+            En los sistemas no posicionales los dígitos tienen el valor del símbolo utilizado, que no depende de la posición (columna) que ocupan en el número.
+
+            En los sistemas de numeración ponderados o posicionales el valor de un dígito depende tanto del símbolo utilizado, como de la posición que ese símbolo ocupa en el número
+
+
+        Teorema fundamental de la numeración
+
+            Este teorema establece la forma general de construir números en un sistema de numeración posicional. 
+
+            Primero estableceremos unas definiciones básicas:
+
+                N: 
+
+                    Número válido en el sistema de numeración.
+
+
+                b: 
+
+                    Base del sistema de numeración.
+
+                    Número de símbolos permitidos en el sistema.
+
+
+                d_i:
+
+                    un símbolo cualquiera de los permitidos en el sistema de numeración.
+
+
+                n: 
+
+                    Número de dígitos de la parte entera.
+
+                    Coma fraccionaria. 
+
+                    Símbolo utilizado para separar la parte entera de un número de su parte fraccionaria.
+
+                k: 
+
+                    Número de dígitos de la parte decimal.
+
+
+            La fórmula general para construir un número N, con un número finito de decimales, en un sistema de numeración posicional de base b es la siguiente: 
+
+                N = 
+                    {
+
+                        <d_(n-1)>...d_1, d_0, d_-1...d_-k>
+
+                        = 
+
+                        n-1
+                        Z   d_i b^i
+                        i=-k
+
+                        N = d_n-1 b^n-1 + ... + d_1 b^1 + d_0 b^0 + d_-1 b^-1 + ... + d_-k b^-k
+
+                    }
+
+
+            El valor total del número será la suma de cada dígito multiplicado por la potencia de la base correspondiente a la posición que ocupa en el número.
+
+            Esta representación posibilita la realización de sencillos algoritmos para la ejecución de operaciones aritméticas. 
+
+
+        En informática, las bases binaria (base-2), octal (base-8) y hexadecimal (base-16) son las más utilizadas. 
+
+        Las computadoras, en el nivel más básico, trabajan sólo con secuencias de ceros y unos convencionales, por lo que en este sentido es más fácil trabajar con potencias de dos. 
+
+        El sistema hexadecimal se utiliza como "taquigrafía" del binario: cada 4 dígitos binarios (bits) se relacionan con uno y sólo un dígito hexadecimal. 
+
+        En hexadecimal, los seis dígitos después del 9 se indican con A, B, C, D, E y F (y, a veces, a, b, c, d, e y f).
+
+        El sistema de numeración octal también se utiliza como otra forma de representar números binarios. 
+
+        En este caso la base es 8 y por tanto sólo se utilizan los dígitos 0, 1, 2, 3, 4, 5, 6 y 7. 
+
+        Al convertir de binario a octal, cada 3 bits se relacionan con un solo dígito octal.
+
+        Se han utilizado bases hexadecimales, decimales, octales y una amplia variedad de otras para codificación de binario a texto, implementaciones de aritmética de precisión arbitraria y otras aplicaciones.
+
+
+    Notación posicional:
+
+        La notación posicional (o notación de valor posicional, o sistema numérico posicional) generalmente denota la extensión a cualquier base del sistema numérico hindú-árabe (o sistema decimal). 
+
+        De manera más general, un sistema posicional es un sistema numérico en el que la contribución de un dígito al valor de un número es el valor del dígito multiplicado por un factor determinado por la posición del dígito. 
+
+        En los primeros sistemas de numeración, como los números romanos, un dígito tenía un solo valor: I significa uno, X significa diez y C cien (sin embargo, el valor puede negarse si se coloca antes de otro dígito). 
+
+        En los sistemas posicionales modernos, como el sistema decimal, la posición del dígito significa que su valor debe multiplicarse por algún valor: en 555, los tres símbolos idénticos representan cinco centenas, cinco decenas y cinco unidades, respectivamente, debido a su diferentes posiciones en la cadena de dígitos.
+
+        Hoy en día, el sistema de numeración hindú-árabe (base diez) es el sistema más utilizado a nivel mundial. Sin embargo, el sistema de numeración binaria (base dos) se utiliza en casi todas las computadoras y dispositivos electrónicos porque es más fácil de implementar de manera eficiente en circuitos electrónicos.
+
+        El uso de un punto de base (punto decimal en base diez), se extiende para incluir fracciones y permite representar cualquier número real con precisión arbitraria. 
+
+        Con la notación posicional, los cálculos aritméticos son mucho más sencillos que con cualquier sistema numérico antiguo.
+
+        Base: 
+
+            Cantidad de simbolos en un sistema numerico posicional. 
+
+            Se incluye el 0. 
+
+
+        Indice:
+
+            Posición al que pertenece un simbolo o cifra. 
+
+            Generalmente, en un sistema numerico posicional se empieza el simbolo más a la derecha, al que se le asigna 0 y va incrementando. 
+
+
+        Notación:
+
+            Al describir la base en notación matemática, la letra b se usa generalmente como símbolo para este concepto, por lo que, para un sistema binario, b es igual a 2.
+
+            Otra forma común de expresar la base es escribirla como un subíndice decimal después del número que es siendo representado (esta notación se utiliza en este artículo). 
+
+            1111011_2 implica que el número 1111011 es un número de base 2, igual a 123_10 (una representación de notación decimal), 173_8 (octal) y 7B_16 (hexadecimal). 
+
+            En libros y artículos, cuando se utilizan inicialmente abreviaturas escritas de bases numéricas, la base no se imprime posteriormente: se supone que el binario 1111011 es lo mismo que 1111011_2.
+
+            La base b también puede indicarse mediante la frase "base-b". 
+
+            Entonces los números binarios son "base-2"; los números octales son "base 8"; los números decimales son "base-10"; etcétera.
+
+            Para una base b dada, el conjunto de dígitos {0, 1, ..., b−2, b−1} se denomina conjunto estándar de dígitos. 
+
+            Así, los números binarios tienen dígitos {0, 1}; los números decimales tienen dígitos {0, 1, 2, ..., 8, 9}; etcétera. Por lo tanto, los siguientes son errores de notación: 52_2, 2_2, 1A_9. 
+
+            (En todos los casos, uno o más dígitos no están en el conjunto de dígitos permitidos para la base dada). 
+
+
+        Exponenciacion: 
+
+            Los sistemas de numeración posicional funcionan utilizando la exponenciación de la base. 
+
+            El valor de un dígito es el dígito multiplicado por el valor de su lugar.
+
+            Los valores posicionales son el número de la base elevado a la enésima potencia, donde n es el número de otros dígitos entre un dígito dado y el punto de la base. 
+
+            Si un dígito dado está en el lado izquierdo del punto de la base (es decir, su valor es un número entero), entonces n es positivo o cero; si el dígito está en el lado derecho del punto de la base (es decir, su valor es fraccionario), entonces n es negativo.
+
+
+        Digits y números: 
+
+            Un dígito es un símbolo que se utiliza para la notación posicional y un número consta de uno o más dígitos que se utilizan para representar un número con notación posicional. 
+
+            Los dígitos más comunes en la actualidad son los dígitos decimales "0", "1", "2", "3", "4", "5", "6", "7", "8" y "9". 
+
+            La distinción entre un dígito y un número es más pronunciada en el contexto de una base numérica.
+
+            Un número distinto de cero con más de una posición de dígito significará un número diferente en una base numérica diferente, pero en general, los dígitos significarán lo mismo.
+
+            Por ejemplo, el número de base 8 23_8 contiene dos dígitos, "2" y "3", y con un número de base (subíndice) "8". 
+
+            Cuando se convierte a base 10, 23_8 equivale a 19_10, es decir, 23_8 = 19_10. En nuestra notación aquí, el subíndice "8" del número 238 es parte del número, pero puede que no siempre sea así.
+
+            Imagine que el número "23" tiene un número base ambiguo. 
+
+            Entonces "23" probablemente podría ser cualquier base, desde la base 4 hacia arriba. 
+
+            En base 4, el "23" significa 1110, es decir, 234 = 1110. En base 60, el "23" significa el número 123_10, es decir, 23_60 = 123_10. 
+
+            El número "23", entonces, en este caso, corresponde al conjunto de números de base 10 {11, 13, 15, 17, 19, 21, 23, ..., 121, 123} mientras que sus dígitos "2" y "3" siempre conservan su significado original: el "2" significa "dos de", y el "3" significa "tres de".
+
+
+        Punto de base/Radix point: 
+
+            La notación se puede extender a los exponentes negativos de la base b.
+
+            Por lo tanto, el llamado punto de base, generalmente ».«, se utiliza como separador de las posiciones con exponente no negativo de aquellas con exponente negativo.
+
+            Los números que no son enteros usan lugares más allá del punto de base.
+
+            Para cada posición detrás de este punto (y por tanto después del dígito de las unidades), el exponente n de la potencia bn disminuye en 1 y la potencia se acerca a 0. 
+
+            Por ejemplo, el número 2,35 es igual a:
+
+                 2 × 10^0 + 3 × 10^−1 + 5 × 10^−2
+
+        
+        Signo: 
+
+            Si la base y todos los dígitos del conjunto de dígitos no son negativos, no se pueden expresar números negativos. Para superar esto, se añade un signo menos, aquí »-«, al sistema numérico. 
+
+            En la notación habitual, se antepone a la cadena de dígitos que representan el número que de otro modo no sería negativo.
+
+
+
+    Código binario: 
+
+
+
+
+
+
+
+|| Word
+
+
+    UTF-8: 
+
+
+
+
+|| Call
+
 
 
 
@@ -2692,22 +3984,10 @@
 || Reference
 
 
-    Data type: 
+    
+
+|| Data type: 
 
 
 
 
-|| Dirección lógica
-
-
-
-
-|| Byte
-
-
-
-|| Word
-
-
-
-|| Call
