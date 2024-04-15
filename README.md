@@ -3958,19 +3958,1718 @@
             En la notación habitual, se antepone a la cadena de dígitos que representan el número que de otro modo no sería negativo.
 
 
-
     Código binario: 
 
+        Representa texto, instrucciones del procesador de una computadora o cualquier otro dato que utilice un sistema de dos símbolos. 
+
+        El sistema de dos símbolos utilizado suele ser "0" y "1" del sistema numérico binario. 
+
+        El código binario asigna un patrón de dígitos binarios, también conocidos como bits, a cada carácter, instrucción, etc. 
+
+        Por ejemplo, una cadena binaria de ocho bits (que también se llama byte) puede representar cualquiera de los 256 valores posibles y puede, por lo tanto, representan una amplia variedad de artículos diferentes.
+
+        En informática y telecomunicaciones, los códigos binarios se utilizan para diversos métodos de codificación de datos, como cadenas de caracteres, en cadenas de bits. 
+
+        Esos métodos pueden utilizar cadenas de ancho fijo o variable. 
+
+        En un código binario de ancho fijo, cada letra, dígito u otro carácter está representado por una cadena de bits de la misma longitud; esa cadena de bits, interpretada como un número binario, generalmente se muestra en tablas de códigos en notación octal, decimal o hexadecimal. 
+
+        Hay muchos conjuntos de caracteres y muchas codificaciones de caracteres para ellos.
+
+        Una cadena de bits, interpretada como un número binario, se puede traducir a un número decimal. 
+
+        Por ejemplo, la a minúscula, si está representada por la cadena de bits 01100001 (como está en el código ASCII estándar), también se puede representar como el número decimal "97".
+
+
+        ACII code:
+
+            Es un estándar de codificación de caracteres para comunicaciones electrónicas. 
+
+            Los códigos ASCII representan texto en computadoras, equipos de telecomunicaciones y otros dispositivos.
+
+            Debido a las limitaciones técnicas de los sistemas informáticos en el momento de su invención, ASCII tiene sólo 128 puntos de código (), de los cuales sólo 95 son caracteres imprimibles, lo que limitó gravemente su alcance. 
+
+            Los sistemas informáticos modernos han evolucionado para utilizar Unicode, que tiene millones de puntos de código, pero los primeros 128 de ellos son iguales al conjunto ASCII.
 
 
 
+            The American Standard Code for Information Interchange (ASCII) utiliza un código binario de 7 bits para representar texto y otros caracteres dentro de computadoras, equipos de comunicaciones y otros dispositivos. 
+
+            A cada letra o símbolo se le asigna un número del 0 al 127. 
+
+            Por ejemplo, la "a" minúscula se representa por 1100001 como una cadena de bits (que es "97" en decimal).
+
+
+        Unicode: 
+
+            El estándar Unicode es un estándar de codificación de texto mantenido por Unicode Consortium diseñado para respaldar el uso de texto escrito en todos los principales sistemas de escritura del mundo. 
+
+            La versión 15.1 del estándar define 149813 caracteres y 161 escrituras utilizadas en diversos contextos ordinarios, literarios, académicos y técnicos.
+
+            Muchos caracteres comunes, incluidos los números, la puntuación y otros símbolos, están unificados dentro del estándar y no se tratan como específicos de ningún sistema de escritura determinado.
+
+            Unicode codifica miles de emoji, cuyo desarrollo continuo lo lleva a cabo el Consorcio como parte del estándar. 
+
+            Además, la adopción generalizada de Unicode fue en gran parte responsable de la popularización inicial de los emoji fuera de Japón.
+
+            En última instancia, Unicode es capaz de codificar más de 1,1 millones de caracteres.
+
+            Unicode ha suplantado en gran medida el entorno anterior de innumerables conjuntos de caracteres incompatibles, cada uno utilizado en diferentes configuraciones regionales y en diferentes arquitecturas informáticas. 
+
+            Unicode se utiliza para codificar la gran mayoría del texto en Internet, incluida la mayoría de las páginas web, y el soporte relevante de Unicode se ha convertido en una consideración común en el desarrollo de software contemporáneo.
+
+            El repertorio de caracteres Unicode está sincronizado con ISO/IEC 10646, siendo cada código idéntico entre sí. 
+
+            Sin embargo, el estándar Unicode es más que un simple repertorio dentro del cual se asignan caracteres. 
+
+            Para ayudar a los desarrolladores y diseñadores, el estándar también proporciona gráficos y datos de referencia, así como anexos que explican conceptos relacionados con varios scripts y brindan orientación para su implementación. 
+
+            Los temas cubiertos por estos anexos incluyen la normalización de caracteres, la composición y descomposición de caracteres, la intercalación y la direccionalidad.
+
+            El texto Unicode se procesa y almacena como datos binarios utilizando una de varias codificaciones, que definen cómo traducir los códigos abstractos de caracteres del estándar en secuencias de bytes.
+
+            El propio estándar Unicode define tres codificaciones: UTF-8, UTF-16 y UTF-32, aunque existen varias otras. 
+
+            De estos, UTF-8 es el más utilizado por un amplio margen, en parte debido a su compatibilidad con versiones anteriores de ASCII.
+
+
+        Code point: 
+
+            Un punto de código, punto de código o posición de código es una posición única en un espacio n-dimensional cuantificado a la que se le ha asignado un significado semántico.
+
+            En otras palabras, un punto de código es una posición particular en una tabla, donde a la posición se le ha asignado un significado.
+
+            La tabla tiene posiciones discretas (1, 2, 3, 4, pero no fracciones) y puede ser unidimensional (una columna), bidimensional (como celdas en una hoja de cálculo), tridimensional (hojas en un libro de trabajo), etc. ... en cualquier número de dimensiones.
+
+            Los puntos de código se utilizan en una multitud de estándares formales de telecomunicaciones y procesamiento de información. 
+
+            Por ejemplo, la Recomendación UIT-T T.35 contiene un conjunto de códigos de país para equipos de telecomunicaciones (originalmente máquinas de fax) que permiten al equipo indicar su país de fabricación u operación.
+
+            En T.35, Argentina está representada por el punto de código 0x07, Canadá por 0x20, Gambia por 0x41, etc.
+
+
+
+        Binary-coded decimal: 
+
+            Es una representación codificada en binario de valores enteros que utiliza un cuarteto de 4 bits para codificar dígitos decimales. 
+
+            Cuatro bits binarios pueden codificar hasta 16 valores distintos; pero, en números codificados en BCD, sólo diez valores en cada nibble son legales y codifican los dígitos decimales del cero al nueve. 
+
+            Los seis valores restantes son ilegales y pueden provocar una excepción en la máquina o un comportamiento no especificado, dependiendo de la implementación informática de la aritmética BCD.
+
+            A veces se prefiere la aritmética BCD a los formatos numéricos de punto flotante en aplicaciones comerciales y financieras donde los complejos comportamientos de redondeo de los números de punto flotante son inapropiados.
+
+
+        Peso del código binario: 
+
+            Tal como se define en la tabla de códigos de peso constante, es el peso Hamming de las palabras binarias que codifican las palabras o secuencias representadas.
+
+
+        String: 
+
+            Es tradicionalmente una secuencia de caracteres, ya sea como una constante literal o como algún tipo de variable. 
+
+            Este último puede permitir que sus elementos sean mutados y cambiar la longitud, o puede ser fijo (después de la creación). 
+
+            Una cadena generalmente se considera un tipo de datos y a menudo se implementa como una estructura de datos de matriz de bytes (o palabras) que almacena una secuencia de elementos, generalmente caracteres, utilizando alguna codificación de caracteres. 
+
+            Cadena también puede denotar matrices más generales u otros tipos y estructuras de datos de secuencia (o lista).
+
+            Dependiendo del lenguaje de programación y del tipo de datos preciso utilizado, una variable declarada como una cadena puede hacer que el almacenamiento en la memoria se asigne estáticamente para una longitud máxima predeterminada o emplear una asignación dinámica para permitirle contener un número variable de elementos.
+
+            Cuando una cadena aparece literalmente en el código fuente, se la conoce como cadena literal o cadena anónima.
+
+            En los lenguajes formales, que se utilizan en lógica matemática e informática teórica, una cadena es una secuencia finita de símbolos que se eligen de un conjunto llamado alfabeto.
+
+    
+        Códificación de caracter. 
+
+            Históricamente, los tipos de datos de cadena han asignado un byte por carácter y, aunque el conjunto de caracteres exacto variaba según la región, las codificaciones de caracteres eran lo suficientemente similares como para que los programadores a menudo pudieran ignorar esto, ya que los caracteres que un programa trataba de manera especial (como el punto, el espacio y la coma) estaban en el mismo lugar en todas las codificaciones que encontraría un programa.
+
+            Estos conjuntos de caracteres normalmente se basaban en ASCII o EBCDIC. 
+
+            Si el texto en una codificación se mostraba en un sistema que utilizaba una codificación diferente, el texto a menudo estaba alterado, aunque a menudo era algo legible y algunos usuarios de computadoras aprendían a leer el texto alterado.
+
+            Los lenguajes logográficos como el chino, el japonés y el coreano (conocidos colectivamente como CJK) necesitan mucho más de 256 caracteres (el límite de una codificación de un byte de 8 bits por carácter) para una representación razonable.
+
+            Las soluciones normales implicaban mantener representaciones de un solo byte para ASCII y utilizar representaciones de dos bytes para los ideogramas CJK. 
+
+            El uso de estos con el código existente generó problemas con la coincidencia y el corte de cadenas, cuya gravedad dependía de cómo se diseñó la codificación de caracteres. 
+
+            Algunas codificaciones, como la familia EUC, garantizan que un valor de byte en el rango ASCII representará solo ese carácter ASCII, lo que hace que la codificación sea segura para sistemas que utilizan esos caracteres como separadores de campos. Otras codificaciones, como ISO-2022 y Shift-JIS, no ofrecen tales garantías, lo que hace que la coincidencia de códigos de bytes sea insegura. 
+
+            Estas codificaciones tampoco eran "autosincronizadas", por lo que localizar los límites de los caracteres requería hacer una copia de seguridad hasta el inicio de una cadena, y pegar dos cadenas juntas podría provocar la corrupción de la segunda cadena.
+
+            Unicode ha simplificado un poco el panorama. 
+
+            La mayoría de los lenguajes de programación ahora tienen un tipo de datos para cadenas Unicode. 
+
+            El formato de flujo de bytes preferido de Unicode, UTF-8, está diseñado para no tener los problemas descritos anteriormente para codificaciones multibyte más antiguas. 
+
+            UTF-8, UTF-16 y UTF-32 requieren que el programador sepa que las unidades de código de tamaño fijo son diferentes de los "caracteres", la principal dificultad actualmente son las API diseñadas incorrectamente que intentan ocultar esta diferencia (UTF-32 no hace que los puntos de código tengan un tamaño fijo, pero estos no son "caracteres" debido a la composición de los códigos).
+
+
+        Representación: 
+
+            Las representaciones de cadenas dependen en gran medida de la elección del repertorio de caracteres y del método de codificación de caracteres. 
+
+            Las implementaciones de cadenas más antiguas se diseñaron para funcionar con el repertorio y la codificación definidos por ASCII o extensiones más recientes como la serie ISO 8859. 
+
+            Las implementaciones modernas suelen utilizar el extenso repertorio definido por Unicode junto con una variedad de codificaciones complejas como UTF-8 y UTF-16.
+
+            El término cadena de bytes generalmente indica una cadena de bytes de propósito general, en lugar de cadenas de solo caracteres (legibles), cadenas de bits o similares. 
+
+            Las cadenas de bytes a menudo implican que los bytes pueden tomar cualquier valor y que cualquier dato puede almacenarse tal cual, lo que significa que no debe haber ningún valor interpretado como un valor de terminación.
+
+            La mayoría de las implementaciones de cadenas son muy similares a las matrices de longitud variable con las entradas que almacenan los códigos de caracteres de los caracteres correspondientes.
+
+            La principal diferencia es que, con determinadas codificaciones, un único carácter lógico puede ocupar más de una entrada en la matriz. 
+
+            Esto sucede, por ejemplo, con UTF-8, donde los códigos únicos (puntos de código UCS) pueden ocupar de uno a cuatro bytes, y los caracteres individuales pueden ocupar un número arbitrario de códigos. 
+
+            En estos casos, la longitud lógica de la cadena (número de caracteres) difiere de la longitud física de la matriz (número de bytes en uso), UTF-32 evita la primera parte del problema
+
+
+    Binary file: 
+
+        Es un archivo de computadora que no es un archivo de texto. 
+
+        El término "archivo binario" se utiliza a menudo como un término que significa "archivo que no es de texto". 
+
+        Muchos formatos de archivos binarios contienen partes que pueden interpretarse como texto; por ejemplo, algunos archivos de documentos de computadora que contienen texto formateado, como los archivos de documentos más antiguos de Microsoft Word, contienen el texto del documento pero también contienen información de formato en formato binario.
+
+
+        Estructura
+
+            Generalmente se piensa que los archivos binarios son una secuencia de bytes, lo que significa que los dígitos binarios (bits) se agrupan en ochos. 
+
+            Los archivos binarios normalmente contienen bytes que deben interpretarse como algo más que caracteres de texto. 
+
+            Los programas informáticos compilados son ejemplos típicos; de hecho, a veces, especialmente los programadores, se refieren a las aplicaciones compiladas como binarias. 
+
+            Pero los archivos binarios también pueden significar que contienen imágenes, sonidos, versiones comprimidas de otros archivos, etc.; en resumen, cualquier tipo de contenido de archivo.
+
+            Algunos archivos binarios contienen encabezados, bloques de metadatos utilizados por un programa informático para interpretar los datos del archivo. 
+
+            El encabezado suele contener una firma o un número mágico que puede identificar el formato.
+
+            Por ejemplo, un archivo GIF puede contener varias imágenes y los encabezados se utilizan para identificar y describir cada bloque de datos de imagen. 
+
+            Los bytes iniciales del encabezado contendrán texto como GIF87a o GIF89a que puede identificar el binario como un archivo GIF. 
+
+            Si un archivo binario no contiene encabezados, se le puede llamar archivo binario plano.
+
+            Un archivo de texto puede consistir total o parcialmente en información binaria codificada. 
+
+            Al enviar archivos binarios a través de la red, es posible que se codifiquen para que utilicen únicamente caracteres imprimibles.
+
+            Esto suele ser necesario debido a las limitaciones de los protocolos de red utilizados para la navegación por Internet y la comunicación por correo electrónico. 
+
+            Una de esas codificaciones es Base64.
+
+            Además, los archivos que contienen información de clave pública y privada para su uso en sistemas que emplean criptografía asimétrica (como certificados de sitios web) también pueden almacenarse con la información binaria codificada en caracteres imprimibles.
+
+
+        Manipulación: 
+
+            Para enviar archivos binarios a través de ciertos sistemas (como el correo electrónico) que no permiten todos los valores de datos, a menudo se traducen a una representación de texto plano (usando, por ejemplo, Base64).
+
+            Codificar los datos tiene la desventaja de aumentar el tamaño del archivo durante la transferencia (por ejemplo, el uso de Base64 aumentará el tamaño del archivo en aproximadamente un 30%), además de requerir una traducción nuevamente al binario después de la recepción. 
+
+            El aumento de tamaño puede contrarrestarse mediante una compresión de enlaces de nivel inferior, ya que los datos de texto resultantes tendrán tanta menos entropía a medida que aumentan de tamaño, por lo que los datos reales transferidos en este escenario probablemente serían muy cercanos al tamaño del original datos binarios.
+
+            Microsoft Windows y sus bibliotecas estándar para los lenguajes de programación C y C++ permiten al programador especificar un parámetro que indica si se espera que un archivo sea texto plano o binario al abrirlo; esto afecta las llamadas de biblioteca estándar para leer y escribir desde el archivo en el sentido de que el sistema convierte entre el carácter de "fin de línea" C/C++ (el carácter de salto de línea ASCII) y la secuencia de fin de línea que Windows espera en los archivos (el carácter ASCII),  caracteres de retorno de carro y salto de línea en secuencia. 
+
+            En sistemas tipo Unix, las bibliotecas estándar C y C++ en esos sistemas también permiten al programador especificar si se espera que un archivo sea de texto o binario, pero las bibliotecas pueden ignorar ese parámetro, y lo hacen, como la secuencia de fin de línea en sistemas tipo Unix es solo el carácter de final de línea C/C++.
+
+
+        Vista:
+
+            Se puede utilizar un editor o visor hexadecimal para ver datos de archivos como una secuencia de valores hexadecimales (o caracteres decimales, binarios o ASCII) para los bytes correspondientes de un archivo binario.
+
+            Si se abre un archivo binario en un editor de texto, cada grupo de ocho bits normalmente se traducirá como un solo carácter y el usuario verá una visualización (probablemente ininteligible) de caracteres textuales. 
+
+            Si el archivo se abre en alguna otra aplicación, esa aplicación tendrá su propio uso para cada byte: tal vez la aplicación trate cada byte como un número y genere un flujo de números entre 0 y 255, o tal vez interprete los números en los bytes como colores y mostrar la imagen correspondiente.
+
+            Otro tipo de visores (llamados "extractores de palabras") simplemente reemplazan los caracteres no imprimibles con espacios que revelan sólo el texto legible por humanos. 
+
+            Este tipo de vista es útil para una inspección rápida de un archivo binario con el fin de encontrar contraseñas en juegos, encontrar texto oculto en archivos que no son de texto y recuperar documentos corruptos.
+
+            Incluso se puede utilizar para inspeccionar archivos (software) sospechosos en busca de efectos no deseados. 
+
+            Por ejemplo, el usuario vería cualquier URL/correo electrónico al que el software sospechoso pueda intentar conectarse para cargar datos no aprobados (para robar).
+
+            Si el archivo se trata como ejecutable y se ejecuta, entonces el sistema operativo intentará interpretar el archivo como una serie de instrucciones en su lenguaje de máquina.
+
+
+        Interpretación:
+
+            Los estándares son muy importantes para los archivos binarios. 
+
+            Por ejemplo, un archivo binario interpretado por el juego de caracteres ASCII dará como resultado que se muestre texto. 
+
+            Una aplicación personalizada puede interpretar el archivo de manera diferente: un byte puede ser un sonido, un píxel o incluso una palabra completa. 
+
+            El binario en sí no tiene sentido, hasta el momento en que un algoritmo ejecutado defina qué se debe hacer con cada bit, byte, palabra o bloque.
+
+            Por lo tanto, simplemente examinar el binario e intentar compararlo con formatos conocidos puede llevar a una conclusión equivocada sobre lo que realmente representa.
+
+            Este hecho se puede utilizar en esteganografía, donde un algoritmo interpreta un archivo de datos binarios de manera diferente para revelar contenido oculto.
+
+            Sin el algoritmo, es imposible saber si existe contenido oculto.
+
+
+        Compatibilidad: 
+
+            Dos archivos que sean compatibles con binarios tendrán la misma secuencia de ceros y unos en la parte de datos del archivo. 
+
+            Sin embargo, el encabezado del archivo puede ser diferente.
+
+            El término se utiliza más comúnmente para indicar que los archivos de datos producidos por una aplicación son exactamente iguales a los archivos de datos producidos por otra aplicación. 
+
+            Por ejemplo, algunas empresas de software producen aplicaciones para Windows y Macintosh que son compatibles con binarios, lo que significa que un archivo producido en un entorno Windows es intercambiable con un archivo producido en un Macintosh. 
+
+            Esto evita muchos de los problemas de conversión causados por la importación y exportación de datos.
+
+            Un posible problema de compatibilidad binaria entre diferentes computadoras es el endianidad de la computadora. 
+
+            Algunas computadoras almacenan los bytes de un archivo en un orden diferente.
 
 
 
 || Word
+    
+    En informática, word es la unidad natural de datos utilizada por un diseño de procesador particular. 
+
+    Es un dato de tamaño fijo manejado como una unidad por el conjunto de instrucciones o el hardware del procesador. 
+
+    El número de bits o dígitos en una palabra (el tamaño de la palabra, el ancho de la palabra o la longitud de la palabra) es una característica importante de cualquier diseño de procesador o arquitectura de computadora específica.
+
+    El tamaño de una palabra se refleja en muchos aspectos de la estructura y funcionamiento de una computadora; la mayoría de los registros en un procesador suelen tener el tamaño de una palabra y el dato más grande que se puede transferir hacia y desde la memoria de trabajo en una sola operación es una palabra en muchas (no todas) arquitecturas.
+
+    El tamaño de dirección más grande posible, utilizado para designar una ubicación en la memoria, suele ser una palabra de hardware (aquí, "palabra de hardware" significa la palabra natural de tamaño completo del procesador, a diferencia de cualquier otra definición utilizada).
+
+    La documentación para computadoras más antiguas con un tamaño de palabra fijo comúnmente indica los tamaños de memoria en palabras en lugar de bytes o caracteres. 
+
+    La documentación a veces usa prefijos métricos correctamente, a veces con redondeo, por ejemplo, 65 kiloword (kW) que significan 65536 palabras, y a veces los usa incorrectamente, con kiloword (kW) que significan 1024 palabras (2^10) y megaword (MW) que significan 1,048,576 palabras ( 2^20). 
+
+    Con la estandarización de los bytes de 8 bits y la direccionabilidad de bytes, indicar los tamaños de memoria en bytes, kilobytes y megabytes con potencias de 1024 en lugar de 1000 se ha convertido en la norma, aunque existe cierto uso de los prefijos binarios IEC.
+
+    Varias de las primeras computadoras (y algunas modernas también) usan decimales codificados en binario en lugar de binario simple, y generalmente tienen un tamaño de palabra de 10 o 12 dígitos decimales, y algunas de las primeras computadoras decimales no tienen ninguna longitud de palabra fija. 
+
+    Los primeros sistemas binarios tendían a utilizar longitudes de palabras que eran múltiplos de 6 bits, siendo la palabra de 36 bits especialmente común en las computadoras centrales. 
+
+    La introducción de ASCII condujo a la transición a sistemas con longitudes de palabras múltiplos de 8 bits, siendo populares las máquinas de 16 bits en la década de 1970 antes de la transición a procesadores modernos de 32 o 64 bits. 
+
+    Los diseños para fines especiales, como los procesadores de señales digitales, pueden tener cualquier longitud de palabra de 4 a 80 bits.
+
+    El tamaño de una palabra a veces puede diferir del esperado debido a la compatibilidad con computadoras anteriores. 
+
+    Si varias variaciones compatibles o una familia de procesadores comparten una arquitectura y un conjunto de instrucciones comunes pero difieren en el tamaño de las palabras, su documentación y software pueden volverse notablemente complejos para adaptarse a la diferencia ( Familias de tamaños).
+        
+
+    Usos: 
+
+        Dependiendo de cómo esté organizada una computadora, las unidades de tamaño de palabra se pueden usar para:
 
 
-    UTF-8: 
+        Números de coma fija:
+
+            Los titulares/holders de valores numéricos de punto fijo, generalmente enteros, pueden estar disponibles en uno o varios tamaños diferentes, pero uno de los tamaños disponibles casi siempre será la palabra (word, 32/64). 
+
+            Es probable que los otros tamaños, si los hay, sean múltiplos o fracciones del tamaño de la palabra.
+
+            Los tamaños más pequeños normalmente se utilizan sólo para un uso eficiente de la memoria; cuando se cargan en el procesador, sus valores generalmente van a un contenedor más grande, del tamaño de una palabra.
+
+
+        Números coma flotante:
+
+            Los titulares/holders de valores numéricos de punto flotante suelen ser una palabra o un múltiplo de una palabra.
+
+
+        Direcciones
+
+            Los titulares de direcciones de memoria deben tener un tamaño capaz de expresar el rango de valores necesario, pero no ser excesivamente grandes, por lo que a menudo el tamaño utilizado es la palabra, aunque también puede ser un múltiplo o una fracción del tamaño de la palabra.
+
+
+        Registros
+
+            Los registros del procesador están diseñados con un tamaño apropiado para el tipo de datos que contienen, p. números enteros, números de punto flotante o direcciones. 
+
+            Muchas arquitecturas informáticas utilizan registros de propósito general que son capaces de almacenar datos en múltiples representaciones.
+
+
+        Transferencia de memoria-procesador
+
+            Cuando el procesador lee del subsistema de memoria en un registro o escribe el valor de un registro en la memoria, la cantidad de datos transferidos suele ser una palabra.
+
+            Históricamente, esta cantidad de bits que podían transferirse en un ciclo también se denominaba catena en algunos entornos (como el Bull GAMMA 60). 
+
+            En los subsistemas de memoria simples, la palabra se transfiere a través del bus de datos de la memoria, que normalmente tiene un ancho de una palabra o media palabra. 
+
+            En los subsistemas de memoria que utilizan cachés, la transferencia del tamaño de una palabra es la que se realiza entre el procesador y el primer nivel de caché; en niveles inferiores de la jerarquía de memoria normalmente se utilizan transferencias más grandes (que son múltiplos del tamaño de la palabra).
+
+
+        Unidad de resolución de direcciones
+
+            En una arquitectura dada, los valores de direcciones sucesivos casi siempre designan unidades de memoria sucesivas; esta unidad es la unidad de resolución de direcciones. 
+
+            En la mayoría de las computadoras, la unidad es un carácter (por ejemplo, un byte) o una palabra. 
+
+            (Algunas computadoras han usado resolución de bits). 
+
+            Si la unidad es una palabra, entonces se puede acceder a una mayor cantidad de memoria usando una dirección de un tamaño determinado a costa de una mayor complejidad para acceder a caracteres individuales. 
+
+            Por otro lado, si la unidad es un byte, entonces se pueden direccionar caracteres individuales (es decir, seleccionarlos durante la operación de memoria).
+
+
+        Instrucciones
+
+            Las instrucciones de máquina normalmente tienen el tamaño de la palabra de la arquitectura, como en las arquitecturas RISC, o un múltiplo del tamaño "char", que es una fracción del mismo. 
+
+            Esta es una elección natural ya que las instrucciones y los datos suelen compartir el mismo subsistema de memoria. 
+
+            En las arquitecturas de Harvard, los tamaños de palabras de instrucciones y datos no necesitan estar relacionados, ya que las instrucciones y los datos se almacenan en memorias diferentes; por ejemplo, el procesador del conmutador telefónico electrónico 1ESS tiene instrucciones de 37 bits y palabras de datos de 23 bits.
+
+
+    Elección del tamaño de la palabra
+
+        Cuando se diseña la arquitectura de una computadora, la elección del tamaño de palabra es de gran importancia. 
+
+        Hay consideraciones de diseño que alientan tamaños particulares de grupos de bits para usos particulares (por ejemplo, para direcciones), y estas consideraciones apuntan a diferentes tamaños para diferentes usos. 
+
+        Sin embargo, consideraciones de economía en el diseño presionan fuertemente a favor de un tamaño, o muy pocos tamaños relacionados por múltiplos o fracciones (submúltiplos) con un tamaño primario. 
+
+        Ese tamaño preferido se convierte en el tamaño de palabra de la arquitectura.
+
+        El tamaño de los caracteres era en el pasado (codificación de caracteres de tamaño variable anterior) una de las influencias en la unidad de resolución de direcciones y la elección del tamaño de las palabras. 
+
+        Antes de mediados de la década de 1960, los caracteres se almacenaban con mayor frecuencia en seis bits; esto no permitía más de 64 caracteres, por lo que el alfabeto se limitaba a mayúsculas. 
+
+        Dado que es eficiente en el tiempo y el espacio que el tamaño de la palabra sea un múltiplo del tamaño del carácter, los tamaños de las palabras en este período solían ser múltiplos de 6 bits (en máquinas binarias).
+
+        Una elección común entonces era la palabra de 36 bits, que también es un buen tamaño para las propiedades numéricas de un formato de punto flotante.
+
+        Después de la introducción del diseño IBM System/360, que utiliza caracteres de ocho bits y admite letras minúsculas, el tamaño estándar de un carácter (o más exactamente, un byte) pasa a ser de ocho bits. 
+
+        A partir de entonces, los tamaños de las palabras son naturalmente múltiplos de ocho bits, siendo comúnmente utilizados 16, 32 y 64 bits.: 
+
+
+        Arquitecturas de palabras variables:
+
+            Los primeros diseños de máquinas incluían algunas que utilizaban lo que a menudo se denomina longitud de palabra variable. 
+
+            En este tipo de organización, un operando no tiene una longitud fija. 
+
+            Dependiendo de la máquina y de la instrucción, la longitud puede indicarse mediante un campo de recuento, mediante un carácter delimitador o mediante un bit adicional llamado, por ejemplo, bandera o marca denominativa. 
+
+            Estas máquinas suelen utilizar decimales codificados en binario en dígitos de 4 bits o en caracteres de 6 bits para los números. 
+
+            Esta clase de máquinas incluye IBM 702, IBM 705, IBM 7080, IBM 7010, UNIVAC 1050, IBM 1401, IBM 1620 y RCA 301.
+
+            La mayoría de estas máquinas funcionan con una unidad de memoria a la vez y, dado que cada instrucción o dato tiene varias unidades de longitud, cada instrucción requiere varios ciclos solo para acceder a la memoria.
+
+            Estas máquinas suelen ser bastante lentas debido a esto. 
+
+            Por ejemplo, la instrucción se recupera en un IBM 1620 Modelo.
+
+            Tomo 8 ciclos (160 μs) solo para leer los 12 dígitos de la instrucción (el Modelo II redujo esto a 6 ciclos, o 4 ciclos si la instrucción no necesitaba ambos campos de dirección). 
+
+            La ejecución de la instrucción requiere un número variable de ciclos, dependiendo del tamaño de los operandos.
+
+
+        Direccionamiento de palabra, bit y byte
+
+            El modelo de memoria de una arquitectura está fuertemente influenciado por el tamaño de las palabras. 
+
+            En particular, a menudo se ha elegido como palabra la resolución de una dirección de memoria, es decir, la unidad más pequeña que puede ser designada por una dirección. 
+
+            En este enfoque, el enfoque de máquina direccionable por palabras, los valores de dirección que difieren en uno designan palabras de memoria adyacentes. 
+
+            Esto es natural en máquinas que casi siempre trabajan con unidades de palabras (o de varias palabras) y tiene la ventaja de permitir que las instrucciones utilicen campos de tamaño mínimo para contener direcciones, lo que puede permitir un tamaño de instrucción más pequeño o una variedad mayor de instrucciones.
+
+            Cuando el procesamiento de bytes va a ser una parte importante de la carga de trabajo, suele ser más ventajoso utilizar el byte, en lugar de la palabra, como unidad de resolución de direcciones. 
+
+            Los valores de dirección que difieren en uno designan bytes adyacentes en la memoria. 
+
+            Esto permite abordar directamente un carácter arbitrario dentro de una cadena de caracteres. 
+
+            Aún se puede direccionar una palabra, pero la dirección que se utilizará requiere unos cuantos bits más que la alternativa de resolución de palabras. 
+
+            El tamaño de la palabra debe ser un múltiplo entero del tamaño de los caracteres en esta organización. 
+
+            Este enfoque de direccionamiento se utilizó en IBM 360 y ha sido el enfoque más común en las máquinas diseñadas desde entonces.
+
+            Cuando la carga de trabajo implica procesar campos de diferentes tamaños, puede resultar ventajoso dirigirse al bit. 
+
+            Las máquinas con direccionamiento de bits pueden tener algunas instrucciones que utilizan un tamaño de bytes definido por el programador y otras instrucciones que operan con tamaños de datos fijos. 
+
+            Como ejemplo, en IBM 7030 ("Stretch"), una instrucción de punto flotante sólo puede direccionar palabras, mientras que una instrucción aritmética de enteros puede especificar una longitud de campo de 1 a 64 bits, un tamaño de byte de 1 a 8 bits y un desplazamiento del acumulador de 0-127 bits.
+
+            En una máquina direccionable por bytes con instrucciones de almacenamiento a almacenamiento (SS), normalmente hay instrucciones de movimiento para copiar uno o varios bytes de una ubicación arbitraria a otra. 
+
+            En una máquina orientada a bytes (direccionable por bytes) sin instrucciones SS, mover un solo byte de una ubicación arbitraria a otra suele ser:
+
+                 CARGAR el byte de origen
+
+                 ALMACENE el resultado nuevamente en el byte de destino
+
+            Se puede acceder a los bytes individuales en una máquina orientada a palabras de dos maneras.
+
+            Los bytes se pueden manipular mediante una combinación de operaciones de desplazamiento y máscara en los registros. 
+
+            Mover un solo byte de una ubicación arbitraria a otra puede requerir el equivalente de lo siguiente:
+
+                 CARGAR la palabra que contiene el byte de origen
+
+                 CAMBIAR la palabra de origen para alinear el byte deseado con la posición correcta en la palabra de destino
+                 Y la palabra fuente con una máscara para poner a cero todos menos los bits deseados
+
+                 CARGAR la palabra que contiene el byte de destino
+                 Y la palabra objetivo con una máscara para poner a cero el byte objetivo
+                 O los registros que contienen las palabras de origen y de destino para insertar el byte de origen
+
+                 GUARDAR el resultado en la ubicación de destino                 
+
+            Alternativamente, muchas máquinas orientadas a palabras implementan operaciones de bytes con instrucciones que utilizan punteros de bytes especiales en registros o memoria. 
+
+            Por ejemplo, el puntero de bytes PDP-10 contenía el tamaño del byte en bits (permitiendo acceder a bytes de diferentes tamaños), la posición del bit del byte dentro de la palabra y la dirección de palabra de los datos. 
+
+            Las instrucciones podrían ajustar automáticamente el puntero al siguiente byte, por ejemplo, en operaciones de carga y depósito (almacenamiento).
+
+
+        Potencias de dos
+            
+            Se utilizan diferentes cantidades de memoria para almacenar valores de datos con diferentes grados de precisión. 
+
+            Los tamaños comúnmente utilizados suelen ser una potencia de dos múltiplos de la unidad de resolución de dirección (byte o palabra).
+
+            Convertir el índice de un elemento en una matriz en el desplazamiento de la dirección de memoria del elemento requiere solo una operación de desplazamiento en lugar de una multiplicación. 
+
+            En algunos casos esta relación también puede evitar el uso de operaciones de división.
+
+            Como resultado, la mayoría de los diseños de computadoras modernos tienen tamaños de palabras (y otros tamaños de operandos) que son una potencia de dos veces el tamaño de un byte.
+
+
+        Familia de tamaños: 
+
+            A medida que los diseños informáticos se han vuelto más complejos, la importancia central del tamaño de una sola palabra para una arquitectura ha disminuido. 
+
+            Aunque un hardware más capaz puede utilizar una variedad más amplia de tamaños de datos, las fuerzas del mercado ejercen presión para mantener la compatibilidad con versiones anteriores y al mismo tiempo ampliar la capacidad del procesador.
+
+            Como resultado, lo que podría haber sido el tamaño de palabra central en un diseño nuevo tiene que coexistir como un tamaño alternativo al tamaño de palabra original en un diseño compatible con versiones anteriores. 
+
+            El tamaño original de la palabra seguirá estando disponible en diseños futuros, formando la base de una familia de tamaños.
+
+            A mediados de la década de 1970, DEC diseñó el VAX para que fuera un sucesor de 32 bits del PDP-11 de 16 bits. 
+
+            Usaron palabra para una cantidad de 16 bits, mientras que palabra larga se refería a una cantidad de 32 bits; esta terminología es la misma que la terminología utilizada para el PDP-11.
+
+            Esto contrastaba con las máquinas anteriores, donde la unidad natural de direccionamiento de la memoria se llamaría palabra, mientras que una cantidad que fuera media palabra se llamaría media palabra. 
+
+            De acuerdo con este esquema, una palabra cuádruple VAX es de 64 bits. 
+
+            Continuaron con esta terminología de palabra de 16 bits/palabra larga de 32 bits/palabra cuádruple de 64 bits con el Alpha de 64 bits.
+
+            Otro ejemplo es la familia x86, de la que se han lanzado procesadores con tres longitudes de palabra diferentes (16 bits, luego 32 y 64 bits), mientras que palabra sigue designando una cantidad de 16 bits.
+
+            Como el software se traslada habitualmente de una longitud de palabra a la siguiente, algunas API y documentación definen o hacen referencia a una longitud de palabra anterior (y por lo tanto más corta) que la longitud completa de la palabra en la CPU para la que se puede compilar el software. 
+
+            Además, de manera similar a cómo se usan los bytes para números pequeños en muchos programas, se puede usar una palabra más corta (16 o 32 bits) en contextos donde no se necesita el rango de una palabra más amplia (especialmente cuando esto puede ahorrar un considerable espacio de pila o caché, espacio de memoria).
+
+            Por ejemplo, la API de Windows de Microsoft mantiene la definición del lenguaje de programación de WORD como 16 bits, a pesar de que la API puede usarse en un procesador x86 de 32 o 64 bits, donde el tamaño de palabra estándar sería de 32 o 64 bits, respectivamente. 
+
+            Las estructuras de datos que contienen palabras de diferentes tamaños se refieren a ellas como:
+
+                 PALABRA (16 bits/2 bytes)
+                 DWORD (32 bits/4 bytes)
+                 QWORD (64 bits/8 bytes)
+
+            Un fenómeno similar se ha desarrollado en el lenguaje ensamblador x86 de Intel: debido a la compatibilidad con varios tamaños (y la compatibilidad con versiones anteriores) en el conjunto de instrucciones, algunos mnemotécnicos de instrucción llevan identificadores "d" o "q" que denotan "doble", "cuádruple". o "doble cuádruple", que están en términos del tamaño de palabra de 16 bits original de la arquitectura.
+
+            Un ejemplo con un tamaño de palabra diferente es la familia IBM System/360. 
+
+            En la arquitectura System/360, la arquitectura System/370 y la arquitectura System/390, hay bytes de 8 bits, medias palabras de 16 bits, palabras de 32 bits y palabras dobles de 64 bits. z/Architecture, que es el miembro de 64 bits de esa familia de arquitectura, continúa haciendo referencia a medias palabras de 16 bits, palabras de 32 bits y palabras dobles de 64 bits, y además presenta palabras cuádruples de 128 bits.
+
+            En general, los procesadores nuevos deben utilizar las mismas longitudes de palabras de datos y anchos de direcciones virtuales que un procesador más antiguo para tener compatibilidad binaria con ese procesador más antiguo.
+
+            A menudo, el código fuente cuidadosamente escrito (escrito teniendo en cuenta la compatibilidad del código fuente y la portabilidad del software) puede recompilarse para ejecutarse en una variedad de procesadores, incluso aquellos con diferentes longitudes de palabras de datos o diferentes anchos de direcciones, o ambos.
+
+
+    Datum: 
+
+        En informática, datos (tratados como singular, plural o como sustantivo masivo) son cualquier secuencia de uno o más símbolos; datum es un símbolo único de datos. 
+
+        Los datos requieren interpretación para convertirse en información.
+
+        Los datos digitales son datos que se representan utilizando el sistema numérico binario de unos (1) y ceros (0), en lugar de una representación analógica. 
+
+        En los sistemas informáticos modernos (posteriores a 1960), todos los datos son digitales.
+
+        Los datos existen en tres estados: datos en reposo, datos en tránsito y datos en uso. 
+
+        Los datos dentro de una computadora, en la mayoría de los casos, se mueven como datos paralelos. 
+
+        Los datos que se mueven hacia o desde una computadora, en la mayoría de los casos, se mueven como datos en serie.
+
+        Los datos obtenidos de un dispositivo analógico, como un sensor de temperatura, se pueden convertir a digitales mediante un convertidor de analógico a digital. 
+
+        Los datos que representan cantidades, caracteres o símbolos sobre los cuales realiza operaciones una computadora se almacenan y registran en medios de registro magnéticos, ópticos, electrónicos o mecánicos, y se transmiten en forma de señales eléctricas u ópticas digitales. 
+
+        Los datos entran y salen de las computadoras a través de dispositivos periféricos.
+
+        Los elementos físicos de la memoria de la computadora constan de una dirección y un byte/palabra de almacenamiento de datos. 
+
+        Los datos digitales a menudo se almacenan en bases de datos relacionales, como tablas o bases de datos SQL, y generalmente se pueden representar como pares clave/valor abstractos. 
+
+        Los datos se pueden organizar en muchos tipos diferentes de estructuras de datos, incluidos matrices, gráficos y objetos. 
+
+        Las estructuras de datos pueden almacenar datos de muchos tipos diferentes, incluidos números, cadenas e incluso otras estructuras de datos.
+
+
+        Características: 
+
+            Los metadatos ayudan a traducir datos en información. 
+
+            Los metadatos son datos sobre los datos. 
+
+            Los metadatos pueden ser implícitos, especificados o proporcionados.
+
+            Los datos relativos a eventos o procesos físicos tendrán un componente temporal. 
+
+            Este componente temporal puede estar implícito.
+
+            Este es el caso cuando un dispositivo como un registrador de temperatura recibe datos de un sensor de temperatura. 
+
+            Cuando se recibe la temperatura se supone que el dato tiene una referencia temporal de ahora. 
+
+            De este modo, el dispositivo registra la fecha, la hora y la temperatura juntas. 
+
+            Cuando el registrador de datos comunica temperaturas, también debe informar la fecha y la hora como metadatos para cada lectura de temperatura.
+
+            Básicamente, las computadoras siguen una secuencia de instrucciones que se les dan en forma de datos.
+
+            Un conjunto de instrucciones para realizar una tarea (o tareas) determinada se denomina programa. 
+
+            Un programa son datos en forma de instrucciones codificadas para controlar el funcionamiento de una computadora u otra máquina. 
+
+            En el caso nominal, el programa, tal como lo ejecuta la computadora, consistirá en código de máquina. 
+
+            También son datos los elementos de almacenamiento manipulados por el programa, pero no ejecutados realmente por la unidad central de procesamiento (CPU). 
+
+            En su forma más esencial, un dato único es un valor almacenado en una ubicación específica. 
+
+            Por lo tanto, es posible que los programas informáticos funcionen sobre otros programas informáticos manipulando sus datos programáticos.
+
+            Para almacenar bytes de datos en un archivo, deben serializarse en un formato de archivo.
+
+            Normalmente, los programas se almacenan en tipos de archivos especiales, distintos de los que se utilizan para otros datos. 
+
+            Los archivos ejecutables contienen programas; todos los demás archivos también son archivos de datos. 
+
+            Sin embargo, los archivos ejecutables también pueden contener datos utilizados por el programa integrado en el programa. 
+
+            En particular, algunos archivos ejecutables tienen un segmento de datos, que nominalmente contiene constantes y valores iniciales para variables, los cuales pueden considerarse datos.
+
+            La línea entre el programa y los datos puede volverse borrosa.
+
+            Un intérprete, por 
+            ejemplo, es un programa, los datos de entrada a un intérprete son en sí mismos un programa, pero no uno expresado en lenguaje de máquina nativo. 
+
+            En muchos casos, el programa interpretado será un archivo de texto legible por humanos, que se manipula con un programa de edición de texto. 
+
+            De manera similar, la metaprogramación implica programas que manipulan otros programas como datos. 
+
+            Programas como compiladores, enlazadores, depuradores, actualizadores de programas, escáneres de virus y similares utilizan otros programas como datos.
+
+            Por ejemplo, un usuario podría primero indicarle al sistema operativo que cargue un programa de procesador de textos desde un archivo y luego usar el programa en ejecución para abrir y editar un documento almacenado en otro archivo. 
+
+            En este ejemplo, el documento se consideraría datos. 
+
+            Si el procesador de textos también incluye un corrector ortográfico, entonces el diccionario (lista de palabras) del corrector ortográfico también se considerará datos. 
+
+            Los algoritmos utilizados por el corrector ortográfico para sugerir correcciones serían datos de código de máquina o texto en algún lenguaje de programación interpretable.
+
+            En un uso alternativo, los archivos binarios (que no son legibles por humanos) a veces se denominan datos para distinguirlos del texto legible por humanos.
+
+
+        Claves y valores de datos, estructuras y persistencia:
+
+            Las claves de los datos proporcionan el contexto para los valores.
+
+            Independientemente de la estructura de los datos, siempre hay un componente clave presente. 
+
+            Las claves en los datos y las estructuras de datos son esenciales para dar significado a los valores de los datos. 
+
+            Sin una clave que esté directa o indirectamente asociada con un valor, o una colección de valores en una estructura, los valores pierden sentido y dejan de ser datos. 
+
+            Es decir, tiene que haber un componente clave vinculado a un componente de valor para que se considere dato.
+
+            Los datos se pueden representar en las computadoras de varias maneras, según los siguientes ejemplos.
+
+
+            RAM:
+
+                La memoria de acceso aleatorio (RAM) contiene datos a los que la CPU tiene acceso directo. 
+
+                Una CPU sólo puede manipular datos dentro de los registros o la memoria de su procesador. 
+
+                Esto es lo opuesto al almacenamiento de datos, donde la CPU debe dirigir la transferencia de datos entre el dispositivo de almacenamiento (disco, cinta...) y la memoria. 
+
+                La RAM es una matriz de ubicaciones lineales contiguas que un procesador puede leer o escribir proporcionando una dirección para la operación de lectura o escritura. 
+
+                El procesador puede operar en cualquier ubicación de la memoria en cualquier momento y en cualquier orden. 
+
+                En la RAM, el elemento de datos más pequeño es el bit binario. 
+
+                Las capacidades y limitaciones de acceso a la RAM son específicas del procesador. 
+
+                En general, la memoria principal está organizada como una matriz de ubicaciones que comienzan en la dirección 0 (hexadecimal 0). 
+
+                Cada ubicación puede almacenar normalmente 8 o 32 bits, según la arquitectura de la computadora.
+
+
+            Llaves/claves (keys):
+
+                Las claves de datos no necesitan ser una dirección de hardware directa en la memoria. 
+
+                Los códigos de claves indirectas, abstractas y lógicas se pueden almacenar en asociación con valores para formar una estructura de datos. 
+
+                Las estructuras de datos tienen desplazamientos (o enlaces o rutas) predeterminados desde el inicio de la estructura, en la que se almacenan los valores de los datos.
+
+                Por lo tanto, la clave de datos consta de la clave de la estructura más el desplazamiento (o enlaces o rutas) dentro de la estructura. 
+
+                Cuando se repite una estructura de este tipo, almacenando variaciones de los valores de datos y las claves de datos dentro de la misma estructura repetitiva, se puede considerar que el resultado se asemeja a una tabla, en la que cada elemento de la estructura repetitiva se considera una columna y cada repetición de la estructura se considera como una fila de la tabla. 
+
+                En tal organización de datos, la clave de datos suele ser un valor en una (o una combinación de los valores en varias) de las columnas.
+
+
+            Estructuras de datos recurrentes organizadas:
+            
+                La vista tabular de estructuras de datos repetidas es sólo una de muchas posibilidades. 
+
+                Las estructuras de datos repetidas se pueden organizar jerárquicamente, de modo que los nodos estén vinculados entre sí en una cascada de relaciones padre-hijo. 
+
+                Los valores y estructuras de datos potencialmente más complejas están vinculados a los nodos. 
+
+                Por tanto, la jerarquía nodal proporciona la clave para abordar las estructuras de datos asociadas con los nodos. 
+
+                Esta representación puede considerarse como un árbol invertido. 
+
+                Los sistemas de archivos de los sistemas operativos de computadora modernos son un ejemplo común; y XML es otra.
+
+
+            Datos ordenados u orden
+
+                Los datos tienen algunas características inherentes cuando se clasifican según una clave. 
+
+                Todos los valores de los subconjuntos de la clave aparecen juntos. 
+
+                Cuando se pasa secuencialmente a través de grupos de datos con la misma clave, o un subconjunto de cambios de clave, esto se denomina en los círculos de procesamiento de datos una interrupción o una interrupción de control. 
+
+                Facilita particularmente la agregación de valores de datos en subconjuntos de una clave.
+
+
+            Almacenamiento periférico
+
+                Hasta la llegada de la memoria no volátil masiva como la flash, el almacenamiento persistente de datos se lograba tradicionalmente escribiendo los datos en dispositivos de bloque externos como cintas magnéticas y unidades de disco.
+
+                Estos dispositivos normalmente buscan una ubicación en el medio magnético y luego leen o escriben bloques de datos de un tamaño predeterminado. 
+
+                En este caso, la ubicación de búsqueda en el medio es la clave de datos y los bloques son los valores de datos. 
+
+                Los primeros sistemas de archivos de datos de disco sin formato o sistemas operativos de disco utilizados anteriormente reservaban bloques contiguos en la unidad de disco para archivos de datos. 
+
+                En esos sistemas, los archivos podían llenarse y quedarse sin espacio para datos antes de que se hubieran escrito todos los datos en ellos.
+
+
+                Por lo tanto, gran parte del espacio de datos no utilizado se reservó de manera improductiva para garantizar el espacio libre adecuado para cada archivo. 
+
+                Los sistemas de archivos posteriores introdujeron particiones.
+
+                Reservaron bloques de espacio de datos en disco para particiones y utilizaron los bloques asignados de manera más económica, asignando dinámicamente bloques de una partición a un archivo según fuera necesario. 
+
+                Para lograr esto, el sistema de archivos tenía que realizar un seguimiento de qué bloques usaban o no los archivos de datos en un catálogo o tabla de asignación de archivos. 
+
+                Aunque esto hizo un mejor uso del espacio de datos del disco, resultó en la fragmentación de archivos en todo el disco y una sobrecarga de rendimiento concomitante debido al tiempo de búsqueda adicional para leer los datos. 
+
+                Los sistemas de archivos modernos reorganizan los archivos fragmentados de forma dinámica para optimizar los tiempos de acceso a los archivos. 
+
+                Otros desarrollos en los sistemas de archivos dieron como resultado la virtualización de las unidades de disco, es decir, donde una unidad lógica se puede definir como particiones de varias unidades físicas.
+
+
+            Datos indexados:
+
+                Recuperar un pequeño subconjunto de datos de un conjunto mucho más grande puede implicar una búsqueda ineficiente de los datos de forma secuencial. 
+
+                Los índices son una forma de copiar claves y direcciones de ubicación de estructuras de datos en archivos, tablas y conjuntos de datos, y luego organizarlos utilizando estructuras de árbol invertidas para reducir el tiempo necesario para recuperar un subconjunto de los datos originales.
+
+                Para hacer esto, se debe conocer la clave del subconjunto de datos que se van a recuperar antes de que comience la recuperación. 
+
+                Los índices más populares son el árbol B y los métodos de indexación de clave hash dinámica.
+
+                La indexación es una tarea indirecta para archivar y recuperar datos. 
+
+                Hay otras formas de organizar índices, p. clasificando las claves y utilizando un algoritmo de búsqueda binaria.
+
+
+            Abstracción e indirección:
+
+                La programación orientada a objetos utiliza dos conceptos básicos para comprender los datos y el software:
+
+                La estructura taxonómica de rangos de clases, que es un ejemplo de estructura de datos jerárquica; y
+                en tiempo de ejecución, la creación de referencias a estructuras de datos en memoria de objetos que han sido instanciados desde una biblioteca de clases.
+
+                Sólo después de la creación de instancias existe un objeto de una clase específica. 
+
+                Una vez que se borra la referencia de un objeto, el objeto también deja de existir. 
+
+                Las ubicaciones de memoria donde se almacenaron los datos del objeto son basura y se reclasifican como memoria no utilizada disponible para su reutilización.
+
+
+            Datos de la base de datos:
+
+                La llegada de las bases de datos introdujo una capa adicional de abstracción para el almacenamiento de datos persistente.
+
+                Las bases de datos utilizan metadatos y un protocolo de lenguaje de consulta estructurado entre los sistemas cliente y servidor, comunicándose a través de una red informática, utilizando un sistema de registro de confirmación de dos fases para garantizar la integridad de las transacciones al guardar datos.
+
+
+            Procesamiento de datos distribuido en paralelo:
+
+                Las tecnologías modernas de persistencia de datos escalables y de alto rendimiento, como Apache Hadoop, se basan en un procesamiento de datos distribuido masivamente en paralelo a través de muchas computadoras básicas en una red de gran ancho de banda.
+
+                En tales sistemas, los datos se distribuyen entre varias computadoras y, por lo tanto, cualquier computadora particular del sistema debe estar representada en la clave de los datos, ya sea directa o indirectamente. 
+
+                Esto permite diferenciar entre dos conjuntos de datos idénticos, cada uno de los cuales se procesa en una computadora diferente al mismo tiempo.
+
+
+    Instruction set:
+
+        Una arquitectura de conjunto de instrucciones (ISA) es parte del modelo abstracto de una computadora, que generalmente define cómo el software controla la CPU. 
+
+        Un dispositivo que ejecuta instrucciones descritas por ese ISA, como una unidad central de procesamiento (CPU), se denomina implementación.
+
+        En general, una ISA define las instrucciones admitidas, los tipos de datos, los registros, el soporte de hardware para administrar la memoria principal, las características fundamentales (como la consistencia de la memoria, los modos de direccionamiento, la memoria virtual) y el modelo de entrada/salida de una familia de implementaciones de la ISA.
+
+        Una ISA especifica el comportamiento del código de máquina que se ejecuta en implementaciones de esa ISA de una manera que no depende de las características de esa implementación, proporcionando compatibilidad binaria entre implementaciones. 
+
+        Esto permite múltiples implementaciones de una ISA que difieren en características como rendimiento, tamaño físico y costo monetario (entre otras cosas), pero que son capaces de ejecutar el mismo código de máquina, de modo que una máquina de menor rendimiento y menor costo pueda ser reemplazado por una máquina de mayor costo y mayor rendimiento sin tener que reemplazar el software.
+
+        También permite la evolución de las microarquitecturas de las implementaciones de esa ISA, de modo que una implementación más nueva y de mayor rendimiento de una ISA pueda ejecutar software que se ejecuta en generaciones anteriores de implementaciones.
+
+        Si un sistema operativo mantiene una interfaz binaria de aplicación (ABI) estándar y compatible para una ISA en particular, el código de máquina se ejecutará en futuras implementaciones de esa ISA y sistema operativo.
+
+        Sin embargo, si una ISA admite la ejecución de múltiples sistemas operativos, no garantiza que el código de máquina para un sistema operativo se ejecute en otro sistema operativo, a menos que el primer sistema operativo admita la ejecución de código de máquina creado para el otro sistema operativo.
+
+        Una ISA se puede ampliar agregando instrucciones u otras capacidades, o agregando soporte para direcciones y valores de datos más grandes; una implementación de ISA extendida aún podrá ejecutar código de máquina para versiones de ISA sin esas extensiones. 
+
+        El código de máquina que utiliza esas extensiones solo se ejecutará en implementaciones que admitan esas extensiones.
+
+        La compatibilidad binaria que proporcionan convierte a las ISA en una de las abstracciones más fundamentales de la informática.
+
+
+        Descripción general:
+
+            Una arquitectura de conjunto de instrucciones se distingue de una microarquitectura, que es el conjunto de técnicas de diseño de procesador utilizadas, en un procesador particular, para implementar el conjunto de instrucciones. 
+
+            Los procesadores con diferentes microarquitecturas pueden compartir un conjunto de instrucciones común. 
+
+            Por ejemplo, Intel Pentium y AMD Athlon implementan versiones casi idénticas del conjunto de instrucciones x86, pero tienen diseños internos radicalmente diferentes.
+
+            El concepto de arquitectura, distinta del diseño de una máquina específica, fue desarrollado por Fred Brooks en IBM durante la fase de diseño de System/360.
+
+                Antes de NPL [System/360], los diseñadores de computadoras de la compañía habían tenido libertad para cumplir con los objetivos de costos no sólo seleccionando tecnologías sino también diseñando mejoras funcionales y arquitectónicas.
+
+                El objetivo de compatibilidad SPREAD, por el contrario, postulaba una arquitectura única para una serie de cinco procesadores que abarcaban una amplia gama de costos y rendimiento.
+
+                Ninguno de los cinco equipos de diseño de ingeniería podía contar con poder realizar ajustes en las especificaciones arquitectónicas como una forma de aliviar las dificultades para lograr los objetivos de costos y desempeño.
+
+            Algunas máquinas virtuales que admiten código de bytes como su ISA, como Smalltalk, la máquina virtual Java y Common Language Runtime de Microsoft, implementan esto traduciendo el código de bytes de las rutas de código de uso común al código de máquina nativo. 
+
+            Además, estas máquinas virtuales ejecutan rutas de código utilizadas con menos frecuencia mediante interpretación ( Compilación just-in-time). 
+
+            Transmeta implementó el conjunto de instrucciones x86 sobre procesadores VLIW de esta manera.
+
+
+        Clasificación de las ISA:
+
+            Una ISA se puede clasificar de varias maneras diferentes. 
+
+            Una clasificación común es por complejidad arquitectónica. 
+
+            Una computadora con conjunto de instrucciones complejas (CISC) tiene muchas instrucciones especializadas, algunas de las cuales rara vez se usan en programas prácticos. 
+
+            Una computadora con conjunto de instrucciones reducido (RISC) simplifica el procesador al implementar de manera eficiente solo las instrucciones que se usan con frecuencia en los programas, mientras que las operaciones menos comunes se implementan como subrutinas, lo que compensa el tiempo adicional de ejecución del procesador resultante por el uso poco frecuente.
+
+            Otros tipos incluyen arquitecturas de palabra de instrucción muy larga (VLIW), y las arquitecturas de palabra de instrucción larga (LIW) estrechamente relacionadas y de computación de instrucción explícitamente paralela (EPIC). 
+
+            Estas arquitecturas buscan explotar el paralelismo a nivel de instrucciones con menos hardware que RISC y CISC haciendo que el compilador sea responsable de la emisión y programación de las instrucciones.
+
+            Se han estudiado arquitecturas con una complejidad aún menor, como la computadora con conjunto mínimo de instrucciones (MISC) y la computadora con un conjunto de instrucciones (OISC). 
+
+            Estos son tipos teóricamente importantes, pero no se han comercializado.
+
+
+        Instrucciones:
+
+            El lenguaje de máquina se construye a partir de declaraciones o instrucciones discretas.
+
+            En la arquitectura de procesamiento, una instrucción dada puede especificar:
+
+                código de operación (la instrucción a realizar), p.e. agregar, copiar, probar
+                 
+                cualquier operando explícito:
+
+                    registros
+                    
+                    valores literales/constantes
+                    
+                    Modos de direccionamiento utilizados para acceder a la memoria.
+
+            Se construyen operaciones más complejas combinando estas instrucciones simples, que se ejecutan secuencialmente o según lo indiquen las instrucciones de flujo de control.
+
+
+        Tipos de instrucción:
+
+            Ejemplos de operaciones comunes a muchos conjuntos de instrucciones incluyen:
+            
+
+            Manejo de datos y operaciones de memoria.
+
+                Establezca un registro en un valor constante fijo.
+                
+                Copie datos desde una ubicación de memoria o un registro a una ubicación de memoria o un registro (una instrucción de máquina a menudo se llama mover; sin embargo, el término es engañoso). 
+
+                Se utilizan para almacenar el contenido de un registro, el contenido de otra ubicación de memoria o el resultado de un cálculo, o para recuperar datos almacenados para realizar un cálculo con ellos más adelante. A menudo se les llama operaciones de carga y almacenamiento.
+
+                Leer y escribir datos desde dispositivos de hardware.
+
+
+            Operaciones aritméticas y lógicas:
+
+                Sumar, restar, multiplicar o dividir los valores de dos registros, colocando el resultado en un registro, posiblemente estableciendo uno o más códigos de condición en un registro de estado.
+
+                    incrementar, disminuir en algunas ISA, guardar la búsqueda de operandos en casos triviales.
+
+                Realice operaciones bit a bit, por ejemplo, tomando la conjunción y disyunción de los bits correspondientes en un par de registros, tomando la negación de cada bit en un registro.
+
+                Comparar dos valores en registros (por ejemplo, para ver si uno es menor o si son iguales).
+                
+                Instrucciones de punto flotante para aritmética sobre números de punto flotante.
+
+
+            Controlar las operaciones de flujo:
+
+                Vaya a otra ubicación del programa y ejecute las instrucciones allí.
+                
+                Bifurcar condicionalmente a otra ubicación si se cumple una determinada condición.
+                
+                Ramificar indirectamente a otra ubicación.
+                
+                Llame a otro bloque de código y guarde la ubicación de la siguiente instrucción como punto al que regresar.
+
+
+            Instrucciones del coprocesador:
+
+                Cargar/almacenar datos hacia y desde un coprocesador o intercambiarlos con registros de CPU.
+                
+                Realizar operaciones de coprocesador.
+
+
+            Instrucciones complejas:
+
+            Los procesadores pueden incluir instrucciones "complejas" en su conjunto de instrucciones. 
+
+            Una sola instrucción "compleja" hace algo que puede requerir muchas instrucciones en otras computadoras. 
+
+            Dichas instrucciones se caracterizan por instrucciones que toman múltiples pasos, controlan múltiples unidades funcionales o aparecen en una escala mayor que la mayor parte de instrucciones simples implementadas por el procesador dado. 
+
+            Algunos ejemplos de instrucciones "complejas" incluyen:
+
+                transferir múltiples registros hacia o desde la memoria (especialmente la pila) a la vez
+                
+                mover grandes bloques de memoria (por ejemplo, copia de cadena o transferencia DMA)
+                
+                aritmética complicada de enteros y coma flotante (por ejemplo, raíz cuadrada o funciones trascendentales como logaritmo, seno, coseno, etc.)
+                
+                Instrucciones SIMD, una sola instrucción que realiza una operación en muchos valores homogéneos en paralelo, posiblemente en registros SIMD dedicados.
+                
+                realizar una instrucción atómica de prueba y configuración u otra instrucción atómica de lectura, modificación y escritura
+                
+                Instrucciones que realizan operaciones de ALU con un operando de la memoria en lugar de un registro.
+
+            Las instrucciones complejas son más comunes en los conjuntos de instrucciones CISC que en los conjuntos de instrucciones RISC, pero los conjuntos de instrucciones RISC también pueden incluirlas. 
+
+            Los conjuntos de instrucciones RISC generalmente no incluyen operaciones ALU con operandos de memoria o instrucciones para mover grandes bloques de memoria, pero la mayoría de los conjuntos de instrucciones RISC incluyen instrucciones SIMD o vectoriales que realizan la misma operación aritmética en múltiples datos al mismo tiempo. 
+
+            Las instrucciones SIMD tienen la capacidad de manipular vectores y matrices grandes en un tiempo mínimo. 
+
+            Las instrucciones SIMD permiten una fácil paralelización de algoritmos comúnmente involucrados en el procesamiento de sonido, imágenes y video. 
+
+            Se han lanzado al mercado varias implementaciones de SIMD con nombres comerciales como MMX, 3DNow! y AltiVec.
+
+
+        Registrar presión:
+
+            La presión de registros mide la disponibilidad de registros libres en cualquier momento durante la ejecución del programa. 
+
+            La presión de registro es alta cuando se utiliza una gran cantidad de registros disponibles; por lo tanto, cuanto mayor sea la presión del registro, más a menudo el contenido del registro deberá derramarse en la memoria. 
+
+            Aumentar el número de registros en una arquitectura disminuye la presión de los registros pero aumenta el costo.
+
+            Mientras que los conjuntos de instrucciones integradas, como Thumb, sufren una presión de registro extremadamente alta porque tienen conjuntos de registros pequeños, los ISA RISC de uso general como MIPS y Alpha disfrutan de una presión de registro baja. 
+
+            Los ISA CISC como x86-64 ofrecen una presión de registro baja a pesar de tener conjuntos de registros más pequeños.
+
+            Esto se debe a los numerosos modos de direccionamiento y optimizaciones (como direccionamiento de subregistro, operandos de memoria en instrucciones ALU, direccionamiento absoluto, direccionamiento relativo a PC y derrames de registro a registro) que ofrecen los CISC ISA.
+
+
+        Longitud de la instrucción:
+
+            El tamaño o la longitud de una instrucción varía ampliamente, desde tan solo cuatro bits en algunos microcontroladores hasta muchos cientos de bits en algunos sistemas VLIW.
+
+            Los procesadores utilizados en computadoras personales, mainframes y supercomputadoras tienen tamaños de instrucción mínimos entre 8 y 64 bits. 
+
+            La instrucción más larga posible en x86 es de 15 bytes (120 bits). 
+
+            Dentro de un conjunto de instrucciones, diferentes instrucciones pueden tener diferentes longitudes. 
+
+            En algunas arquitecturas, en particular en la mayoría de las computadoras con conjunto de instrucciones reducido (RISC), las instrucciones tienen una longitud fija, que generalmente se corresponde con el tamaño de palabra de esa arquitectura. 
+
+            En otras arquitecturas, las instrucciones tienen una longitud variable, normalmente múltiplos integrales/enteros de un byte o media palabra. 
+
+            Algunos, como ARM con extensión Thumb, tienen codificación variable mixta, es decir, dos codificaciones fijas, generalmente de 32 y 16 bits, donde las instrucciones no se pueden mezclar libremente sino que se deben alternar en una rama (o límite de excepción en ARMv8).
+
+            Las instrucciones de longitud fija son menos complicadas de manejar que las de longitud variable por varias razones (por ejemplo, no tener que comprobar si una instrucción se extiende a lo largo de una línea de caché o de un límite de página de memoria virtual) y, por lo tanto, son algo más fáciles de optimizar para lograr velocidad.
+
+
+        Densidad de código:
+
+            A principios de la década de 1960, la memoria principal era cara y muy limitada, incluso en los mainframes. 
+
+            Minimizar el tamaño de un programa para asegurarse de que encajara en la memoria limitada era a menudo fundamental. 
+
+            Por tanto, el tamaño de las instrucciones necesarias para realizar una tarea particular, la densidad del código, era una característica importante de cualquier conjunto de instrucciones. 
+
+            Siguió siendo importante en las memorias inicialmente pequeñas de las minicomputadoras y luego de los microprocesadores. 
+
+            La densidad sigue siendo importante hoy en día, para aplicaciones de teléfonos inteligentes, aplicaciones descargadas en navegadores a través de conexiones lentas a Internet y en ROM para aplicaciones integradas.
+
+            Una ventaja más general de una mayor densidad es la eficacia mejorada de las cachés y la captación previa de instrucciones.
+
+            Las computadoras con alta densidad de código a menudo tienen instrucciones complejas para la entrada de procedimientos, retornos parametrizados, bucles, etc. (por lo que retroactivamente se denominan Computadoras con conjunto de instrucciones complejas, CISC). 
+
+            Sin embargo, las instrucciones "CISC" más típicas o frecuentes simplemente combinan una operación ALU básica, como "agregar", con el acceso de uno o más operandos en la memoria (usando modos de direccionamiento como directo, indirecto, indexado, etc.) . 
+
+            Ciertas arquitecturas pueden permitir dos o tres operandos (incluido el resultado) directamente en la memoria o pueden realizar funciones como el incremento automático del puntero, etc. 
+
+            Los conjuntos de instrucciones implementados por software pueden tener instrucciones aún más complejas y potentes.
+
+            Las computadoras con conjunto de instrucciones reducido, RISC, se implementaron ampliamente por primera vez durante un período de subsistemas de memoria en rápido crecimiento. 
+
+            Sacrifican la densidad del código para simplificar los circuitos de implementación e intentan aumentar el rendimiento mediante frecuencias de reloj más altas y más registros.
+
+            Una única instrucción RISC normalmente realiza una sola operación, como "agregar" registros o "cargar" desde una ubicación de memoria a un registro. 
+
+            Un conjunto de instrucciones RISC normalmente tiene una longitud de instrucción fija, mientras que un conjunto de instrucciones CISC típico tiene instrucciones de longitud muy variable. 
+
+            Sin embargo, como las computadoras RISC normalmente requieren más instrucciones y a menudo más largas para implementar una tarea determinada, inherentemente hacen un uso menos óptimo del ancho de banda del bus y de las memorias caché.
+
+            Ciertos RISC ISA integrados, como Thumb y AVR32, suelen exhibir una densidad muy alta debido a una técnica llamada compresión de código.
+
+            Esta técnica empaqueta dos instrucciones de 16 bits en una palabra de 32 bits, que luego se descomprime en la etapa de decodificación y se ejecuta como dos instrucciones.
+
+            Las computadoras con conjunto mínimo de instrucciones (MISC) son comúnmente una forma de máquina apilada, donde hay pocas instrucciones separadas (8 a 32), de modo que se pueden colocar varias instrucciones en una sola palabra de máquina. 
+
+            Estos tipos de núcleos a menudo requieren poco silicio para implementarse, por lo que se pueden realizar fácilmente en una FPGA o en forma de múltiples núcleos. 
+
+            La densidad de código de MISC es similar a la densidad de código de RISC; el aumento de la densidad de instrucción se compensa al requerir más instrucciones primitivas para realizar una tarea.
+
+            Se han realizado investigaciones sobre la compresión ejecutable como mecanismo para mejorar la densidad del código. 
+
+            Las matemáticas de la complejidad de Kolmogorov describen los desafíos y límites de esta.
+
+            En la práctica, la densidad del código también depende del compilador. 
+
+            La mayoría de los compiladores de optimización tienen opciones que controlan si se optimiza la generación de código para la velocidad de ejecución o para la densidad del código. 
+
+            Por ejemplo, GCC tiene la opción -Os para optimizar el tamaño del código de máquina pequeño y -O3 para optimizar la velocidad de ejecución a costa de un código de máquina más grande.
+
+
+        Representación:
+
+            Las instrucciones que constituyen un programa rara vez se especifican utilizando su forma numérica interna (código de máquina); pueden ser especificados por programadores que utilizan un lenguaje ensamblador o, más comúnmente, pueden ser generados a partir de lenguajes de programación de alto nivel por parte de compiladores.
+
+
+        Diseño:
+
+            El diseño de conjuntos de instrucciones es un tema complejo. 
+
+            Hubo dos etapas en la historia del microprocesador. 
+
+            El primero fue el CISC (Computadora con conjunto de instrucciones complejas), que tenía muchas instrucciones diferentes. 
+
+            Sin embargo, en la década de 1970, empresas como IBM investigaron y descubrieron que muchas instrucciones del conjunto podían eliminarse. 
+
+            El resultado fue el RISC (Computadora con conjunto de instrucciones reducido), una arquitectura que utiliza un conjunto más pequeño de instrucciones. 
+
+            Un conjunto de instrucciones más simple puede ofrecer la posibilidad de lograr velocidades más altas, un tamaño de procesador reducido y un consumo de energía reducido. 
+
+            Sin embargo, un conjunto más complejo puede optimizar las operaciones comunes, mejorar la eficiencia de la memoria y la caché o simplificar la programación.
+
+            Algunos diseñadores de conjuntos de instrucciones reservan uno o más códigos de operación para algún tipo de llamada al sistema o interrupción del software. 
+
+            Por ejemplo, MOS Technology 6502 usa 00H, Zilog Z80 usa los ocho códigos C7,CF,D7,DF,E7,EF,F7,FFH mientras que Motorola 68000 usa códigos en el rango A000..AFFFH.
+
+            Las máquinas virtuales rápidas son mucho más fáciles de implementar si un conjunto de instrucciones cumple con los requisitos de virtualización de Popek y Goldberg.
+
+            La diapositiva NOP utilizada en la programación consciente de la inmunidad es mucho más fácil de implementar si el estado "no programado" de la memoria se interpreta como un NOP.
+
+            En sistemas con múltiples procesadores, los algoritmos de sincronización sin bloqueo son mucho más fáciles de implementar si el conjunto de instrucciones incluye soporte para algo como "buscar y agregar", "enlace de carga/almacenamiento condicional" (LL/ SC), o "comparación e intercambio atómico".
+
+
+        Implementación del conjunto de instrucciones:
+
+            Un conjunto de instrucciones determinado se puede implementar de diversas formas. 
+
+            Todas las formas de implementar un conjunto de instrucciones en particular proporcionan el mismo modelo de programación y todas las implementaciones de ese conjunto de instrucciones pueden ejecutar los mismos ejecutables. 
+
+            Las diversas formas de implementar un conjunto de instrucciones ofrecen diferentes compensaciones entre costo, rendimiento, consumo de energía, tamaño, etc.
+
+            Al diseñar la microarquitectura de un procesador, los ingenieros utilizan bloques de circuitos electrónicos "cableados" (a menudo diseñados por separado), como sumadores, multiplexores, contadores, registros, ALU, etc. 
+
+            A menudo se utiliza algún tipo de lenguaje de transferencia de registros para describir la decodificación y secuenciación de cada instrucción de un ISA utilizando esta microarquitectura física.
+
+            Hay dos formas básicas de construir una unidad de control para implementar esta descripción (aunque muchos diseños utilizan formas intermedias o compromisos):
+
+                Algunos diseños de computadora "conectan" el conjunto completo de instrucciones decodificadas y secuenciadas (al igual que el resto de la microarquitectura).
+                 
+                Otros diseños emplean rutinas o tablas de microcódigo (o ambas) para hacer esto, usando ROM o RAM grabables (almacén de control grabable), PLA o ambos.
+
+            Algunos diseños de CPU microcodificados con un almacén de control grabable lo utilizan para permitir cambiar el conjunto de instrucciones (por ejemplo, el procesador Rekursiv y el Imsys Cjip).
+
+            Las CPU diseñadas para informática reconfigurable pueden utilizar matrices de puertas programables en campo (FPGA).
+
+            Un intérprete también puede emular una ISA en software. 
+
+            Naturalmente, debido a la sobrecarga de interpretación, esto es más lento que ejecutar programas directamente en el hardware emulado, a menos que el hardware que ejecuta el emulador sea un orden de magnitud más rápido. 
+
+            Hoy en día, es una práctica común que los proveedores de nuevas ISA o microarquitecturas pongan emuladores de software a disposición de los desarrolladores de software antes de que la implementación del hardware esté lista.
+
+            A menudo, los detalles de la implementación tienen una fuerte influencia en las instrucciones particulares seleccionadas para el conjunto de instrucciones. 
+
+            Por ejemplo, muchas implementaciones de la canalización de instrucciones solo permiten una única carga de memoria o almacenamiento de memoria por instrucción, lo que lleva a una arquitectura de almacenamiento de carga (RISC). 
+
+            Para poner otro ejemplo, algunas de las primeras formas de implementar el proceso de instrucción condujeron a un intervalo de retraso.
+
+            Las demandas del procesamiento de señales digitales de alta velocidad han ido en la dirección opuesta: obligando a que las instrucciones se implementen de una manera particular. 
+
+            Por ejemplo, para realizar filtros digitales lo suficientemente rápido, la instrucción MAC en un procesador de señal digital (DSP) típico debe utilizar una especie de arquitectura Harvard que pueda recuperar una instrucción y dos palabras de datos simultáneamente, y requiere un proceso de multiplicación-acumulación de un solo ciclo. multiplicador.
+
+
+    Arquitectura: 
+
+        En informática e ingeniería informática, la arquitectura informática es una descripción de la estructura de un sistema informático hecha de componentes. 
+
+        A veces puede ser una descripción de alto nivel que ignora los detalles de la implementación. 
+
+        En un nivel más detallado, la descripción puede incluir el diseño de la arquitectura del conjunto de instrucciones, el diseño de la microarquitectura, el diseño lógico y la implementación.
+
+
+        Diagrama: 
+
+            CPU: 
+
+                Control Unit (CU)
+
+                Arithmetic and Logical Unit (ALU)
+
+                Register
+
+
+            Memoria principal
+
+                RAM 
+
+
+            Memoría secundaria
+
+                Almacenamiento 
+
+
+            Dispositivos de entrada y salida.  
+
+
+            La CPU contrala el flujo de flujo de CU, ALU, RAM, almacenamiento e I/O mientras estos controlan la data o instrucciónes. 
+
+
+        Historia: 
+
+            La primera arquitectura informática documentada se encuentra en la correspondencia entre Charles Babbage y Ada Lovelace, describiendo el motor analítico. 
+
+            Mientras construía el ordenador Z1 en 1936, Konrad Zuse describió en dos solicitudes de patente para sus proyectos futuros que las instrucciones de la máquina podrían almacenarse en el mismo almacenamiento que se utiliza para los datos, es decir, el concepto de programa almacenado.
+
+            Otros dos ejemplos tempranos e importantes son:
+
+                 El artículo de John von Neumann de 1945, Primer borrador de un informe sobre el EDVAC, que describía una organización de elementos lógicos; y
+                 Calculadora electrónica propuesta más detallada de Alan Turing para el motor de computación automática, también de 1945 y que citaba el artículo de John von Neumann.
+
+            El término "arquitectura" en la literatura informática se remonta al trabajo de Lyle R. Johnson y Frederick P. Brooks, Jr., miembros del departamento de Organización de Máquinas del principal centro de investigación de IBM en 1959. 
+
+            Johnson tuvo la oportunidad de escribir un diseño patentado, comunicación de investigación sobre Stretch, una supercomputadora desarrollada por IBM para el Laboratorio Nacional de Los Alamos (en ese momento conocido como Laboratorio Científico de Los Alamos). 
+
+            Para describir el nivel de detalle para hablar de la computadora lujosamente adornada, señaló que su descripción de formatos, tipos de instrucciones, parámetros de hardware y mejoras de velocidad estaban al nivel de "arquitectura del sistema", un término que parecía más útil que "organización de la máquina". ".
+
+            Posteriormente, Brooks, un diseñador de Stretch, abrió el capítulo 2 de un libro llamado Planificación de un sistema informático: Proyecto Stretch afirmando: "La arquitectura informática, como cualquier otra arquitectura, es el arte de determinar las necesidades del usuario de una estructura y luego diseñar para satisfacerlas", satisfacer esas necesidades tan eficazmente como sea posible dentro de las limitaciones económicas y tecnológicas."
+
+            Brooks ayudó a desarrollar la línea de computadoras IBM System/360 (ahora llamada IBM zSeries), en la que "arquitectura" se convirtió en un sustantivo que definía "lo que el usuario necesita saber". 
+
+            Más tarde, los usuarios de ordenadores empezaron a utilizar el término de formas mucho menos explícitas.
+
+            Las primeras arquitecturas informáticas se diseñaron en papel y luego se integraron directamente en el formato de hardware final. 
+
+            Más tarde, los prototipos de arquitectura informática se construyeron físicamente en forma de computadora con lógica transistor-transistor (TTL), como los prototipos del 6800 y el PA-RISC, probados y ajustados antes de comprometerse con la forma final del hardware. 
+
+            A partir de la década de 1990, las nuevas arquitecturas informáticas suelen "construirse", probarse y modificarse, dentro de alguna otra arquitectura informática en un simulador de arquitectura informática; o dentro de una FPGA como un microprocesador suave; o ambos, antes de comprometerse con la forma final del hardware
+
+
+        Subconceptos: 
+
+            La disciplina de la arquitectura informática tiene tres subcategorías principales:
+
+            Arquitectura de conjunto de instrucciones (ISA):
+
+                Define el código de máquina que un procesador lee y sobre el que actúa, así como el tamaño de la palabra, los modos de dirección de la memoria, los registros del procesador y el tipo de datos.
+             
+
+            Microarquitectura:
+
+                También conocida como "organización informática", describe cómo un procesador particular implementará la ISA.
+
+                El tamaño de la memoria caché de la CPU de una computadora, por ejemplo, es un problema que generalmente no tiene nada que ver con ISA.
+             
+
+            Diseño de sistemas:
+
+                Incluye todos los demás componentes de hardware dentro de un sistema informático, como el procesamiento de datos distintos de la CPU (por ejemplo, acceso directo a la memoria), la virtualización y el multiprocesamiento.
+
+
+            Existen otras tecnologías en la arquitectura informática. 
+
+            Las siguientes tecnologías se utilizan en empresas más grandes como Intel, y en 2002 se estimó que representaban el 1% de toda la arquitectura informática:
+
+
+            Macroarquitectura: 
+
+                Capas arquitectónicas más abstractas que la microarquitectura
+                 
+
+            Arquitectura del conjunto de instrucciones ensamblador: 
+
+                Un ensamblador inteligente puede convertir un lenguaje ensamblador abstracto común a un grupo de máquinas en un lenguaje de máquina ligeramente diferente para diferentes implementaciones.
+                
+
+            Macroarquitectura visible para el programador: 
+
+                Las herramientas de lenguaje de nivel superior, como los compiladores, pueden definir una interfaz consistente o contratar a los programadores que las usan, abstrayendo las diferencias entre ISA, UISA y microarquitecturas subyacentes. 
+
+                Por ejemplo, los estándares C, C++ o Java definen diferentes macroarquitecturas visibles para el programador.
+             
+
+            Microcódigo: 
+
+                El microcódigo es un software que traduce instrucciones para ejecutarlas en un chip. 
+
+                Actúa como un envoltorio alrededor del hardware, presentando una versión preferida de la interfaz del conjunto de instrucciones del hardware. 
+
+                Esta función de traducción de instrucciones ofrece a los diseñadores de chips opciones flexibles:
+
+                p. 1. Una nueva versión mejorada del chip puede usar microcódigo para presentar exactamente el mismo conjunto de instrucciones que la versión anterior del chip, por lo que todo el software destinado a ese conjunto de instrucciones se ejecutará en el nuevo chip sin necesidad de cambios. 
+
+                P.ej. 2. El microcódigo puede presentar una variedad de conjuntos de instrucciones para el mismo chip subyacente, lo que le permite ejecutar una variedad más amplia de software.
+             
+
+            UISA: 
+
+                Arquitectura del conjunto de instrucciones del usuario, se refiere a uno de los tres subconjuntos de instrucciones de la CPU RISC proporcionadas por los procesadores RISC PowerPC. 
+
+                El subconjunto UISA son aquellas instrucciones RISC de interés para los desarrolladores de aplicaciones. 
+
+                Los otros dos subconjuntos son instrucciones VEA (Arquitectura de entorno virtual) utilizadas por los desarrolladores de sistemas de virtualización y OEA (Arquitectura de entorno operativo) utilizadas por los desarrolladores de sistemas operativos.
+            
+
+            Arquitectura de pines:
+
+                Las funciones de hardware que un microprocesador debe proporcionar a una plataforma de hardware, por ejemplo, los pines x86 A20M, FERR/IGNNE o FLUSH. 
+
+                Además, mensajes que el procesador debería emitir para que las cachés externas puedan ser invalidadas (vaciadas). 
+
+                Las funciones de arquitectura de pines son más flexibles que las funciones ISA porque el hardware externo puede adaptarse a nuevas codificaciones o cambiar de un pin a un mensaje. 
+
+                El término "arquitectura" encaja, porque las funciones deben estar previstas para sistemas compatibles, incluso si cambia el método detallado.
+
+
+            Roles:
+
+            La arquitectura informática se ocupa de equilibrar el rendimiento, la eficiencia, el costo y la confiabilidad de un sistema informático. 
+
+            El caso de la arquitectura del conjunto de instrucciones se puede utilizar para ilustrar el equilibrio de estos factores en competencia.
+
+            Conjuntos de instrucciones más complejos permiten a los programadores escribir programas más eficientes en cuanto a espacio, ya que una sola instrucción puede codificar alguna abstracción de nivel superior (como la instrucción Loop x86).
+
+            Sin embargo, el procesador necesita más tiempo para decodificar instrucciones más largas y complejas y su implementación efectiva puede ser más costosa. 
+
+            La mayor complejidad de un conjunto de instrucciones grande también crea más espacio para la falta de confiabilidad cuando las instrucciones interactúan de maneras inesperadas.
+
+            La implementación implica diseño de circuitos integrados, empaquetado, alimentación y refrigeración. 
+
+            La optimización del diseño requiere familiaridad con los compiladores, los sistemas operativos, el diseño lógico y el empaquetado.
+
+
+            Set de instrucciones arquitectura:
+
+            La arquitectura del conjunto de instrucciones (ISA) es la interfaz entre el software y el hardware de la computadora y también puede verse como la vista de la máquina por parte del programador. 
+
+            Las computadoras no entienden los lenguajes de programación de alto nivel como Java, C++ o la mayoría de los lenguajes de programación utilizados. 
+
+            Un procesador sólo entiende instrucciones codificadas de alguna forma numérica, normalmente como números binarios. 
+
+            Las herramientas de software, como los compiladores, traducen esos lenguajes de alto nivel en instrucciones que el procesador puede entender.
+
+            Además de las instrucciones, la ISA define elementos en la computadora que están disponibles para un programa, por ejemplo, tipos de datos, registros, modos de direccionamiento y memoria. 
+
+            Las instrucciones localizan estos elementos disponibles con índices de registro (o nombres) y modos de direccionamiento de memoria.
+
+            La ISA de una computadora generalmente se describe en un pequeño manual de instrucciones, que describe cómo se codifican las instrucciones. 
+
+            Además, puede definir nombres mnemotécnicos cortos (vagos) para las instrucciones. 
+
+            Los nombres pueden reconocerse mediante una herramienta de desarrollo de software llamada ensamblador. 
+
+            Un ensamblador es un programa informático que traduce una forma legible por humanos de ISA a una forma legible por computadora. 
+
+            Los desensambladores también están ampliamente disponibles, generalmente en depuradores y programas de software para aislar y corregir fallas en programas informáticos binarios.
+
+            Las NIA varían en calidad e integridad. 
+
+            Un buen ISA logra compromisos entre la conveniencia del programador (qué tan fácil es entender el código), el tamaño del código (cuánto código se requiere para realizar una acción específica), el costo de la computadora para interpretar las instrucciones (más complejidad significa más hardware necesario para decodificar y ejecutar las instrucciones) y la velocidad de la computadora (con un hardware de decodificación más complejo el tiempo de decodificación es mayor).
+
+            La organización de la memoria define cómo las instrucciones interactúan con la memoria y cómo la memoria interactúa consigo misma.
+
+            Durante la emulación del diseño, los emuladores pueden ejecutar programas escritos en un conjunto de instrucciones propuesto. 
+
+            Los emuladores modernos pueden medir el tamaño, el costo y la velocidad para determinar si una ISA en particular está cumpliendo sus objetivos.
+
+
+            Organización de computadoras:
+
+            La organización informática ayuda a optimizar los productos basados en el rendimiento. 
+
+            Por ejemplo, los ingenieros de software necesitan conocer la potencia de procesamiento de los procesadores. 
+
+            Es posible que necesiten optimizar el software para obtener el máximo rendimiento al precio más bajo. 
+
+            Esto puede requerir un análisis bastante detallado de la organización de la computadora. 
+
+            Por ejemplo, en una tarjeta SD, es posible que los diseñadores necesiten organizar la tarjeta de manera que se pueda procesar la mayor cantidad de datos de la manera más rápida posible.
+
+            La organización informática también ayuda a planificar la selección de un procesador para un proyecto en particular.
+
+            Los proyectos multimedia pueden necesitar un acceso a datos muy rápido, mientras que las máquinas virtuales pueden necesitar interrupciones rápidas. 
+
+            A veces, determinadas tareas también necesitan componentes adicionales.
+
+            Por ejemplo, una computadora capaz de ejecutar una máquina virtual necesita hardware de memoria virtual para que la memoria de diferentes computadoras virtuales pueda mantenerse separada. 
+
+            La organización y las características de la computadora también afectan el consumo de energía y el costo del procesador.
+
+
+        Implementación:
+
+            Una vez que se han diseñado un conjunto de instrucciones y una microarquitectura, se debe desarrollar una máquina práctica. 
+
+            Este proceso de diseño se llama implementación. 
+
+            La implementación generalmente no se considera diseño arquitectónico, sino ingeniería de diseño de hardware. 
+
+            La implementación se puede dividir en varios pasos:
+
+                La implementación lógica diseña los circuitos necesarios a nivel de puerta lógica.
+                 
+
+                La implementación de circuitos realiza diseños a nivel de transistor de elementos básicos (por ejemplo, compuertas, multiplexores, pestillos), así como de algunos bloques más grandes (ALU, cachés, etc.) que pueden implementarse en el nivel de puerta lógica o incluso en el nivel físico. si el diseño lo requiere.
+                
+
+                La implementación física dibuja circuitos físicos. Los diferentes componentes del circuito se colocan en un plano de chip o en un tablero y se crean los cables que los conectan.
+                
+
+                La validación del diseño prueba la computadora en su conjunto para ver si funciona en todas las situaciones y en todos los momentos. Una vez que comienza el proceso de validación del diseño, el diseño a nivel lógico se prueba utilizando emuladores lógicos. Sin embargo, esto suele ser demasiado lento para ejecutar una prueba realista. Entonces, después de hacer correcciones basadas en la primera prueba, los prototipos se construyen utilizando matrices de puertas programables en campo (FPGA). La mayoría de los proyectos de hobby terminan en esta etapa. El último paso es probar prototipos de circuitos integrados, lo que puede requerir varios rediseños.
+
+            Para las CPU, todo el proceso de implementación se organiza de manera diferente y a menudo se lo denomina diseño de CPU.
+
+
+        Objetivos de diseño: 
+
+        La forma exacta de un sistema informático depende de las limitaciones y objetivos. 
+
+        Las arquitecturas informáticas suelen equilibrar estándares, potencia frente a rendimiento, coste, capacidad de memoria, latencia (la latencia es la cantidad de tiempo que tarda la información de un nodo en viajar hasta la fuente) y rendimiento. 
+
+        A veces, otras consideraciones, como las características, el tamaño, el peso, la confiabilidad y la capacidad de expansión, también son factores.
+
+        El esquema más común realiza un análisis de energía en profundidad y descubre cómo mantener bajo el consumo de energía mientras se mantiene un rendimiento adecuado.
+
+
+        Performance:
+
+            El rendimiento de las computadoras modernas a menudo se describe en instrucciones por ciclo (IPC), que mide la eficiencia de la arquitectura en cualquier frecuencia de reloj; una tasa de IPC más rápida significa que la computadora es más rápida. 
+
+            Las computadoras más antiguas tenían recuentos de IPC tan bajos como 0,1, mientras que los procesadores modernos alcanzan fácilmente casi 1. 
+
+            Los procesadores superescalares pueden alcanzar de tres a cinco IPC ejecutando varias instrucciones por ciclo de reloj.
+
+            Contar instrucciones en lenguaje de máquina sería engañoso porque pueden realizar diferentes cantidades de trabajo en diferentes ISA. 
+
+            La "instrucción" en las medidas estándar no es un recuento de las instrucciones en lenguaje de máquina del ISA, sino una unidad de medida, generalmente basada en la velocidad de la arquitectura de la computadora VAX.
+
+            Mucha gente solía medir la velocidad de una computadora mediante la frecuencia del reloj (generalmente en MHz o GHz). 
+
+            Esto se refiere a los ciclos por segundo del reloj principal de la CPU. 
+
+            Sin embargo, esta métrica es algo engañosa, ya que una máquina con una frecuencia de reloj más alta no necesariamente tiene un mayor rendimiento. 
+
+            Como resultado, los fabricantes se han alejado de la velocidad del reloj como medida de rendimiento.
+
+            Otros factores influyen en la velocidad, como la combinación de unidades funcionales, las velocidades del bus, la memoria disponible y el tipo y orden de las instrucciones en los programas.
+
+            Hay dos tipos principales de velocidad: latencia y rendimiento. 
+
+            La latencia es el tiempo entre el inicio de un proceso y su finalización. 
+
+            El rendimiento es la cantidad de trabajo realizado por unidad de tiempo. 
+
+            La latencia de interrupción es el tiempo de respuesta máximo garantizado del sistema ante un evento electrónico (como cuando la unidad de disco termina de mover algunos datos).
+
+            El rendimiento se ve afectado por una amplia gama de opciones de diseño; por ejemplo, la canalización de un procesador generalmente empeora la latencia, pero mejora el rendimiento.
+
+            Las computadoras que controlan maquinaria generalmente necesitan latencias de interrupción bajas. 
+
+            Estas computadoras operan en un entorno de tiempo real y fallan si una operación no se completa en un período de tiempo específico. 
+
+            Por ejemplo, los frenos antibloqueo controlados por computadora deben comenzar a frenar dentro de un período de tiempo predecible y limitado después de que se detecta el pedal del freno o, de lo contrario, se producirá una falla en el freno.
+
+            La evaluación comparativa tiene en cuenta todos estos factores midiendo el tiempo que tarda una computadora en ejecutar una serie de programas de prueba. 
+
+            Aunque la evaluación comparativa muestra puntos fuertes, no debería depender de la forma en que se elige una computadora. 
+
+            A menudo las máquinas medidas se dividen en medidas diferentes. 
+
+            Por ejemplo, un sistema podría manejar aplicaciones científicas rápidamente, mientras que otro podría reproducir videojuegos con mayor fluidez. 
+
+            Además, los diseñadores pueden apuntar y agregar características especiales a sus productos, a través de hardware o software, que permitan ejecutar rápidamente un punto de referencia específico pero que no ofrezcan ventajas similares a las tareas generales.
+
+
+        Eficiencia energetica:
+
+            La eficiencia energética es otra medida importante en las computadoras modernas.
+
+            A menudo se puede intercambiar una mayor eficiencia energética por una menor velocidad o un mayor costo. 
+
+            La medida típica cuando se hace referencia al consumo de energía en la arquitectura de computadoras es MIPS/W (millones de instrucciones por segundo por vatio).
+
+            Los circuitos modernos requieren menos energía por transistor a medida que crece el número de transistores por chip.
+
+            Esto se debe a que cada transistor que se coloca en un nuevo chip requiere su propia fuente de alimentación y requiere la construcción de nuevas vías para alimentarlo.
+
+            Sin embargo, el número de transistores por chip está empezando a aumentar a un ritmo más lento. 
+
+            Por lo tanto, la eficiencia energética está empezando a ser tan importante, si no más, que colocar más y más transistores en un solo chip. 
+
+            Los diseños de procesadores recientes han mostrado este énfasis, ya que se centran más en la eficiencia energética en lugar de meter tantos transistores en un solo chip como sea posible. 
+
+            En el mundo de las computadoras integradas, la eficiencia energética ha sido durante mucho tiempo un objetivo importante junto al rendimiento y la latencia.
+
+
+        Cambios en la demanda del mercado:
+
+            Los aumentos en la frecuencia del reloj han crecido más lentamente en los últimos años, en comparación con las mejoras en la reducción de energía. 
+
+            Esto ha sido impulsado por el fin de la Ley de Moore y la demanda de una mayor duración de la batería y reducciones de tamaño para la tecnología móvil. 
+
+            Este cambio de enfoque de velocidades de reloj más altas al consumo de energía y miniaturización se puede mostrar en las reducciones significativas en el consumo de energía, hasta un 50%, que informó Intel en su lanzamiento de la microarquitectura Haswell; donde redujeron su punto de referencia de consumo de energía de 30 a 40 vatios a 10-20 vatios. 
+
+            Comparando esto con el aumento de la velocidad de procesamiento de 3 GHz a 4 GHz (2002 a 2006), se puede ver que el enfoque en investigación y desarrollo se está alejando de la frecuencia del reloj y avanzando hacia un consumo menor de energía y ocupando menos espacio.
+
+
+        32-bits:    
+
+            Se refiere a sistemas informáticos con procesador, memoria y otros componentes importantes del sistema que operan con datos en unidades de 32 bits.
+
+            En comparación con anchos de bits más pequeños, las computadoras de 32 bits pueden realizar cálculos grandes de manera más eficiente y procesar más datos por ciclo de reloj.
+
+            Las computadoras personales típicas de 32 bits también tienen un bus de direcciones de 32 bits, lo que permite acceder a hasta 4 GB de RAM, mucho más de lo que permitían las generaciones anteriores de arquitectura de sistemas.
+
+            Los diseños de 32 bits se han utilizado desde los primeros días de la informática electrónica, en sistemas experimentales y luego en grandes sistemas mainframe y minicomputadores. 
+
+            El primer microprocesador híbrido de 16/32 bits, el Motorola 68000, se introdujo a finales de la década de 1970 y se utilizó en sistemas como el Apple Macintosh original. 
+
+            Los microprocesadores totalmente de 32 bits, como HP FOCUS, Motorola 68020 e Intel 80386, se lanzaron entre principios y mediados de los años 1980 y se volvieron dominantes a principios de los años 1990. 
+
+            Esta generación de computadoras personales coincidió con la primera adopción masiva de la World Wide Web y la permitió. 
+
+            Si bien las arquitecturas de 32 bits todavía se utilizan ampliamente en aplicaciones específicas, el mercado de PC y servidores ha pasado a 64 bits con x86-64 desde mediados de la década de 2000, con una memoria instalada que a menudo excede los límites de direcciones RAM 4G de 32 bits en el nivel de entrada de ordenadores. 
+
+            La última generación de móviles también pasa a los 64 bits.
+
+
+            Rango para almacenar números enteros:
+
+                Un registro de 32 bits puede almacenar 2^32 valores diferentes. 
+
+                El rango de valores enteros que se pueden almacenar en 32 bits depende de la representación entera utilizada. 
+
+                Con las dos representaciones más comunes, el rango es de 0 a 4.294.967.295 (2^32 - 1) para la representación como un número binario (sin signo), y de -2.147.483.648 (-2^31) a 2.147.483.647 (2^31 - 1) para la representación como complemento a dos.
+
+                Una consecuencia importante es que un procesador con direcciones de memoria de 32 bits puede acceder directamente como máximo a 4 GiB de memoria direccionable por bytes (aunque en la práctica el límite puede ser menor).
+
+
+            Historia tecnica
+
+                La primera computadora electrónica con programa almacenado del mundo, la Manchester Baby, utilizó una arquitectura de 32 bits en 1948, aunque era sólo una prueba de concepto y tenía poca capacidad práctica. 
+
+                Contenía sólo 32 palabras de 32 bits de RAM en un tubo Williams y no tenía operación de suma, solo resta.
+
+                La memoria, así como otros circuitos y cableado digitales, eran caras durante las primeras décadas de las arquitecturas de 32 bits (de los años 1960 a los 1980). 
+
+                Por lo tanto, las familias de procesadores de 32 bits más antiguas (o variantes más simples y económicas de las mismas) podrían tener muchos compromisos y limitaciones para reducir costos.
+
+                Podría ser una ALU de 16 bits, por ejemplo, o buses externos (o internos) de menos de 32 bits, lo que limita el tamaño de la memoria o exige más ciclos para la búsqueda, ejecución o reescritura de instrucciones.
+
+                A pesar de esto, dichos procesadores podrían etiquetarse como de 32 bits, ya que todavía tenían registros de 32 bits e instrucciones capaces de manipular cantidades de 32 bits. 
+
+                Por ejemplo, el IBM System/360 Modelo 30 tenía una ALU de 8 bits, rutas de datos internas de 8 bits y una ruta de memoria de 8 bits, y el Motorola 68000 original tenía una ALU de datos de 16 bits y una ruta de 16 bits. 
+
+                bus de datos externo, pero tenía registros de 32 bits y un conjunto de instrucciones orientadas a 32 bits.
+
+                El diseño 68000 a veces se denominaba 16/32 bits.
+
+                Sin embargo, suele ocurrir lo contrario con los diseños más nuevos de 32 bits.
+
+                Por ejemplo, el procesador Pentium Pro es una máquina de 32 bits, con registros de 32 bits e instrucciones que manipulan cantidades de 32 bits, pero el bus de direcciones externo tiene 36 bits de ancho, lo que proporciona un espacio de direcciones mayor que 4 GB, y el procesador externo tiene 36 bits de ancho, lo que proporciona un espacio de direcciones mayor que 4 GB. 
+
+                El bus de datos tiene 64 bits de ancho, principalmente para permitir una captación previa más eficiente de instrucciones y datos.
+
+
+            Arquitecturas:
+                
+                Las arquitecturas de conjuntos de instrucciones de 32 bits más destacadas utilizadas en la informática de propósito general incluyen IBM System/360 e IBM System/370 (que tenían direccionamiento de 24 bits) y System/370-XA, ESA/370 y ESA/390 (que tenía direccionamiento de 31 bits), el DEC VAX, el NS320xx, la familia Motorola 68000 (cuyos dos primeros modelos tenían direccionamiento de 24 bits), la versión Intel IA-32 de 32 bits de la arquitectura x86 y el direccionamiento de 32 bits versiones de bits de las arquitecturas ARM,[8] SPARC, MIPS, PowerPC y PA-RISC. 
+
+                Las arquitecturas de conjuntos de instrucciones de 32 bits utilizadas para la informática integrada incluyen la familia 68000 y las arquitecturas ColdFire, x86, ARM, MIPS, PowerPC e Infineon TriCore.
+
+
+        64-bits:
+
+            En la arquitectura informática, los números enteros de 64 bits, las direcciones de memoria u otras unidades de datos son aquellas que tienen 64 bits de ancho.
+
+            Asimismo, las unidades centrales de procesamiento (CPU) y unidades lógicas aritméticas (ALU) de 64 bits son aquellas que se basan en registros de procesador, buses de direcciones o buses de datos de ese tamaño. 
+
+            Una computadora que utiliza dicho procesador es una computadora de 64 bits.
+
+            Desde la perspectiva del software, la informática de 64 bits significa el uso de código de máquina con direcciones de memoria virtual de 64 bits. 
+
+            Sin embargo, no todos los conjuntos de instrucciones de 64 bits admiten direcciones de memoria virtual completas de 64 bits; x86-64 y AArch64, por ejemplo, admiten solo 48 bits de dirección virtual, y los 16 bits restantes de la dirección virtual deben ser todo ceros (000...) o todos unos (111...), y varios bits de 64 bits.
+
+            Los conjuntos de instrucciones de bits admiten menos de 64 bits de dirección de memoria física.
+
+            El término 64 bits también describe una generación de computadoras en las que los procesadores de 64 bits son la norma. 
+
+            64 bits es un tamaño de palabra que define ciertas clases de arquitectura de computadora, buses, memoria y CPU y, por extensión, el software que se ejecuta en ellos.
+
+            Las CPU de 64 bits se han utilizado en supercomputadoras desde la década de 1970 (Cray-1, 1975) y en estaciones de trabajo y servidores basados en computadoras con conjunto de instrucciones reducido (RISC) desde principios de la década de 1990. 
+
+            En 2003, las CPU de 64 bits se introdujeron en el mercado general de PC en forma de procesadores x86-64 y el PowerPC G5.
+
+            Un registro de 64 bits puede contener cualquiera de 2^64 (más de 18 quintillones o 1,8 × 10^19) valores diferentes. 
+
+            El rango de valores enteros que se pueden almacenar en 64 bits depende de la representación entera utilizada. 
+
+            Con las dos representaciones más comunes, el rango es de 0 a 18.446.744.073.709.551.615 (igual a 2^64 − 1) para la representación como un número binario (sin signo), y de −9.223.372.036.854.775.808 (−2^63) a 9.223.372.036.854.775.80 7 (2^63 − 1) para representación como complemento a dos. 
+
+            Por lo tanto, un procesador con direcciones de memoria de 64 bits puede acceder directamente a 2^64 bytes (16 exbibytes o EiB) de memoria direccionable por bytes.
+
+            Sin más calificaciones, una arquitectura de computadora de 64 bits generalmente tiene registros de números enteros y de direccionamiento de 64 bits de ancho, lo que permite soporte directo para tipos de datos y direcciones de 64 bits.
+
+            Sin embargo, una CPU podía tener buses de datos externos o buses de direcciones con diferentes tamaños de registros, incluso mayores (el Pentium de 32 bits tenía un bus de datos de 64 bits, por ejemplo).
+
+
+            Historia: 
+
+                Muchos conjuntos de instrucciones de computadora están diseñados para que un único registro entero pueda almacenar la dirección de memoria en cualquier ubicación de la memoria física o virtual de la computadora. 
+
+                Por lo tanto, el número total de direcciones en la memoria suele estar determinado por el ancho de estos registros. 
+
+                El IBM System/360 de la década de 1960 fue uno de los primeros ordenadores de 32 bits; tenía registros enteros de 32 bits, aunque solo usaba los 24 bits de orden inferior de una palabra para las direcciones, lo que daba como resultado un espacio de direcciones de 16 MiB (16 × 1024^2 bytes).
+
+                Las superminicomputadoras de 32 bits, como la DEC VAX, se hicieron comunes en la década de 1970, y los microprocesadores de 32 bits, como la familia Motorola 68000 y los miembros de 32 bits de la familia x86 comenzando con el Intel 80386, aparecieron a mediados de la década de 1970, década de 1980, lo que convirtió a 32 bits en una especie de consenso de facto como tamaño de registro conveniente.
+
+                Un registro de direcciones de 32 bits significaba que se podía hacer referencia a 232 direcciones, o 4 GiB de memoria de acceso aleatorio (RAM).
+
+                Cuando se idearon estas arquitecturas, 4 GiB de memoria superaban con creces las cantidades típicas (4 MiB) en las instalaciones, por lo que se consideró que era suficiente espacio para direccionar. 
+
+                Se consideró que 4,29 mil millones de direcciones eran un tamaño apropiado para trabajar por otra razón importante: 4,29 mil millones de números enteros son suficientes para asignar referencias únicas a la mayoría de las entidades en aplicaciones como bases de datos.
+
+                Algunas arquitecturas de supercomputadoras de las décadas de 1970 y 1980, como la Cray-1, usaban registros de hasta 64 bits de ancho y admitían aritmética de enteros de 64 bits, aunque no admitían direccionamiento de 64 bits. 
+
+                A mediados de la década de 1980, el desarrollo del Intel i860 comenzó y culminó con un lanzamiento en 1989; el i860 tenía registros enteros de 32 bits y direccionamiento de 32 bits, por lo que no era un procesador completamente de 64 bits, aunque su unidad gráfica admitía aritmética entera de 64 bits.
+
+                Sin embargo, 32 bits siguieron siendo la norma hasta principios de la década de 1990, cuando las continuas reducciones en el costo de la memoria llevaron a instalaciones con cantidades de RAM cercanas a los 4 GiB, y el uso de espacios de memoria virtual que superaban el límite de 4 GiB se volvió deseable para manejar ciertos tipos de problemas. 
+
+                En respuesta, MIPS y DEC desarrollaron arquitecturas de microprocesadores de 64 bits, inicialmente para estaciones de trabajo y servidores de alta gama. 
+
+                A mediados de la década de 1990, HAL Computer Systems, Sun Microsystems, IBM, Silicon Graphics y Hewlett-Packard habían desarrollado arquitecturas de 64 bits para sus estaciones de trabajo y sistemas de servidores. 
+
+                Una excepción notable a esta tendencia fueron los mainframes de IBM, que entonces utilizaban datos de 32 bits y tamaños de direcciones de 31 bits; Los mainframes de IBM no incluyeron procesadores de 64 bits hasta el año 2000. 
+
+                Durante la década de 1990, se utilizaron varios microprocesadores de 64 bits de bajo costo en electrónica de consumo y aplicaciones integradas. 
+
+                En particular, la Nintendo 64 y la PlayStation 2 tenían microprocesadores de 64 bits antes de su introducción en las computadoras personales. 
+
+                Las impresoras de alta gama, los equipos de red y las computadoras industriales también usaban microprocesadores de 64 bits, como los dispositivos de efecto cuántico R5000.
+
+                La computación de 64 bits comenzó a llegar al escritorio de las computadoras personales a partir de 2003, cuando algunos Los modelos de las líneas Macintosh de Apple cambiaron a procesadores PowerPC 970 (denominados G5 por Apple) y Advanced Micro Devices (AMD) lanzó su primer procesador x86-64 de 64 bits. 
+
+                La memoria física finalmente alcanzó los límites de 32 bits. 
+
+                En 2023, las computadoras portátiles estaban comúnmente equipadas con 16 GB y los servidores con hasta 64 GB de memoria, superando con creces la capacidad de direcciones de 4 GB de 32 bits.
+
+
+            Límites: 
+
+                En principio, un microprocesador de 64 bits puede direccionar 16 EiB (16 × 1024^6 = 2^64 = 18.446.744.073.709.551.616 bytes, o aproximadamente 18,4 exabytes) de memoria.
+
+                Sin embargo, no todos los conjuntos de instrucciones, ni todos los procesadores que implementan esos conjuntos de instrucciones, admiten un espacio de direcciones físico o virtual completo de 64 bits.
+
+                La arquitectura x86-64 (a partir de 2016) permite 48 bits para memoria virtual y, para cualquier procesador, hasta 52 bits para memoria física. 
+
+                Estos límites permiten tamaños de memoria de 256 TiB (256 × 1024^4 bytes) y 4 PiB (4 × 1024^5 bytes), respectivamente.
+
+                Actualmente, una PC no puede contener 4 pebibytes de memoria (debido al tamaño físico de los chips de memoria), pero AMD imaginó servidores grandes, clústeres de memoria compartida y otros usos del espacio de direcciones físicas que podrían acercarse a esto en el futuro previsible. 
+
+                Por lo tanto, la dirección física de 52 bits proporciona un amplio espacio para la expansión sin incurrir en el costo de implementar direcciones físicas completas de 64 bits.
+
+                De manera similar, el espacio de direcciones virtuales de 48 bits fue diseñado para proporcionar 65,536 (2^16) veces el límite de 32 bits de 4 GiB (4 × 1024^3 bytes), lo que deja espacio para una expansión posterior y no incurre en gastos generales de traducción completa de 64 bits. direcciones.
+
+            
+            Apps de 64 y 32: 
+
+                Un cambio de una arquitectura de 32 bits a una de 64 bits es una alteración fundamental, ya que la mayoría de los sistemas operativos deben modificarse ampliamente para aprovechar la nueva arquitectura, porque ese software tiene que administrar la memoria real que direcciona el hardware. 
+
+                También se debe migrar otro software para utilizar las nuevas capacidades; El software antiguo de 32 bits puede ser compatible ya sea en virtud de que el conjunto de instrucciones de 64 bits es un superconjunto del conjunto de instrucciones de 32 bits, de modo que los procesadores que admiten el conjunto de instrucciones de 64 bits también pueden ejecutar código para la instrucción de 32 bits conjunto, o mediante emulación de software, o mediante la implementación real de un núcleo de procesador de 32 bits dentro del procesador de 64 bits, como ocurre con algunos procesadores Itanium de Intel, que incluían un núcleo de procesador IA-32 para ejecutar aplicaciones x86 de 32 bits. 
+
+                Los sistemas operativos para esas arquitecturas de 64 bits generalmente admiten aplicaciones de 32 y 64 bits.
+
+                Una excepción importante a esto es el IBM AS/400, cuyo software se compila en una arquitectura de conjunto de instrucciones virtuales (ISA) llamada Technology Independent Machine Interface (TIMI); Luego, el código TIMI se traduce a código de máquina nativo mediante software de bajo nivel antes de ejecutarse. 
+
+                El software de traducción es todo lo que se debe reescribir para mover el sistema operativo completo y todo el software a una nueva plataforma, como cuando IBM hizo la transición del conjunto de instrucciones nativo para AS/400 del antiguo IMPI de 32/48 bits al nuevo PowerPC de 64 bits. -AS, cuyo nombre en código es Amazon. 
+
+                El conjunto de instrucciones IMPI era bastante diferente incluso del PowerPC de 32 bits, por lo que esta transición fue incluso mayor que mover un conjunto de instrucciones determinado de 32 a 64 bits.
+
+                En hardware de 64 bits con arquitectura x86-64 (AMD64), la mayoría de los sistemas operativos y aplicaciones de 32 bits pueden ejecutarse sin problemas de compatibilidad. 
+
+                Si bien el mayor espacio de direcciones de las arquitecturas de 64 bits facilita el trabajo con grandes conjuntos de datos en aplicaciones como vídeo digital, informática científica y grandes bases de datos, ha habido un debate considerable sobre si ellos o sus modos de compatibilidad de 32 bits serán más rápidos que los de 64 bits, sistemas de 32 bits de precio similar para otras tareas.
+
+                Un programa Java compilado puede ejecutarse en una máquina virtual Java de 32 o 64 bits sin modificaciones. 
+
+                Las longitudes y la precisión de todos los tipos integrados, como char, short, int, long, float y double, y los tipos que se pueden usar como índices de matriz, están especificadas por el estándar y no dependen del subyacente arquitectura. 
+
+                Los programas Java que se ejecutan en una máquina virtual Java de 64 bits tienen acceso a un espacio de direcciones mayor.
+
+                La velocidad no es el único factor a considerar al comparar procesadores de 32 y 64 bits.
+
+                Aplicaciones como multitarea, pruebas de estrés y agrupación en clústeres (para computación de alto rendimiento (HPC)) pueden ser más adecuadas para una arquitectura de 64 bits cuando se implementan adecuadamente. 
+
+                Por esta razón, los clústeres de 64 bits se han implementado ampliamente en grandes organizaciones, como IBM, HP y Microsoft.                
+
+        Resumen:
+
+             Un procesador de 64 bits funciona mejor con software de 64 bits.
+
+             Un procesador de 64 bits puede tener compatibilidad con versiones anteriores, lo que le permite ejecutar software de aplicación de 32 bits para la versión de 32 bits de su conjunto de instrucciones, y también puede admitir la ejecución de sistemas operativos de 32 bits para la versión de 32 bits de su conjunto de instrucciones. .
+
+             Un procesador de 32 bits es incompatible con el software de 64 bits.
+
+
+        Pros y contras
+
+            Un error común es pensar que las arquitecturas de 64 bits no son mejores que las de 32 bits a menos que la computadora tenga más de 4 GiB de memoria de acceso aleatorio. 
+
+            Esto no es enteramente verdad:
+
+                 Algunos sistemas operativos y ciertas configuraciones de hardware limitan el espacio de memoria física a 3 GiB en sistemas IA-32, debido a que gran parte de la región de 3 a 4 GiB está reservada para direccionamiento de hardware; ver barrera de 3 GiB; Las arquitecturas de 64 bits pueden abordar mucho más de 4 GiB. 
+
+                 Sin embargo, los procesadores IA-32 a partir del Pentium Pro permiten un espacio de direcciones de memoria física de 36 bits, utilizando la extensión de dirección física (PAE), que proporciona un rango de direcciones físicas de 64 GiB, de los cuales la memoria principal puede utilizar hasta 62 GiB. ; Es posible que los sistemas operativos que admiten PAE no estén limitados a 4 GiB de memoria física, incluso en procesadores IA-32. 
+
+                 Sin embargo, los controladores y otro software en modo kernel, especialmente las versiones anteriores, pueden ser incompatibles con PAE; esto se ha citado como la razón por la que las versiones de 32 bits de Microsoft Windows están limitadas a 4 GiB de RAM física (aunque se ha cuestionado la validez de esta explicación).
+
+                 Algunos sistemas operativos reservan partes del espacio de direcciones de proceso para uso del sistema operativo, lo que reduce efectivamente el espacio total de direcciones disponible para mapear la memoria de los programas de usuario. 
+
+                 Por ejemplo, Windows de 32 bits reserva 1 o 2 GiB (según la configuración) del espacio total de direcciones para el kernel, lo que deja sólo 3 o 2 GiB (respectivamente) del espacio de direcciones disponible para el modo de usuario.
+
+                 Este límite es mucho mayor en los sistemas operativos de 64 bits.
+
+                 Los archivos mapeados en memoria son cada vez más difíciles de implementar en arquitecturas de 32 bits a medida que los archivos de más de 4 GiB se vuelven más comunes; Estos archivos grandes no pueden asignarse en memoria fácilmente a arquitecturas de 32 bits, ya que sólo una parte del archivo puede asignarse al espacio de direcciones a la vez, y para acceder a dicho archivo mediante el mapeo de memoria, las partes asignadas deben intercambiarse y fuera del espacio de direcciones según sea necesario. 
+
+                 Esto es un problema, ya que el mapeo de memoria, si el sistema operativo lo implementa correctamente, es uno de los métodos más eficientes de conversión de disco a memoria.
+
+                 Algunos programas de 64 bits, como codificadores, decodificadores y software de cifrado, pueden beneficiarse enormemente de los registros de 64 bits, mientras que el rendimiento de otros programas, como los orientados a gráficos 3D, no se ve afectado al cambiar de 32 bits a uno, Entorno de 64 bits.
+
+                 Algunas arquitecturas de 64 bits, como x86-64 y AArch64, admiten más registros de uso general que sus contrapartes de 32 bits (aunque esto no se debe específicamente a la longitud de la palabra). 
+
+                 Esto conduce a un aumento significativo de la velocidad para bucles cerrados, ya que el procesador no tiene que recuperar datos del caché o de la memoria principal si los datos caben en los registros disponibles.
+
+
+            Modelos de datos de 64 bits
+
+                En programas de 32 bits, los punteros y los tipos de datos, como los números enteros, generalmente tienen la misma longitud. 
+
+                Esto no es necesariamente cierto en máquinas de 64 bits. 
+
+                Por lo tanto, la combinación de tipos de datos en lenguajes de programación como C y sus descendientes, como C++ y Objective-C, puede funcionar en implementaciones de 32 bits, pero no en implementaciones de 64 bits.
+
+                En muchos entornos de programación para C y lenguajes derivados de C en máquinas de 64 bits, las variables int todavía tienen 32 bits de ancho, pero los enteros largos y los punteros tienen 64 bits de ancho. 
+
+                Se describe que tienen un modelo de datos LP64, que es una abreviatura de "Long, Pointer, 64". 
+
+                Otros modelos son el modelo de datos ILP64 en el que los tres tipos de datos tienen 64 bits de ancho, e incluso el modelo SILP64 donde los enteros cortos también tienen 64 bits de ancho.
+
+                Sin embargo, en la mayoría de los casos las modificaciones requeridas son relativamente menores y sencillas, y muchos programas bien escritos pueden simplemente recompilarse para el nuevo entorno sin cambios. 
+
+                Otra alternativa es el modelo LLP64, que mantiene la compatibilidad con código de 32 bits al dejar tanto int como long en 32 bits. 
+
+                LL se refiere al tipo entero largo, que es de al menos 64 bits en todas las plataformas, incluidos los entornos de 32 bits.
+
+                También hay sistemas con procesadores de 64 bits que utilizan un modelo de datos ILP32, con la adición de enteros largos de 64 bits; esto también se utiliza en muchas plataformas con procesadores de 32 bits. 
+
+                Este modelo reduce el tamaño del código y el tamaño de las estructuras de datos que contienen punteros, a costa de un espacio de direcciones mucho más pequeño, una buena opción para algunos sistemas integrados. 
+
+                Para conjuntos de instrucciones como x86 y ARM en los que la versión de 64 bits del conjunto de instrucciones tiene más registros que la versión de 32 bits, proporciona acceso a registros adicionales sin penalización de espacio. 
+
+                Es común en máquinas RISC de 64 bits, explorado en x86 como x32 ABI, y recientemente se ha utilizado en los Apple Watch Series 4 y 5.
+
+
+    Segmentación de memoria: 
+
+        
+
+
+    Registro de proceso: 
+
+
+
+
+    Almacenamiento de datos: 
+
+
+        Block:
 
 
 
