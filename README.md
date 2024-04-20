@@ -2156,23 +2156,1666 @@
 
 || Inversión de dependencias
 
+    El principio de inversión de dependencia es una metodología específica para módulos de software débilmente acoplados. 
 
+    Al seguir este principio, las relaciones de dependencia convencionales establecidas desde módulos de alto nivel que establecen políticas hasta módulos de dependencia de bajo nivel se invierten, lo que hace que los módulos de alto nivel sean independientes de los detalles de implementación del módulo de bajo nivel. 
+
+
+    El principio establece:
+
+        A. Los módulos de alto nivel no deben importar nada de los módulos de bajo nivel. 
+
+        Ambos deberían depender de abstracciones (por ejemplo, interfaces).
+
+
+        B. Las abstracciones no deberían depender de los detalles. 
+
+        Los detalles (implementaciones concretas) deberían depender de abstracciones.
+
+
+    Al dictar que tanto los objetos de alto como los de bajo nivel deben depender de la misma abstracción, este principio de diseño invierte la forma en que algunas personas pueden pensar sobre la programación orientada a objetos.
+
+    La idea detrás de los puntos A y B de este principio es que al diseñar la interacción entre un módulo de alto nivel y uno de bajo nivel, la interacción debe considerarse como una interacción abstracta entre ellos. 
+
+    Esto no sólo tiene implicaciones en el diseño del módulo de alto nivel, sino también en el de bajo nivel: el de bajo nivel debe diseñarse teniendo en cuenta la interacción y puede ser necesario cambiar su interfaz de uso.
+
+    En muchos casos, pensar en la interacción en sí misma como un concepto abstracto permite reducir el acoplamiento de los componentes sin introducir patrones de codificación adicionales, permitiendo sólo un esquema de interacción más ligero y menos dependiente de la implementación.
+
+    Cuando los esquemas de interacción abstractos descubiertos entre dos módulos son genéricos y la generalización tiene sentido, este principio de diseño también conduce al siguiente patrón de codificación de inversión de dependencia.
+    
+
+    Patrón de capas tradicionales:
+
+        En la arquitectura de aplicaciones convencional, los componentes de nivel inferior (por ejemplo, la capa de utilidad) están diseñados para ser consumidos por componentes de nivel superior (por ejemplo, la capa de política) que permiten construir sistemas cada vez más complejos. 
+
+        En esta composición, los componentes de nivel superior dependen directamente de los componentes de nivel inferior para lograr alguna tarea.
+
+        Esta dependencia de los componentes de nivel inferior limita las oportunidades de reutilización de los componentes de nivel superior.
+
+
+        Capa de política -> Capa de mecanismo -> Capa de utilidad
+
+
+        El objetivo del patrón de inversión de dependencia es evitar esta distribución altamente acoplada con la mediación de una capa abstracta y aumentar la reutilización de capas superiores/de políticas.
+
+
+    Patrón de inversión de dependencia:
+
+        Con la adición de una capa abstracta, tanto las capas de nivel alto como las de nivel inferior reducen las dependencias tradicionales de arriba a abajo. 
+
+        Sin embargo, el concepto de "inversión" no significa que las capas de nivel inferior dependan directamente de las capas de nivel superior.
+
+        Ambas capas deberían depender de abstracciones (interfaces) que expongan el comportamiento que necesitan las capas de nivel superior.
+
+
+        Capa de política -> -Interfaz- Servicio de política, Interfaz <- Capa de mecanismo -> -Interfaz- Mecanismo, Interfaz de servicio <- Capa de utilidad
+
+
+        En una aplicación directa de la inversión de dependencia, las abstracciones pertenecen a las capas superiores/de políticas. 
+
+        Esta arquitectura agrupa los componentes superiores/de política y las abstracciones que definen los servicios inferiores en el mismo paquete. 
+
+        Las capas de nivel inferior se crean mediante herencia/implementación de estas clases o interfaces abstractas.
+
+        La inversión de las dependencias y la propiedad fomenta la reutilización de las capas superiores/de políticas. 
+
+        Las capas superiores podrían utilizar otras implementaciones de los servicios inferiores. 
+
+        Cuando los componentes de la capa de nivel inferior están cerrados o cuando la aplicación requiere la reutilización de servicios existentes, es común que un Adaptador media entre los servicios y las abstracciones.
+
+
+    Generalización del patrón de inversión de dependencia
+
+        En muchos proyectos, el principio y patrón de inversión de dependencia se consideran como un concepto único que debe generalizarse, es decir, aplicarse a todas las interfaces entre módulos de software. 
+
+        Hay al menos dos razones para ello:
+
+            1. Es más sencillo ver un buen principio de pensamiento como un patrón de codificación.
+
+            Una vez codificada una clase abstracta o una interfaz, el programador puede decir: "He hecho el trabajo de la abstracción".
+
+
+            2. Debido a que muchas herramientas de pruebas unitarias dependen de la herencia para lograr la burla, el uso de interfaces genéricas entre clases (no solo entre módulos cuando tiene sentido usar la generalidad) se convirtió en la regla.
+
+
+        Si la herramienta de burla utilizada se basa únicamente en la herencia, puede resultar necesario aplicar ampliamente el patrón de inversión de dependencia.
+
+        Esto tiene grandes inconvenientes:
+
+            1. Simplemente implementar una interfaz sobre una clase no es suficiente para reducir el acoplamiento; Sólo pensar en la posible abstracción de las interacciones puede conducir a un diseño menos acoplado.
+
+
+            2. La implementación de interfaces genéricas en todas partes de un proyecto hace que sea más difícil de entender y mantener. 
+
+            En cada paso el lector se preguntará cuáles son las otras implementaciones de esta interfaz y la respuesta generalmente es: sólo simulacros.
+
+
+            3. La generalización de la interfaz requiere más código de plomería, en particular fábricas que generalmente dependen de un marco de inyección de dependencia.
+
+
+            4. La generalización de la interfaz también restringe el uso del lenguaje de programación.
+
+
+
+        Restricciones de generalización
+
+            La presencia de interfaces para lograr el Patrón de Inversión de Dependencia (DIP) tiene otras implicaciones de diseño en un programa orientado a objetos:
+
+
+                Todas las variables miembro de una clase deben ser interfaces o abstracciones.
+
+
+                Todos los paquetes de clases concretas deben conectarse únicamente a través de una interfaz o paquetes de clases abstractas.
+
+
+                Ninguna clase debería derivar de una clase concreta.
+
+                Ningún método debe anular un método implementado.
+
+                Toda creación de instancias de variables requiere la implementación de un patrón de creación, como el método de fábrica o el patrón de fábrica, o el uso de un marco de inyección de dependencia.
+
+
+        Restricciones de burla de interfaz
+
+            El uso de herramientas de burla/mocking-object basadas en herencia también introduce restricciones:
+
+                
+                Los miembros estáticos visibles externamente deberían depender sistemáticamente de la inyección de dependencia, lo que los hace mucho más difíciles de implementar.
+
+
+                Todos los métodos comprobables deben convertirse en una implementación de interfaz o una anulación de una definición abstracta.
+
+
+        Direcciones futuras
+
+            Los principios son formas de pensar. 
+
+            Los patrones son formas comunes de resolver problemas. 
+
+            Es posible que existan patrones de codificación para sustituir las características faltantes del lenguaje de programación.
+
+                
+                Los lenguajes de programación seguirán evolucionando para permitirles imponer contratos de uso más sólidos y precisos en al menos dos direcciones: 
+
+                hacer cumplir las condiciones de uso (condiciones previas, posteriores e invariantes) e interfaces basadas en estados. 
+
+                Esto probablemente alentará y potencialmente simplificará una aplicación más sólida del patrón de inversión de dependencia en muchas situaciones.
+
+
+                Cada vez más herramientas burlonas/mocking-object utilizan la inyección de dependencia para resolver el problema de reemplazar miembros estáticos y no virtuales. 
+
+                Los lenguajes de programación probablemente evolucionarán para generar códigos de bytes compatibles con burlas/mocking-object. 
+
+                Una dirección será restringir el uso de miembros no virtuales. 
+
+                El otro será generar, al menos en situaciones de prueba, código de bytes que permita burlas/mocking-object no basadas en herencia.
+
+
+    Implementaciones
+
+        Dos implementaciones comunes de DIP utilizan una arquitectura lógica similar pero con implicaciones diferentes.
+
+        Una implementación directa empaqueta las clases de políticas con clases de resúmenes de servicios en una biblioteca. 
+
+        En esta implementación, los componentes de alto nivel y los componentes de bajo nivel se distribuyen en paquetes/bibliotecas separados, donde las interfaces que definen el comportamiento/servicios requeridos por el componente de alto nivel son propiedad de la biblioteca del componente de alto nivel y existen dentro de ella. 
+
+        La implementación de la interfaz del componente de alto nivel por parte del componente de bajo nivel requiere que el paquete del componente de bajo nivel dependa del componente de alto nivel para la compilación, invirtiendo así la relación de dependencia convencional.
+
+
+        figura 1:
+
+        Paquete A.
+
+        Objeto A -> Referencias ->
+
+        Paquete B.
+
+        Objeto B
+
+
+        figura 2:
+
+        Paquete A.
+
+        Objeto A
+
+        Referencias ->
+
+        Interfaz A <-
+
+
+        Paquete B.
+
+        Objeto B
+
+        <- Hereda
+
+
+        Las Figuras 1 y 2 ilustran código con la misma funcionalidad; sin embargo, en la Figura 2, se utilizó una interfaz para invertir la dependencia. 
+
+        Se puede elegir la dirección de la dependencia para maximizar la reutilización del código de políticas y eliminar las dependencias cíclicas.
+
+        En esta versión de DIP, la dependencia del componente de la capa inferior de las interfaces/resúmenes en las capas de nivel superior dificulta la reutilización de los componentes de la capa inferior. 
+
+        En cambio, esta implementación ″invierte″ la dependencia tradicional de arriba hacia abajo hacia lo opuesto, de abajo hacia arriba.
+
+
+        Una solución más flexible extrae los componentes abstractos en un conjunto independiente de paquetes/bibliotecas
+
+        Capa de política -> -Interfaz- Servicio de política, Interfaz <- Capa de mecanismo -> -Interfaz- Mecanismo, Interfaz de servicio <- Capa de utilidad
+
+        La separación de cada capa en su propio paquete fomenta la reutilización de cualquier capa, aportando robustez y movilidad.
+
+
+    Ejemplos: 
+
+        Cliente de servidor de archivos remoto:
+
+            Un cliente de servidor de archivos remoto (FTP, almacenamiento en la nube...) se puede modelar como un conjunto de interfaces abstractas:
+
+            
+                Conexión/Desconexión (puede ser necesaria una capa de persistencia de conexión)
+
+                Interfaz de creación de carpetas/etiquetas/cambiar nombre/eliminar/lista
+
+                Interfaz de creación/reemplazo/cambio de nombre/eliminación/lectura de archivos
+
+                búsqueda de archivos
+
+                Reemplazo simultáneo o resolución de eliminación
+
+                Gestión del historial de archivos...
+
+
+            Si los archivos locales y remotos ofrecen las mismas interfaces abstractas, los módulos de alto nivel que implementan el patrón de inversión de dependencia pueden usarlos indiscriminadamente. 
+
+            La aplicación podrá guardar sus documentos de forma local o remota de forma transparente.
+
+            Se debe considerar el nivel de servicio requerido por los módulos de alto nivel.
+
+            Diseñar un módulo como un conjunto de interfaces abstractas y adaptar otros módulos a él puede proporcionar una interfaz común para muchos sistemas.
+
+
+        Modelo vista controlador: 
+
+
+            UI (Page: -CustHandler:ICustomerHandler) -> 
+
+
+            Controllers (ICustomerHandler: GetDemographics(): String) 
+
+
+            <- App Layer (CustHandler:ICustomerHandler:GetDemographics(): String)
+
+
+            Los paquetes UI y ApplicationLayer contienen principalmente clases concretas. 
+
+            Los controladores contienen abstracciones/tipos de interfaz. 
+
+            La interfaz de usuario tiene una instancia de 'ICustomerHandler'. 
+
+            Todos los paquetes están físicamente separados. 
+
+            En ApplicationLayer hay una implementación concreta de 'CustomerHandler' que utilizará la clase Page.
+
+            Las instancias de la interfaz 'ICustomerHandler' se crean dinámicamente mediante una fábrica (posiblemente en el mismo paquete de controladores). 
+
+            Los tipos concretos Page y 'CustomerHandler' dependen de 'ICustomerHandler', no entre sí.
+
+            Dado que la interfaz de usuario no hace referencia a ApplicationLayer ni a ningún otro paquete concreto que implemente 'ICustomerHandler', la implementación concreta de 'CustomerHandler' se puede reemplazar sin cambiar la clase de interfaz de usuario.
+
+            Además, la clase Page implementa la interfaz 'IPageViewer' que podría pasarse como argumento a los métodos 'ICustomerHandler', permitiendo la implementación concreta de 'CustomerHandler' para comunicarse con la interfaz de usuario sin una dependencia concreta.
+
+            Nuevamente, ambos están vinculados por interfaces. 
+
+
+    Patrones relacionados
+
+        La aplicación del principio de inversión de dependencia también puede verse como un ejemplo del patrón de adaptador. 
+
+        Es decir, la clase de alto nivel define su propia interfaz de adaptador, que es la abstracción de la que dependen las otras clases de alto nivel. 
+
+        La implementación adaptada también depende necesariamente de la misma abstracción de la interfaz del adaptador, mientras que se puede implementar utilizando código desde su propio módulo de bajo nivel.
+
+        El módulo de alto nivel no depende del módulo de bajo nivel, ya que solo utiliza la funcionalidad de bajo nivel indirectamente a través de la interfaz del adaptador invocando métodos polimórficos a la interfaz que son implementados por la implementación adaptada y su módulo de bajo nivel.
+
+        Se emplean varios patrones, como complemento, localizador de servicios o inyección de dependencia, para facilitar el aprovisionamiento en tiempo de ejecución de la implementación del componente de bajo nivel elegido al componente de alto nivel.
 
 
 
 || Inversión de Control 
+    
+    En ingeniería de software, la inversión de control (IoC) es un patrón de diseño en el que partes personalizadas de un programa de computadora reciben el flujo de control (orden de evaluación de los elementos/objetos) de un framework genérico. 
 
+    El término "inversión" es histórico: una arquitectura de software con este diseño "invierte" el control en comparación con la programación procedimental. 
+
+    En la programación de procedimientos, el código personalizado de un programa llama a bibliotecas reutilizables para encargarse de tareas genéricas, pero con la inversión de control, es el marco el que llama al código personalizado.
+
+    La inversión de control ha sido ampliamente utilizada por los marcos de desarrollo de aplicaciones desde el surgimiento de los entornos GUI y continúa utilizándose tanto en entornos GUI como en marcos de aplicaciones de servidor web. 
+
+    La inversión de control hace que el marco sea extensible mediante los métodos definidos por el programador de la aplicación.
+
+    La programación basada en eventos a menudo se implementa utilizando IoC, de modo que el código personalizado solo necesita ocuparse del manejo de eventos, mientras que el marco o el entorno de ejecución maneja el bucle de eventos y el envío de eventos/mensajes. 
+
+    En los marcos de aplicaciones de servidores web, el envío suele denominarse enrutamiento y los controladores pueden denominarse puntos finales.
+
+    La frase "inversión de control" también se ha utilizado por separado en la comunidad de programadores de Java para referirse específicamente a los patrones de inyección de dependencias de objetos que ocurren con "contenedores IoC" en marcos Java como el marco Spring.
+
+    En este sentido diferente, "inversión de control" se refiere a otorgar al framework control sobre las implementaciones de dependencias que utilizan los objetos de la aplicación en lugar del significado original de otorgar el flujo de control del marco (control sobre el tiempo de ejecución del código de la aplicación, por ejemplo. devoluciones de llamada).
   
+
+    Descripción general
+
+        Como ejemplo, con la programación tradicional, la función principal de una aplicación podría realizar llamadas a funciones en una biblioteca de menús para mostrar una lista de comandos disponibles y solicitar al usuario que seleccione uno.
+
+        Por lo tanto, la biblioteca devolvería la opción elegida como valor de la llamada a la función, y la función principal usa este valor para ejecutar el comando asociado.
+
+        Este estilo era común en las interfaces basadas en texto.
+
+        Por ejemplo, un cliente de correo electrónico puede mostrar una pantalla con comandos para cargar correo nuevo, responder el correo actual, crear correo nuevo, etc., y la ejecución del programa se bloquearía hasta que el usuario presione una tecla para seleccionar un comando.
+
+        Por otro lado, con la inversión de control, el programa se escribiría utilizando un marco de software que conoce elementos gráficos y de comportamiento comunes, como sistemas de ventanas, menús, control del mouse, etc.
+
+        El código personalizado "llena los espacios en blanco" del marco, como proporcionar una tabla de elementos de menú y registrar una subrutina de código para cada elemento, pero es el marco el que monitorea las acciones del usuario e invoca la subrutina cuando se selecciona un elemento de menú. 
+
+        En el ejemplo del cliente de correo, el marco podría seguir las entradas del teclado y del mouse y llamar al comando invocado por el usuario por cualquier medio y al mismo tiempo monitorear la interfaz de red para saber si llegan nuevos mensajes y actualizar la pantalla cuando alguna red se detecta actividad. 
+
+        El mismo marco podría usarse como esqueleto para un programa de hoja de cálculo o un editor de texto. 
+
+        Por el contrario, el marco no sabe nada sobre navegadores web, hojas de cálculo o editores de texto; implementar su funcionalidad requiere código personalizado.
+
+        La inversión de control conlleva la fuerte connotación de que el código reutilizable y el código específico del problema se desarrollan de forma independiente aunque operen juntos en una aplicación. 
+
+        Las devoluciones de llamada, los programadores, los bucles de eventos y el método de plantilla son ejemplos de patrones de diseño que siguen el principio de inversión de control, aunque el término se usa más comúnmente en el contexto de la programación orientada a objetos. 
+
+        (La inyección de dependencia es un ejemplo de la idea separada y específica de "invertir el control sobre las implementaciones de dependencias" popularizada por los marcos de Java).
+
+        La inversión de control a veces se conoce como el "Principio de Hollywood: no nos llames, nosotros te llamaremos".
+
+
+    Origen: 
+
+        La inversión de control no es un término nuevo en informática. 
+
+        Martin Fowler remonta la etimología de la frase a 1988, pero está estrechamente relacionada con el concepto de inversión de programa descrito por Michael Jackson en su metodología de Programación Estructurada Jackson en la década de 1970.
+
+        Un analizador ascendente puede verse como una inversión de un analizador de arriba hacia abajo: en un caso, el control reside en el analizador, mientras que en el otro caso, reside en la aplicación receptora.
+
+        El término fue utilizado por Michael Mattsson en una tesis (con su significado original de un marco que llama al código de la aplicación en lugar de viceversa) y luego fue tomado de allí por Stefano Mazzocchi y popularizado por él en 1999 en un proyecto desaparecido de la Apache Software Foundation, Avalon en el que se refería a un objeto principal que pasaba las dependencias de un objeto secundario además de controlar el flujo de ejecución. 
+
+        La frase fue popularizada aún más en 2004 por Robert C. Martin y Martin Fowler, el último de los cuales remonta los orígenes del término a la década de 1980.
+
+
+    Descripción
+
+        En la programación tradicional, el flujo de la lógica empresarial está determinado por objetos que están vinculados estáticamente entre sí. 
+
+        Con la inversión de control, el flujo depende del gráfico de objetos que se construye durante la ejecución del programa. 
+
+        Este flujo dinámico es posible gracias a las interacciones entre objetos que se definen mediante abstracciones. 
+
+        Esta vinculación en tiempo de ejecución se logra mediante mecanismos como la inyección de dependencia o un localizador de servicios. 
+
+        En IoC, el código también podría vincularse estáticamente durante la compilación, pero encontrar el código para ejecutar leyendo su descripción desde una configuración externa en lugar de con una referencia directa en el código mismo.
+
+        En la inyección de dependencia, un objeto o módulo dependiente se acopla al objeto que necesita en tiempo de ejecución. 
+
+        Por lo general, no se puede saber qué objeto en particular satisfará la dependencia durante la ejecución del programa en el momento de la compilación mediante el análisis estático. 
+
+        Si bien se describe aquí en términos de interacción de objetos, el principio puede aplicarse a otras metodologías de programación además de la programación orientada a objetos.
+
+        Para que el programa en ejecución vincule objetos entre sí, los objetos deben poseer interfaces compatibles. 
+
+        Por ejemplo, la clase A puede delegar comportamiento a la interfaz I que implementa la clase B; el programa crea una instancia de A y B, y luego inyecta B en A.
 
 
 
 ||Control Flow: 
 
+    En informática, el flujo de control es el orden en el que se ejecutan o evalúan declaraciones individuales, instrucciones o llamadas a funciones de un programa imperativo. 
 
+    El énfasis en el flujo de control explícito distingue un lenguaje de programación imperativo de un lenguaje de programación declarativo.
+
+    Dentro de un lenguaje de programación imperativo, una declaración de flujo de control es una declaración que da como resultado una elección sobre cuál de dos o más caminos seguir. 
+
+    Para los lenguajes funcionales no estrictos, existen funciones y construcciones de lenguaje para lograr el mismo resultado, pero generalmente no se denominan declaraciones de flujo de control.
+
+    Un conjunto de enunciados se estructura a su vez generalmente como un bloque, que además de agrupar, también define un ámbito léxico.
+
+    Las interrupciones y señales son mecanismos de bajo nivel que pueden alterar el flujo de control de una manera similar a una subrutina, pero generalmente ocurren como respuesta a algún estímulo o evento externo (que puede ocurrir de forma asincrónica), en lugar de la ejecución de una secuencia en línea, declaración de flujo de control.
+
+    A nivel de lenguaje de máquina o lenguaje ensamblador, las instrucciones de flujo de control generalmente funcionan alterando el contador del programa. 
+
+    Para algunas unidades centrales de procesamiento (CPU), las únicas instrucciones de flujo de control disponibles son instrucciones de rama condicionales o incondicionales, también denominadas saltos.
 
 
 
 || Composición 
+
+    En informática, la composición de objetos y la agregación de objetos son formas estrechamente relacionadas de combinar objetos o tipos de datos en otros más complejos. 
+
+    En la conversación a menudo se ignora la distinción entre composición y agregación. 
+
+    Los tipos comunes de composiciones son objetos utilizados en programación orientada a objetos, uniones etiquetadas, conjuntos, secuencias y diversas estructuras gráficas. 
+
+    Las composiciones de objetos se relacionan con las estructuras de datos, pero no son lo mismo.
+
+    La composición del objeto se refiere a la estructura lógica o conceptual de la información, no a la implementación o estructura de datos físicos utilizados para representarla. 
+
+    Por ejemplo, una secuencia se diferencia de un conjunto porque (entre otras cosas) el orden de los elementos compuestos importa para la primera pero no para el segundo. 
+
+    Se pueden utilizar estructuras de datos como matrices, listas vinculadas, tablas hash y muchas otras para implementar cualquiera de ellas. 
+
+    Quizás resulte confuso que algunos de los mismos términos se utilicen tanto para estructuras de datos como para compuestos.
+
+    Por ejemplo, "árbol binario" puede referirse a: como estructura de datos, es un medio para acceder a una secuencia lineal de elementos, y las posiciones reales de los elementos en el árbol son irrelevantes (el árbol se puede reorganizar internamente como uno quiera) sin cambiar su significado. 
+
+    Sin embargo, como composición de un objeto, las posiciones son relevantes y cambiarlas cambiaría el significado (como por ejemplo en los cladogramas).
+
+
+    Técnica de programación:
+
+        La programación orientada a objetos se basa en objetos para encapsular datos y comportamiento. 
+
+        Utiliza dos técnicas principales para ensamblar y componer funcionalidades en otras más complejas: subtipificación y composición de objetos. 
+
+        La composición de objetos consiste en combinar objetos dentro de objetos compuestos y, al mismo tiempo, garantizar la encapsulación de cada objeto mediante el uso de su interfaz bien definida sin visibilidad de sus partes internas. 
+
+        En este sentido, la composición de objetos difiere de las estructuras de datos, que no imponen la encapsulación.
+
+        La composición de objetos también puede tratarse de un grupo de múltiples objetos relacionados, como un conjunto o una secuencia de objetos. 
+
+        La delegación puede enriquecer la composición reenviando solicitudes o llamadas realizadas al objeto compuesto adjunto a uno de sus componentes internos.
+
+        En los lenguajes de programación basados en clases y tipificados, los tipos se pueden dividir en tipos compuestos y no compuestos, y la composición puede considerarse como una relación entre tipos: un objeto de un tipo compuesto (por ejemplo, un automóvil) "tiene" objetos de otros tipos (por ejemplo, rueda).
+
+        Cuando un objeto compuesto contiene varios subobjetos del mismo tipo, se les puede asignar roles particulares, a menudo distinguidos por nombres o números. 
+
+        Por ejemplo, un objeto Punto puede contener 3 números, cada uno de los cuales representa la distancia a lo largo de un eje diferente, como 'x', 'y' y 'z'. 
+
+        La composición debe distinguirse de la subtipificación, que es el proceso de agregar detalles a un tipo de datos general para crear un tipo de datos más específico. 
+
+        Por ejemplo, los automóviles pueden ser un tipo específico de vehículo: el automóvil es un vehículo. 
+
+        La subtipificación no describe una relación entre diferentes objetos, sino que dice que los objetos de un tipo son simultáneamente objetos de otro tipo.
+
+        El estudio de tales relaciones es la ontología.
+
+        En lenguajes de programación basados en prototipos como JavaScript, los objetos pueden heredar dinámicamente los comportamientos de un objeto prototipo en el momento de su instanciación.
+
+        La composición debe distinguirse de la creación de prototipos: el objeto recién instanciado hereda la composición de su prototipo, pero él mismo puede componerse por sí solo.
+
+        Los objetos compuestos se pueden representar en el almacenamiento coubicando los objetos compuestos, coubicando referencias o de muchas otras maneras. 
+
+        Los elementos dentro de un objeto compuesto pueden denominarse atributos, campos, miembros, propiedades u otros nombres, y la composición resultante como tipo compuesto, registro de almacenamiento, estructura, tupla o un tipo definido por el usuario (UDT). 
+
+
+    UML: 
+
+        En el modelado UML, los objetos se pueden componer conceptualmente, independientemente de la implementación con un lenguaje de programación. 
+
+        Hay cuatro formas de componer objetos en UML: propiedad, asociación, agregación y composición:
+
+            
+            Una propiedad representa un atributo de la clase.
+
+            
+            Una asociación representa una relación semántica entre instancias de las clases asociadas. El extremo miembro de una asociación corresponde a una propiedad de la clase asociada.
+
+            
+            Una agregación es un tipo de asociación que modela una relación parte/todo entre un agregado (todo) y un grupo de componentes relacionados (partes).
+
+            
+            Una composición, también llamada agregación compuesta, es un tipo de agregación que modela una relación parte/todo entre un compuesto (todo) y un grupo de partes de propiedad exclusiva.
+
+
+        La relación entre el agregado y sus componentes es una relación débil "tiene-a": los componentes pueden ser parte de varios agregados, se puede acceder a ellos a través de otros objetos sin pasar por el agregado y pueden sobrevivir al objeto agregado. 
+
+        El estado del objeto componente todavía forma parte del objeto agregado.
+
+
+        La relación entre el compuesto y sus partes es una fuerte relación "tiene-un": el objeto compuesto tiene la exclusiva "responsabilidad de la existencia y almacenamiento de los objetos compuestos", el objeto compuesto puede ser parte de como máximo un compuesto, y " Si se elimina un objeto compuesto, todas sus instancias parciales que son objetos se eliminan con él". 
+
+        Por tanto, en UML, composición tiene un significado más limitado que la composición de objetos habitual.
+
+
+        La notación gráfica representa:
+
+            la propiedad como un elemento escrito en el cuadro de la clase adjunta
+
+            la asociación como una línea simple entre las clases asociadas
+
+            la agregación como un diamante sin relleno en el lado del agregado y una línea continua
+
+            la composición como un diamante relleno en el lado del compuesto y una línea continua
+
+
+    Patrón compuesto
+
+        En ingeniería de software, el patrón compuesto es un patrón de diseño de partición. 
+
+        El patrón compuesto describe un grupo de objetos que se tratan de la misma manera que una única instancia del mismo tipo de objeto. 
+
+        La intención de un compuesto es "componer" objetos en estructuras de árbol para representar jerarquías de parte y todo. 
+
+        La implementación del patrón compuesto permite a los clientes tratar objetos y composiciones individuales de manera uniforme.
+
+
+        Descripción general
+
+            El patrón de diseño compuesto es uno de los veintitrés patrones de diseño GoF bien conocidos que describen cómo resolver problemas de diseño recurrentes para diseñar software orientado a objetos flexible y reutilizable, es decir, objetos que son más fáciles de implementar, cambiar, probar y reutilizar.
+
+
+        ¿Qué problemas puede resolver el patrón de diseño compuesto?
+
+            Se debe representar una jerarquía parte-todo para que los clientes puedan tratar los objetos parciales y totales de manera uniforme.
+
+            Una jerarquía parte-todo debe representarse como una estructura de árbol.
+
+
+        Al definir (1) objetos de parte y (2) objetos de todo que actúan como contenedores para los objetos de parte, los clientes deben tratarlos por separado, lo que complica el código del cliente.
+
+
+        ¿Qué solución describe el patrón de diseño compuesto?
+
+            Defina una interfaz de componente unificada tanto para objetos parciales (hoja) como para objetos completos (compuestos).
+
+            Los objetos Hoja individuales implementan la interfaz Componente directamente y los objetos Compuestos reenvían solicitudes a sus componentes secundarios.
+
+
+        Esto permite a los clientes trabajar a través de la interfaz de Componente para tratar los objetos Hoja y Compuestos de manera uniforme: los objetos Hoja realizan una solicitud directamente y los objetos Compuestos reenvían la solicitud a sus componentes secundarios de forma recursiva hacia abajo en la estructura del árbol. 
+
+        Esto hace que las clases de cliente sean más fáciles de implementar, cambiar, probar y reutilizar.
+
+
+    Composición sobre herencia:
+
+        La composición sobre la herencia (o principio de reutilización compuesta) en la programación orientada a objetos (POO) es el principio de que las clases deben favorecer el comportamiento polimórfico y la reutilización del código mediante su composición (al contener instancias de otras clases que implementan la funcionalidad deseada) sobre la herencia de una base. o clase de padres. 
+
+        Idealmente, toda la reutilización se puede lograr ensamblando componentes existentes, pero en la práctica a menudo se necesita herencia para crear otros nuevos. 
+
+        Por lo tanto, la herencia y la composición de objetos suelen ir de la mano, como se analiza en el libro Design Patterns (1994).
+
+
+        Lo esencial:
+
+            Una implementación de composición sobre herencia generalmente comienza con la creación de varias interfaces que representan los comportamientos que debe exhibir el sistema. 
+
+            Las interfaces pueden facilitar el comportamiento polimórfico. 
+
+            Las clases que implementan las interfaces identificadas se crean y agregan a las clases de dominio empresarial según sea necesario. 
+
+            Por tanto, los comportamientos del sistema se realizan sin herencia.
+
+            De hecho, todas las clases de dominio empresarial pueden ser clases base sin herencia alguna. 
+
+            La implementación alternativa de los comportamientos del sistema se logra proporcionando otra clase que implemente la interfaz de comportamiento deseada.
+
+            Una clase que contiene una referencia a una interfaz puede admitir implementaciones de la interfaz, una elección que puede retrasarse hasta el tiempo de ejecución.
+
+
+
+|| Fabrica
+    
+    En programación orientada a objetos, una fábrica es un objeto para crear otros objetos; Formalmente, es una función o método que devuelve objetos de un prototipo o clase variable a partir de alguna llamada a un método, que se supone que es "nuevo". 
+
+    En términos más generales, una subrutina que devuelve un objeto "nuevo" puede denominarse "fábrica", como en el método de fábrica o en la función de fábrica. 
+
+    El patrón de fábrica es la base de varios patrones de diseño de software relacionados.
+
+
+    Motivación:
+
+        En la programación basada en clases, una fábrica es una abstracción de un constructor de una clase, mientras que en la programación basada en prototipos una fábrica es una abstracción de un objeto prototipo. 
+
+        Un constructor es concreto en el sentido de que crea objetos como instancias de una sola clase y mediante un proceso específico (creación de instancias de clase), mientras que una fábrica puede crear objetos creando instancias de varias clases o utilizando otros esquemas de asignación, como un grupo de objetos. 
+
+        Un objeto prototipo es concreto en el sentido de que se utiliza para crear objetos mediante clonación, mientras que una fábrica puede crear objetos mediante la clonación de varios prototipos o mediante otros esquemas de asignación.
+
+        Una fábrica se puede implementar de varias maneras. 
+
+        La mayoría de las veces se implementa como un método, en cuyo caso se denomina método de fábrica. 
+
+        A veces se implementa como una función, en cuyo caso se denomina función de fábrica.
+
+        En algunos lenguajes, los constructores son en sí mismos fábricas. 
+
+        Sin embargo, en la mayoría de los lenguajes no lo son, y los constructores se invocan de una manera que es idiomática para el lenguaje, como usando la palabra clave new, mientras que una fábrica no tiene un estado especial y se invoca a través de una llamada a un método normal o una llamada a una función. 
+
+        En estos lenguajes, una fábrica es una abstracción de un constructor, pero no estrictamente una generalización, ya que los constructores no son fábricas en sí mismos.
+
+
+    Terminología:
+
+        La terminología difiere en cuanto a si el concepto de fábrica es en sí mismo un patrón de diseño: en los patrones de diseño no existe un "patrón de fábrica", sino dos patrones (patrón de método de fábrica y patrón de fábrica abstracto) que utilizan fábricas. 
+
+        Algunas fuentes se refieren al concepto como patrón de fábrica, mientras que otras consideran el concepto en sí mismo un modismo de programación, reservando el término "patrón de fábrica" o "patrones de fábrica" a patrones más complicados que utilizan fábricas, con mayor frecuencia el patrón de método de fábrica; En este contexto, el concepto de fábrica en sí puede denominarse fábrica simple.
+
+        En otros contextos, particularmente en el lenguaje Python, se utiliza la propia "fábrica".
+
+        En términos más generales, "fábrica" se puede aplicar no sólo a un objeto que devuelve objetos de alguna llamada a un método, sino a una subrutina que devuelve objetos, como en una función de fábrica (incluso si las funciones no son objetos) o un método de fábrica. 
+
+        Debido a que en muchos lenguajes las fábricas se invocan llamando a un método, el concepto general de fábrica a menudo se confunde con el patrón de diseño de patrón de método de fábrica específico.
+
+
+    Uso:
+
+        La programación orientada a objetos proporciona polimorfismo en el uso de objetos mediante el envío de métodos, formalmente polimorfismo de subtipo mediante envío único determinado por el tipo de objeto en el que se llama el método. 
+
+        Sin embargo, esto no funciona para los constructores, ya que los constructores crean un objeto de algún tipo, en lugar de utilizar un objeto existente.
+
+        Más concretamente, cuando se llama a un constructor, todavía no hay ningún objeto sobre el que enviar.
+
+        El uso de fábricas en lugar de constructores o prototipos permite utilizar el polimorfismo para la creación de objetos, no solo para su uso. 
+
+        Específicamente, el uso de fábricas proporciona encapsulación y significa que el código no está vinculado a clases u objetos específicos y, por lo tanto, la jerarquía de clases o los prototipos se pueden cambiar o refactorizar sin necesidad de cambiar el código que los usa: se abstraen de la jerarquía de clases o los prototipos.
+
+        Más técnicamente, en lenguajes donde las fábricas generalizan los constructores, las fábricas generalmente se pueden usar en cualquier lugar donde puedan estar los constructores, lo que significa que las interfaces que aceptan un constructor también pueden aceptar una fábrica; por lo general, solo se necesita algo que cree un objeto, en lugar de necesitar especificar una clase y una instanciación.
+
+
+    Creación de objetos:
+
+        Los objetos de fábrica se utilizan en situaciones en las que conseguir un objeto de un tipo particular es un proceso más complejo que simplemente crear un nuevo objeto, especialmente si se desea una asignación o inicialización compleja.
+
+        Algunos de los procesos necesarios en la creación de un objeto incluyen determinar qué objeto crear, gestionar la vida útil del objeto y gestionar los problemas especializados de montaje y desmontaje del objeto. 
+
+        El objeto de fábrica podría decidir crear la clase del objeto (si corresponde) dinámicamente, devolverlo desde un grupo de objetos, realizar una configuración compleja en el objeto u otras cosas. 
+
+        De manera similar, usando esta definición, un singleton implementado por el patrón singleton es una fábrica formal: devuelve un objeto, pero no crea nuevos objetos más allá de la instancia única.
+
+
+        Ejemplo: 
+
+            El ejemplo más simple de una fábrica es una función de fábrica simple, que simplemente invoca un constructor y devuelve el resultado. 
+
+            Función de fábrica f que crea una instancia de una clase:
+
+            ```python
+
+            def f():
+                return A()
+        
+            ```
+
+
+            Una función de fábrica simple que implementa el patrón singleton:
+
+            def f():
+                if f.obj is None:
+                    f.obj = A()
+                return f.obj
+
+            f.obj = None
+
+            ```
+
+            Esto creará un objeto cuando se llame por primera vez y siempre devolverá el mismo objeto a partir de entonces.
+
+
+    Sintaxis:
+
+        Las fábricas se pueden invocar de varias maneras, más a menudo mediante una llamada a un método (un método de fábrica), a veces llamándolas como una función si la fábrica es un objeto invocable (una función de fábrica).
+
+        En algunos lenguajes, los constructores y las fábricas tienen una sintaxis idéntica, mientras que en otros los constructores tienen una sintaxis especial. 
+
+        En lenguajes donde los constructores y las fábricas tienen una sintaxis idéntica, como Python, Perl, Ruby, Object Pascal y F#, los constructores pueden ser reemplazados de forma transparente por fábricas. 
+
+        En los lenguajes en los que difieren, hay que distinguirlos en las interfaces, y cambiar entre constructores y fábricas requiere cambiar las llamadas.
+
+
+    Semántica:
+
+        En lenguajes donde los objetos se asignan dinámicamente, como en Java o Python, las fábricas son semánticamente equivalentes a los constructores. 
+
+        Sin embargo, en lenguajes como C++ que permiten que algunos objetos se asignen estáticamente, las fábricas son diferentes de los constructores para clases asignadas estáticamente, ya que a estos últimos se les puede determinar la asignación de memoria en el momento de la compilación, mientras que la asignación de los valores de retorno de las fábricas debe determinarse en tiempo de ejecución. 
+
+        Si se puede pasar un constructor como argumento a una función, entonces la invocación del constructor y la asignación del valor de retorno deben realizarse dinámicamente en tiempo de ejecución y, por lo tanto, tener una semántica similar o idéntica a la invocación de una fábrica.
+
+
+    Patrones de diseño:
+
+        Las fábricas se utilizan en varios patrones de diseño, específicamente en patrones de creación como la biblioteca de objetos de patrones de diseño. 
+
+        Se han desarrollado recetas específicas para implementarlas en muchos idiomas. 
+
+        Por ejemplo, varios "patrones GoF", como el "patrón de método Factory", el "Builder" o incluso el "Singleton" son implementaciones de este concepto. 
+
+        En cambio, el "patrón de fábrica abstracto" es un método para construir colecciones de fábricas.
+
+        En algunos patrones de diseño, un objeto de fábrica tiene un método para cada tipo de objeto que es capaz de crear. 
+
+        Estos métodos aceptan opcionalmente parámetros que definen cómo se crea el objeto y luego devuelven el objeto creado.
+
+
+    Aplicaciones
+
+        Los objetos de fábrica son comunes en kits de herramientas y marcos donde el código de la biblioteca necesita crear objetos de tipos que las aplicaciones que utilizan el framework pueden subclasificar. 
+
+        También se utilizan en el desarrollo basado en pruebas para permitir que las clases se pongan a prueba.
+
+        Las fábricas determinan el tipo concreto de objeto que se va a crear, y es aquí donde se crea realmente el objeto.
+
+        Como la fábrica solo devuelve una interfaz abstracta al objeto, el código del cliente no conoce (y no está sobrecargado por) el tipo concreto real del objeto que acaba de crear. 
+
+        Sin embargo, la fábrica abstracta conoce el tipo de objeto concreto. 
+
+        En particular, esto significa:
+
+            El código del cliente no tiene conocimiento alguno del tipo concreto y no necesita incluir archivos de encabezado ni declaraciones de clase relacionadas con el tipo concreto. El código del cliente trata sólo con el tipo abstracto. De hecho, la fábrica crea objetos de un tipo concreto, pero el código del cliente accede a dichos objetos sólo a través de su interfaz abstracta.
+
+
+            La adición de nuevos tipos concretos se realiza modificando el código del cliente para utilizar una fábrica diferente, una modificación que suele ser una línea en un archivo. Esto es significativamente más fácil que modificar el código del cliente para crear una instancia de un nuevo tipo, lo que requeriría cambiar cada ubicación en el código donde se crea un nuevo objeto.
+
+
+    Aplicabilidad:
+
+        Las fábricas se pueden utilizar cuando:
+
+            La creación de un objeto hace imposible su reutilización sin una duplicación significativa de código.
+
+            La creación de un objeto requiere acceso a información o recursos que no deberían estar contenidos dentro de la clase que lo compone.
+
+            La gestión de la vida útil de los objetos generados debe centralizarse para garantizar un comportamiento coherente dentro de la aplicación.
+
+
+        Las fábricas, específicamente los métodos de fábrica, son comunes en los kits de herramientas y los marcos, donde el código de la biblioteca necesita crear objetos de tipos que las aplicaciones que utilizan el marco pueden subclasificar.
+
+        Las jerarquías de clases paralelas a menudo requieren que los objetos de una jerarquía puedan crear objetos apropiados a partir de otra.
+
+        Los métodos de fábrica se utilizan en el desarrollo basado en pruebas para permitir que las clases se pongan a prueba.
+
+        Si dicha clase Foo crea otro objeto Dangerous que no se puede someter a pruebas unitarias automatizadas (tal vez se comunica con una base de datos de producción que no siempre está disponible), entonces la creación de objetos Dangerous se coloca en el método de fábrica virtual createDangerous en clase Foo. 
+
+        Para las pruebas, luego se crea TestFoo (una subclase de Foo), con el método de fábrica virtual createDangerous anulado para crear y devolver FakeDangerous, un objeto falso. 
+
+        Las pruebas unitarias luego usan TestFoo para probar la funcionalidad de Foo sin incurrir en el efecto secundario de usar un objeto peligroso real.
+
+
+    Patrón de método de fábrica:
+
+        En la programación orientada a objetos, el patrón de método de fábrica es un patrón de creación que utiliza métodos de fábrica para abordar el problema de crear objetos sin tener que especificar la clase exacta del objeto que se creará.
+
+        Esto se hace creando objetos llamando a un método de fábrica, ya sea especificado en una interfaz e implementado por clases secundarias, o implementado en una clase base y opcionalmente anulado por clases derivadas, en lugar de llamar a un constructor.
+
+
+    Descripción general:
+
+        El patrón de diseño Factory Method es uno de los veintitrés patrones de diseño conocidos que describen cómo resolver problemas de diseño recurrentes para diseñar software orientado a objetos flexible y reutilizable, es decir, objetos que son más fáciles de implementar, cambiar, probar y reutilizar.
+
+        El patrón de diseño Factory Method resuelve problemas como:
+
+            ¿Cómo se puede crear un objeto para que las subclases puedan redefinir su implementación posterior y distinta?
+
+            ¿Cómo se puede aplazar la creación de instancias de un objeto a una subclase?
+
+
+        El patrón de diseño Factory Method describe cómo resolver dichos problemas:
+
+            Defina un método de fábrica dentro de la superclase que difiera la creación del objeto al método de fábrica de una subclase.
+
+            Cree un objeto llamando a un método de fábrica en lugar de llamar directamente a un constructor.
+
+
+        Esto permite la escritura de subclases que pueden cambiar la forma en que se crea un objeto (por ejemplo, redefiniendo qué clase crear una instancia).
+
+
+
+|| Singleton:
+    
+    En matemáticas, un singleton, también conocido como conjunto unitario o conjunto de un punto, es un conjunto con exactamente un elemento.
+
+    Por ejemplo, el conjunto { 0 } es un singleton cuyo único elemento es 0.
+
+    En ingeniería de software, el patrón singleton es un patrón de diseño de software que restringe la creación de instancias de una clase a una instancia singular.
+
+    Uno de los conocidos patrones de diseño "Gang of Four", que describe cómo resolver problemas recurrentes en software orientado a objetos, el patrón es útil cuando se necesita exactamente un objeto para coordinar acciones en todo un sistema.
+
+    Más específicamente, el patrón singleton permite que los objetos:
+
+        Asegúrese de que solo tengan una instancia
+
+        Proporcionar fácil acceso a esa instancia
+
+        Controlar su creación de instancias (por ejemplo, ocultar los constructores de una clase)
+
+    El término proviene del concepto matemático de singleton.
+
+
+    Usos comunes:
+
+        Los singletons a menudo se prefieren a las variables globales porque no contaminan el espacio de nombres global (o el espacio de nombres que los contiene). 
+
+        Además, permiten una asignación e inicialización diferidas, mientras que las variables globales en muchos idiomas siempre consumirán recursos.
+
+        El patrón singleton también se puede utilizar como base para otros patrones de diseño, como los patrones de fábrica abstracta, método de fábrica, constructor y prototipo. 
+
+        Los objetos de fachada también suelen ser únicos porque solo se requiere un objeto de fachada (facade).
+
+        El registro (Logging/Log:file) es un caso de uso común en el mundo real para singletons, porque todos los objetos que desean registrar mensajes requieren un punto de acceso uniforme y escribir conceptualmente en una única fuente.
+
+
+    Implementaciones
+
+        Las implementaciones del patrón singleton garantizan que solo exista una instancia de la clase singleton y, por lo general, brindan acceso global a esa instancia.
+
+        Normalmente, esto se logra mediante:
+
+            Declarar que todos los constructores de la clase son privados, lo que evita que otros objetos creen instancias de ella.
+
+            Proporcionar un método estático que devuelva una referencia a la instancia.
+
+        
+        La instancia normalmente se almacena como una variable estática privada; la instancia se crea cuando se inicializa la variable, en algún momento antes de que se llame por primera vez al método estático.
+
+
+    Inicialización diferida:
+
+        Una implementación singleton puede utilizar una inicialización diferida en la que la instancia se crea cuando se invoca por primera vez el método estático. 
+
+        En programas multiproceso, esto puede provocar condiciones de carrera que den como resultado la creación de múltiples instancias.
+
+
+
+|| Builder
+
+    Descripción general
+
+        El patrón de diseño Builder es uno de los patrones de diseño que describen cómo resolver problemas de diseño recurrentes en software orientado a objetos.
+
+        El patrón de diseño Builder resuelve problemas como:
+
+            ¿Cómo puede una clase (el mismo proceso de construcción) crear diferentes representaciones de un objeto complejo?
+
+            ¿Cómo se puede simplificar una clase que incluye la creación de un objeto complejo?
+
+
+        Crear y ensamblar las partes de un objeto complejo directamente dentro de una clase es inflexible.
+
+        Compromete a la clase a crear una representación particular del objeto complejo y hace imposible cambiar la representación posteriormente independientemente de (sin tener que cambiar) la clase.
+
+        El patrón de diseño Builder describe cómo resolver dichos problemas:
+
+            Encapsule la creación y el ensamblaje de las partes de un objeto complejo en un objeto Builder separado.
+
+            Una clase delega la creación de objetos a un objeto Builder en lugar de crear los objetos directamente.
+
+
+        Una clase (el mismo proceso de construcción) puede delegar en diferentes objetos Builder para crear diferentes representaciones de un objeto complejo.
+
+
+    Definición:
+
+        La intención del patrón de diseño Builder es separar la construcción de un objeto complejo de su representación. 
+
+        Al hacerlo, un mismo proceso de construcción puede crear diferentes representaciones.
+
+
+    Ventajas:
+
+        Las ventajas del patrón Builder incluyen:
+
+            Le permite variar la representación interna de un producto.
+
+            Encapsula código para construcción y representación.
+
+            Proporciona control sobre los pasos del proceso constructivo.
+
+
+    Desventajas
+
+        Las desventajas del patrón Builder incluyen:
+
+            Se debe crear un ConcreteBuilder distinto para cada tipo de producto.
+
+            Las clases de constructor deben ser mutables.
+
+            Puede obstaculizar/complicar la inyección de dependencia.
+
+
+
+|| Facade 
+
+    El patrón de fachada es un patrón de diseño de software comúnmente utilizado en programación orientada a objetos. 
+
+    De manera análoga a una fachada en arquitectura, una fachada es un objeto que sirve como una interfaz frontal que enmascara un código estructural o subyacente más complejo. 
+
+    Una fachada puede:
+
+        mejorar la legibilidad y usabilidad de una biblioteca de software enmascarando la interacción con componentes más complejos detrás de una única API (y a menudo simplificada)
+
+        Proporcionar una interfaz específica del contexto para una funcionalidad más genérica (completa con validación de entrada específica del contexto).
+
+        Servir como punto de partida para una refactorización más amplia de sistemas monolíticos o estrechamente acoplados en favor de un código más débilmente acoplado.
+
+
+    Los desarrolladores suelen utilizar el patrón de diseño de fachada cuando un sistema es muy complejo o difícil de entender porque el sistema tiene muchas clases interdependientes o porque su código fuente no está disponible. 
+
+    Este patrón oculta las complejidades del sistema más grande y proporciona una interfaz más simple para el cliente. 
+
+    Por lo general, implica una única clase contenedora que contiene un conjunto de miembros requeridos por el cliente. 
+
+    Estos miembros acceden al sistema en nombre del cliente de fachada y ocultan los detalles de implementación.
+
+
+    Descripción general:
+
+        El patrón de diseño Fachada es uno de los veintitrés patrones de diseño GoF bien conocidos que describen cómo resolver problemas de diseño recurrentes para diseñar software orientado a objetos flexible y reutilizable, es decir, objetos que son más fáciles de implementar, cambiar, probar y reutilizar.
+
+
+        ¿Qué problemas puede resolver el patrón de diseño Fachada?
+
+            Para que un subsistema complejo sea más fácil de usar, se debe proporcionar una interfaz simple para un conjunto de interfaces en el subsistema.
+
+            Deben minimizarse las dependencias de un subsistema.
+
+
+        Los clientes que acceden a un subsistema complejo se refieren directamente a (dependen de) muchos objetos diferentes que tienen diferentes interfaces (acoplamiento estrecho), lo que hace que los clientes sean difíciles de implementar, cambiar, probar y reutilizar.
+
+        ¿Qué solución describe el patrón de diseño Fachada?
+
+            Defina un objeto de fachada que
+
+            implementa una interfaz simple en términos de (delegando a) las interfaces en el subsistema y
+            puede realizar funciones adicionales antes/después de reenviar una solicitud.
+
+ 
+        Esto permite trabajar a través de un objeto Facade para minimizar las dependencias de un subsistema.
+
+
+    Uso:
+
+    Una fachada se utiliza cuando se desea una interfaz más fácil o sencilla para un objeto subyacente. 
+
+    Alternativamente, se puede utilizar un adaptador cuando el contenedor debe respetar una interfaz particular y debe admitir un comportamiento polimórfico. 
+
+    Un decorador permite agregar o alterar el comportamiento de una interfaz en tiempo de ejecución.
+
+
+    Adaptador:
+        
+        Convierte una interfaz en otra para que coincida con lo que el cliente espera.
+
+
+    Decorador:
+
+        Agrega dinámicamente responsabilidad a la interfaz al empaquetar el código original.
+
+
+    Fachada
+
+        Proporciona una interfaz simplificada.
+
+    
+    El patrón de fachada se usa típicamente cuando
+
+        Se requiere una interfaz simple para acceder a un sistema complejo.
+
+        Un sistema es muy complejo o difícil de entender.
+
+        se necesita un punto de entrada para cada nivel de software en capas, o
+        Las abstracciones e implementaciones de un subsistema están estrechamente acopladas.
+
+
+
+|| Decorador
+    
+    En programación orientada a objetos, el patrón decorador es un patrón de diseño que permite agregar comportamiento a un objeto individual, dinámicamente, sin afectar el comportamiento de otras instancias de la misma clase. 
+
+    El patrón decorador suele ser útil para adherirse al principio de responsabilidad única, ya que permite dividir la funcionalidad entre clases con áreas de interés únicas, así como al principio abierto-cerrado, al permitir que la funcionalidad de una clase se extienda sin ser modificado. 
+
+    El uso del decorador puede ser más eficiente que la creación de subclases, porque el comportamiento de un objeto se puede aumentar sin definir un objeto completamente nuevo.
+
+
+    Descripción general
+
+        El patrón de diseño decorador es uno de los veintitrés patrones de diseño más conocidos; estos describen cómo resolver problemas de diseño recurrentes y diseñar software orientado a objetos flexible y reutilizable, es decir, objetos que son más fáciles de implementar, cambiar, probar y reutilizar.
+
+
+        ¿Qué problemas puede resolver?
+
+            Las responsabilidades deben agregarse (y eliminarse) de un objeto dinámicamente en tiempo de ejecución.
+
+            Se debe proporcionar una alternativa flexible a la subclasificación para ampliar la funcionalidad.
+
+        
+        Cuando se utilizan subclases, diferentes subclases amplían una clase de diferentes maneras. 
+
+        Pero una extensión está vinculada a la clase en tiempo de compilación y no se puede cambiar en tiempo de ejecución.
+
+
+        ¿Qué solución describe?
+
+            Definir objetos decoradores que implementan la interfaz del objeto extendido (decorado) (Componente) de forma transparente reenviándole todas las solicitudes
+
+            realizar funciones adicionales antes/después de reenviar una solicitud.
+
+        
+        Esto permite trabajar con diferentes objetos Decorator para ampliar la funcionalidad de un objeto dinámicamente en tiempo de ejecución.
+
+
+    Intención:
+
+        El patrón decorador se puede utilizar para ampliar (decorar) la funcionalidad de un determinado objeto de forma estática o, en algunos casos, en tiempo de ejecución, independientemente de otras instancias de la misma clase, siempre que se realicen algunos trabajos preliminares en tiempo de diseño. 
+
+        Esto se logra diseñando una nueva clase Decorador que envuelve la clase original. 
+
+        Esta envoltura podría lograrse mediante la siguiente secuencia de pasos:
+
+            1. Subclasificar la clase Componente original en una clase Decorador.
+
+            2. En la clase Decorador, agregue un puntero de Componente como campo.
+
+            3. En la clase Decorador, pase un Componente al constructor Decorador para inicializar el puntero del Componente.
+
+            4. En la clase Decorador, reenvíe todos los métodos de Componente al puntero de Componente.
+
+            5. En la clase ConcreteDecorator, anule cualquier método de componente cuyo comportamiento deba modificarse.
+
+        Este patrón está diseñado para que se puedan apilar varios decoradores uno encima del otro, agregando cada vez una nueva funcionalidad a los métodos anulados.
+
+        Tenga en cuenta que los decoradores y el objeto de clase original comparten un conjunto común de características. 
+
+
+        En el diagrama anterior, el método operación() estaba disponible tanto en la versión decorada como sin decorar.
+
+        Las características de decoración (por ejemplo, métodos, propiedades u otros miembros) generalmente se definen mediante una interfaz, mixin (también conocido como rasgo) o herencia de clase que comparten los decoradores y el objeto decorado. 
+
+        En el ejemplo anterior, la clase Component es heredada tanto por ConcreteComponent como por las subclases que descienden de Decorator.
+
+        El patrón decorador es una alternativa a la subclasificación. 
+
+        La creación de subclases agrega comportamiento en el momento de la compilación y el cambio afecta a todas las instancias de la clase original; La decoración puede proporcionar un nuevo comportamiento en tiempo de ejecución para objetos seleccionados.
+
+        Esta diferencia adquiere mayor importancia cuando existen varias formas independientes de ampliar la funcionalidad. 
+
+        En algunos lenguajes de programación orientados a objetos, las clases no se pueden crear en tiempo de ejecución y, por lo general, no es posible predecir, en tiempo de diseño, qué combinaciones de extensiones se necesitarán. 
+
+        Esto significaría que se tendría que crear una nueva clase para cada combinación posible. 
+
+        Por el contrario, los decoradores son objetos creados en tiempo de ejecución y se pueden combinar según su uso. 
+
+        Las implementaciones de I/O Streams tanto de Java como de .NET Framework incorporan el patrón decorador.
+
+
+    Motivación: 
+
+        Como ejemplo, considere una ventana en un sistema de ventanas. 
+
+        Para permitir el desplazamiento del contenido de la ventana, es posible que desee agregarle barras de desplazamiento horizontales o verticales, según corresponda. 
+
+        Suponga que las ventanas están representadas por instancias de la interfaz Ventana y suponga que esta clase no tiene funcionalidad para agregar barras de desplazamiento. 
+
+        Se podría crear una subclase ScrollingWindow que los proporcione, o crear un ScrollingWindowDecorator que agregue esta funcionalidad a los objetos Window existentes. 
+
+        En este punto, cualquier solución estaría bien.
+
+        Ahora, supongamos que uno también desea poder agregar bordes a las ventanas.
+
+        Nuevamente, la clase Window original no tiene soporte. 
+
+        La subclase ScrollingWindow ahora plantea un problema, porque efectivamente ha creado un nuevo tipo de ventana. 
+
+        Si se desea agregar soporte de bordes a muchas ventanas, pero no a todas, se deben crear subclases WindowWithBorder y ScrollingWindowWithBorder, etc. 
+
+        Este problema empeora con cada nueva característica o subtipo de ventana que se agrega. 
+
+        Para la solución decoradora, se crea un nuevo BorderedWindowDecorator.
+
+        Cualquier combinación de ScrollingWindowDecorator o BorderedWindowDecorator puede decorar ventanas existentes.
+
+        Si es necesario agregar la funcionalidad a todos los Windows, se puede modificar la clase base. 
+
+        Por otro lado, a veces (por ejemplo, usando frameworks externos) no es posible, legal o conveniente modificar la clase base.
+
+        En el ejemplo anterior, las clases SimpleWindow y WindowDecorator implementan la interfaz Window, que define el método draw() y el método getDescription() que se requieren en este escenario para decorar un control de ventana.
+
+
+    Casos de uso comunes:
+
+        Aplicando decoradores:
+
+            Agregar o eliminar decoradores mediante una orden (como presionar un botón) es un patrón de interfaz de usuario común, que a menudo se implementa junto con el patrón de diseño Command.
+
+            Por ejemplo, una aplicación de edición de texto podría tener un botón para resaltar texto. 
+
+            Al presionar el botón, los glifos de texto individuales actualmente seleccionados estarán todos envueltos en decoradores que modifican su función draw(), lo que hace que se dibujen de manera resaltada (una implementación real probablemente también usaría un sistema de demarcación para maximizar la eficiencia).
+
+            Aplicar o eliminar decoradores en función de cambios de estado es otro caso de uso común. 
+
+            Dependiendo del alcance del estado, los decoradores se pueden aplicar o eliminar en masa. 
+
+            De manera similar, el patrón de diseño State se puede implementar utilizando decoradores en lugar de objetos subclasificados que encapsulan la funcionalidad cambiante.
+
+            El uso de decoradores de esta manera hace que el estado interno y la funcionalidad del objeto State sean más compositivos y capaces de manejar una complejidad arbitraria.
+
+
+        Uso en objetos Flyweight:
+
+            La decoración también se utiliza a menudo en el patrón de diseño Flyweight. 
+
+            Los objetos Flyweight se dividen en dos componentes: un componente invariante que se comparte entre todos los objetos Flyweight; y una variante, componente decorado que puede ser parcialmente compartido o completamente no compartido. 
+
+            Esta partición del objeto flyweight tiene como objetivo reducir el consumo de memoria. 
+
+            Los decoradores normalmente también se almacenan en caché y se reutilizan. Todos los decoradores contendrán una referencia común al objeto invariante compartido. 
+
+            Si el estado decorado es sólo parcialmente variante, entonces los decoradores también se pueden compartir hasta cierto punto, aunque se debe tener cuidado de no alterar su estado mientras se utilizan. UITableView de iOS implementa el patrón de peso mosca de esta manera: las celdas reutilizables de una vista de tabla son decoradores que contienen referencias a un objeto de fila de vista de tabla común, y las celdas se almacenan en caché/se reutilizan.
+
+
+        Obstáculos al interactuar con decoradores:
+
+            Aplicar combinaciones de decoradores de diversas maneras a una colección de objetos introduce algunos problemas al interactuar con la colección de una manera que aprovecha al máximo la funcionalidad agregada por los decoradores. 
+
+            El uso de patrones de Adaptador o Visitante puede resultar útil en tales casos. 
+
+            La interacción con múltiples capas de decoradores plantea desafíos adicionales y la lógica de los Adaptadores y Visitantes debe diseñarse para tenerlo en cuenta.
+
+
+        Relevancia arquitectónica:
+
+            Los decoradores apoyan un enfoque compositivo más que jerárquico de arriba hacia abajo para ampliar la funcionalidad. 
+
+            Un decorador permite agregar o alterar el comportamiento de una interfaz en tiempo de ejecución. 
+
+            Se pueden utilizar para envolver objetos en una combinación arbitraria de múltiples capas. 
+
+            Hacer lo mismo con las subclases significa implementar redes complejas de herencia múltiple, que son ineficientes en memoria y, en cierto punto, simplemente no pueden escalarse. 
+
+            Del mismo modo, intentar implementar la misma funcionalidad con propiedades sobrecarga cada instancia del objeto con propiedades innecesarias. 
+
+            Por las razones anteriores, los decoradores a menudo se consideran una alternativa a las subclases que ahorra memoria.
+
+            Los decoradores también se pueden utilizar para especializar objetos que no se pueden subclasificar, cuyas características deben modificarse en tiempo de ejecución (como se menciona en otra parte) o, en general, objetos que carecen de alguna funcionalidad necesaria.
+
+
+        Uso para mejorar las API:
+
+            El patrón decorador también puede aumentar el patrón Fachada. 
+
+            Una fachada está diseñada para interactuar simplemente con el complejo sistema que encapsula, pero no agrega funcionalidad al sistema.
+
+            Sin embargo, la envoltura de un sistema complejo proporciona un espacio que puede usarse para introducir nuevas funcionalidades basadas en la coordinación de subcomponentes del sistema. 
+
+            Por ejemplo, un patrón de fachada puede unificar muchos diccionarios de idiomas diferentes bajo una interfaz de diccionario multilingüe.
+
+            La nueva interfaz también puede proporcionar nuevas funciones para traducir palabras entre idiomas. Este es un patrón híbrido: la interfaz unificada proporciona un espacio para el aumento. 
+
+            Piense en los decoradores como no limitados a envolver objetos individuales, sino que también son capaces de envolver grupos de objetos en este enfoque híbrido.
+
+
+
+|| Gang of Four (GoF)
+    
+    Patrones de diseño: elementos de software orientado a objetos reutilizables (1994) es un libro de ingeniería de software que describe patrones de diseño de software. 
+
+    El libro fue escrito por Erich Gamma, Richard Helm, Ralph Johnson y John Vlissides, con un prólogo de Grady Booch. 
+
+    El libro está dividido en dos partes: los dos primeros capítulos exploran las capacidades y los peligros de la programación orientada a objetos, y los capítulos restantes describen 23 patrones clásicos de diseño de software. 
+
+    El libro incluye ejemplos en C++ y Smalltalk.
+
+
+    Aportes:
+
+        Discusión de técnicas de diseño orientado a objetos, basada en la experiencia de los autores, que creen que conducirían a un buen diseño de software orientado a objetos, que incluye:
+
+            "Programa para una interfaz, no para una implementación". (Banda de los Cuatro 1995:18)
+            
+            Composición sobre herencia: "Favorezca la 'composición de objetos' sobre la 'herencia de clases'". (Banda de los Cuatro 1995:20)
+
+            Los autores afirman lo siguiente como ventajas de las interfaces sobre la implementación:
+
+                Los clientes desconocen los tipos específicos de objetos que utilizan, siempre y cuando el objeto se adhiera a la interfaz.
+                
+                los clientes desconocen las clases que implementan estos objetos; los clientes sólo conocen las clases abstractas que definen la interfaz.
+
+            El uso de una interfaz también conduce a enlaces dinámicos y polimorfismo, que son características centrales de la programación orientada a objetos.
+
+            Los autores se refieren a la herencia como reutilización de la caja blanca, y la caja blanca se refiere a la visibilidad, porque las partes internas de las clases principales a menudo son visibles para las subclases. 
+
+            Por el contrario, los autores se refieren a la composición de objetos (en la que objetos con interfaces bien definidas son utilizados dinámicamente en tiempo de ejecución por objetos que obtienen referencias a otros objetos) como reutilización de caja negra porque no es necesario que los detalles internos de los objetos compuestos sean visibles en el código que utiliza a ellos.
+
+            Los autores discuten extensamente la tensión entre herencia y encapsulación y afirman que, según su experiencia, los diseñadores abusan de la herencia (Gang of Four 1995:20). 
+
+            El peligro se expresa de la siguiente manera:
+
+                "Debido a que la herencia expone una subclase a detalles de la implementación de su padre, a menudo se dice que 'la herencia rompe la encapsulación'". (Banda de los Cuatro 1995:19)
+
+            Advierten que la implementación de una subclase puede llegar a estar tan ligada a la implementación de su clase principal que cualquier cambio en la implementación de la clase principal obligará a la subclase a cambiar.
+
+            Además, afirman que una forma de evitar esto es heredar sólo de clases abstractas, pero luego señalan que la reutilización del código es mínima.
+
+            Se recomienda utilizar la herencia principalmente cuando se agrega funcionalidad a componentes existentes, se reutiliza la mayor parte del código antiguo y se agregan cantidades relativamente pequeñas de código nuevo.
+
+            Para los autores, la "delegación" es una forma extrema de composición de objetos que siempre puede utilizarse para reemplazar la herencia.
+
+            La delegación implica dos objetos: un 'remitente' se pasa a un 'delegado' para permitir que el delegado se refiera al remitente. 
+
+            Por lo tanto, el vínculo entre dos partes de un sistema se establece sólo en tiempo de ejecución, no en tiempo de compilación. 
+
+            El artículo de devolución de llamada tiene más información sobre la delegación.
+
+            Los autores también analizan los llamados tipos parametrizados, también conocidos como genéricos (Ada, Eiffel, Java, C#, VB.NET y Delphi) o plantillas (C++). 
+
+            Estos permiten definir cualquier tipo sin especificar todos los demás tipos que utiliza; los tipos no especificados se suministran como 'parámetros' en el punto de uso.
+
+            Los autores admiten que la delegación y la parametrización son muy poderosas pero añaden una advertencia:
+
+                "El software dinámico y altamente parametrizado es más difícil de entender y construir que el software más estático". (Banda de los Cuatro 1995:21)
+
+            Los autores distinguen además entre "Agregación", donde un objeto "tiene" o "es parte de" otro objeto (lo que implica que un objeto agregado y su propietario tienen vidas idénticas) y conocimiento, donde un objeto simplemente "conoce" otro objeto. 
+
+            A veces el conocimiento se denomina "asociación" o relación de "uso". 
+
+            Los objetos conocidos pueden solicitar operaciones entre sí, pero no son responsables entre sí. 
+
+            El conocimiento es una relación más débil que la agregación y sugiere un acoplamiento mucho más flexible entre objetos, lo que a menudo puede ser deseable para una máxima mantenibilidad en los diseños.
+
+            Los autores emplean el término "kit de herramientas" (toolkit) donde otros hoy podrían usar "biblioteca de clases", como en C# o Java. 
+
+            En su lenguaje, los kits de herramientas son el equivalente orientado a objetos de las bibliotecas de subrutinas, mientras que un "Framework" es un conjunto de clases cooperativas que conforman un diseño reutilizable para una clase específica de software. 
+
+            Afirman que las aplicaciones son difíciles de diseñar, los kits de herramientas son más difíciles y los Frameworks son los más difíciles de diseñar.
+
+
+    Patrones por tipo
+
+        Creacional:
+
+            Los patrones de creación son aquellos que crean objetos, en lugar de tener que crear instancias de objetos directamente. 
+
+            Esto le da al programa más flexibilidad para decidir qué objetos deben crearse para un caso determinado.
+
+                Los grupos de fábricas abstractas se oponen a fábricas que tienen un tema común.
+
+                Builder construye objetos complejos separando construcción y representación.
+
+                El método de fábrica crea objetos sin especificar la clase exacta a crear.
+
+                Prototype crea objetos clonando un objeto existente.
+
+                Singleton restringe la creación de objetos para una clase a una sola instancia.
+
+
+        Estructural:
+
+            Los patrones estructurales se refieren a la composición de clases y objetos. 
+
+            Utilizan la herencia para componer interfaces y definir formas de componer objetos para obtener nuevas funciones.
+
+                El adaptador permite que clases con interfaces incompatibles trabajen juntas envolviendo su propia interfaz alrededor de la de una clase ya existente.
+
+                Bridge desacopla una abstracción de su implementación para que las dos puedan variar de forma independiente.
+
+                Compuesto compone cero o más objetos similares para que puedan manipularse como un solo objeto.
+
+                Decorador agrega/anula dinámicamente el comportamiento en un método existente de un objeto.
+
+                Facade proporciona una interfaz simplificada para una gran cantidad de código.
+
+                Flyweight reduce el costo de crear y manipular una gran cantidad de objetos similares.
+
+                Proxy proporciona un marcador de posición para otro objeto para controlar el acceso, reducir costos y reducir la complejidad.
+
+
+        Conductual
+
+            La mayoría de los patrones de diseño de comportamiento se ocupan específicamente de la comunicación entre objetos.
+
+                La cadena de responsabilidad delega comandos a una cadena de objetos de procesamiento.
+
+                El comando crea objetos que encapsulan acciones y parámetros.
+
+                El intérprete implementa un lenguaje especializado.
+
+                Iterator accede a los elementos de un objeto secuencialmente sin exponer su representación subyacente.
+
+                Mediator permite un acoplamiento flexible entre clases al ser la única clase que tiene un conocimiento detallado de sus métodos.
+
+                Memento brinda la capacidad de restaurar un objeto a su estado anterior (deshacer).
+
+                Observer es un patrón de publicación/suscripción que permite que varios objetos observadores vean un evento.
+
+                El estado permite que un objeto altere su comportamiento cuando cambia su estado interno.
+
+                La estrategia permite seleccionar uno de una familia de algoritmos sobre la marcha en tiempo de ejecución.
+
+                El método de plantilla define el esqueleto de un algoritmo como una clase abstracta, permitiendo que sus subclases proporcionen un comportamiento concreto.
+
+                El visitante separa un algoritmo de una estructura de objeto moviendo la jerarquía de métodos a un objeto.
+
+
+
+|| SOLID
+    
+    En ingeniería de software, SOLID es un acrónimo mnemónico de cinco principios de diseño destinados a hacer que los diseños orientados a objetos sean más comprensibles, flexibles y mantenibles. Los principios son un subconjunto de muchos principios promovidos por el ingeniero e instructor de software estadounidense Robert C. Martin, presentados por primera vez en su artículo de 2000 Principios de diseño y patrones de diseño que analiza la descomposición del software.
+
+    Las ideas son:
+
+        El principio de responsabilidad única: 
+
+            "Nunca debe haber más de una razón para que una clase cambie". 
+
+            En otras palabras, cada clase debería tener una sola responsabilidad.
+
+
+        Principio abierto-cerrado:
+
+            "Las entidades de software... deben estar abiertas a la extensión, pero cerradas a la modificación".
+
+
+        El principio de sustitución de Liskov: 
+
+            "Las funciones que utilizan punteros o referencias a clases base deben poder utilizar objetos de clases derivadas sin saberlo". 
+
+
+        Segregación de interfaces: 
+
+            "No se debe obligar a los clientes a depender de interfaces que no utilizan".
+
+
+        Inversión de dependencia: 
+
+            "Depende de abstracciones, [no] de concretos".
+
+
+    El acrónimo SOLID fue introducido más tarde, alrededor de 2004, por Michael Feathers.
+
+    Aunque los principios SOLID se aplican a cualquier diseño orientado a objetos, también pueden formar una filosofía central para metodologías como el desarrollo ágil o el desarrollo de software adaptativo.
+
+
+    1. Single responsibility principle (SRP):
+
+        El principio de responsabilidad única (SRP) es un principio de programación informática que establece que "un módulo debe ser responsable ante un, y sólo un, actor". 
+
+        El término actor se refiere a un grupo (formado por una o más partes interesadas o usuarios) que requiere un cambio en el módulo.
+
+        Robert C. Martin, el creador del término, expresa el principio como: 
+
+            "Una clase debe tener sólo una razón para cambiar". 
+
+            Debido a la confusión en torno a la palabra "razón", más tarde aclaró su significado en una publicación de blog titulada "El principio de responsabilidad única", en la que mencionó la separación de preocupaciones y afirmó que "Otra redacción para el principio de responsabilidad única es: reunir a los cosas que cambian por las mismas razones. 
+
+            Separa aquellas cosas que cambian por diferentes razones”. 
+
+            En algunas de sus charlas también sostiene que el principio se refiere, en particular, a roles o actores. 
+
+            Por ejemplo, si bien pueden ser la misma persona, la función de un contador es diferente a la de un administrador de base de datos. 
+
+            Por lo tanto, cada módulo debe ser responsable de cada rol.
+
+
+        Ejemplo:
+
+            Martin define una responsabilidad como una razoneszón para cambiar y concluye que una clase o módulo debe tener una, y sólo una, razón para cambiar (por ejemplo, reescribir).
+
+            Como ejemplo, considere un módulo que compila e imprime un informe. 
+
+            Imagine que un módulo de este tipo se puede cambiar por dos razones. 
+
+            En primer lugar, el contenido del informe podría cambiar.
+
+            En segundo lugar, el formato del informe podría cambiar.
+
+            Estas dos cosas cambian por diferentes causas. 
+
+            El principio de responsabilidad única dice que estos dos aspectos del problema son en realidad dos responsabilidades separadas y, por lo tanto, deberían estar en clases o módulos separados. 
+
+            Sería un mal diseño acoplar dos cosas que cambian por diferentes motivos en diferentes momentos.
+
+            La razón por la que es importante mantener una clase centrada en una única preocupación es que la hace más sólida. 
+
+            Siguiendo con el ejemplo anterior, si hay un cambio en el proceso de compilación del informe, existe un mayor peligro de que el código de impresión se rompa si es parte de la misma clase.
+
+
+    2. Open-Closed: 
+
+        En la programación orientada a objetos, el principio abierto-cerrado (OCP) establece que "las entidades de software (clases, módulos, funciones, etc.) deben estar abiertas a la extensión, pero cerradas a la modificación"; es decir, dicha entidad puede permitir ampliar su comportamiento sin modificar su código fuente.
+
+        El nombre principio abierto-cerrado se ha utilizado de dos maneras.
+
+        Ambas formas utilizan generalizaciones (por ejemplo, herencia o funciones delegadas) para resolver el aparente dilema, pero los objetivos, técnicas y resultados son diferentes.
+
+        El principio abierto-cerrado es uno de los cinco principios SÓLIDOS del diseño orientado a objetos.
+
+
+        Principio abierto-cerrado de Meyer
+
+            A Bertrand Meyer generalmente se le atribuye haber originado el término principio abierto-cerrado, que apareció en su libro de 1988 Construcción de software orientada a objetos.
+
+                Se dirá que un módulo está abierto si todavía está disponible para su extensión. 
+
+                Por ejemplo, debería ser posible agregar campos a las estructuras de datos que contiene, o nuevos elementos al conjunto de funciones que realiza.
+
+                Se dirá que un módulo está cerrado si está disponible para que lo utilicen otros módulos. 
+
+                Esto supone que al módulo se le ha dado una descripción estable y bien definida (la interfaz en el sentido de ocultar información).
+
+            En el momento en que Meyer estaba escribiendo, agregar campos o funciones a una biblioteca inevitablemente requería cambios en cualquier programa que dependiera de esa biblioteca. 
+
+            La solución propuesta por Meyer a este problema se basó en la noción de herencia orientada a objetos (específicamente herencia de implementación).
+
+            Una clase está cerrada, ya que puede ser compilada, almacenada en una biblioteca, basada en líneas base y utilizada por clases cliente. 
+
+            Pero también es abierto, ya que cualquier clase nueva puede usarlo como padre, agregando nuevas características. 
+
+            Cuando se define una clase descendiente, no hay necesidad de cambiar la original ni molestar a sus clientes.
+
+
+        Principio polimórfico abierto-cerrado
+
+            Durante la década de 1990, el principio abierto-cerrado se redefinió popularmente para referirse al uso de interfaces abstractas, donde las implementaciones se pueden cambiar y se pueden crear múltiples implementaciones y sustituirlas polimórficamente entre sí.
+
+            En contraste con el uso de Meyer, esta definición aboga por la herencia de clases base abstractas.
+
+            Las especificaciones de interfaz se pueden reutilizar mediante herencia, pero no es necesario que la implementación lo sea. 
+
+            La interfaz existente está cerrada a modificaciones y las nuevas implementaciones deben, como mínimo, implementar esa interfaz.
+
+            El artículo de Robert C. Martin de 1996, "El principio abierto-cerrado", fue uno de los escritos fundamentales en adoptar este enfoque. 
+
+            En 2001, Craig Larman relacionó el principio abierto-cerrado con el patrón de Alistair Cockburn llamado Variaciones protegidas, y con la discusión de David Parnas sobre el ocultamiento de información.
+
+
+    3. Liskov:
+
+        El principio de sustitución de Liskov (LSP) es una definición particular de una relación de subtipificación, llamada subtipificación conductual fuerte, que fue introducida inicialmente por Barbara Liskov en un discurso de apertura de una conferencia de 1987 titulada Abstracción y jerarquía de datos. 
+
+        Se basa en el concepto de "sustituibilidad", un principio de programación orientada a objetos que establece que un objeto (como una clase) puede ser reemplazado por un subobjeto (como una clase que extiende la primera clase) sin romper el programa. 
+
+        Es una relación semántica más que meramente sintáctica, porque pretende garantizar la interoperabilidad semántica de tipos en una jerarquía, tipos de objetos en particular. 
+
+        Barbara Liskov y Jeannette Wing describieron el principio sucintamente en un artículo de 1994 de la siguiente manera.
+
+
+        Principio:
+
+            La noción de Liskov de subtipo conductual define una noción de sustituibilidad de objetos; es decir, si S es un subtipo de T, entonces los objetos de tipo T en un programa pueden reemplazarse con objetos de tipo S sin alterar ninguna de las propiedades deseables de ese programa (por ejemplo, corrección).
+
+            La subtipificación conductual es una noción más sólida que la típica subtipificación de funciones definidas en la teoría de tipos, que se basa únicamente en la contravarianza de los tipos de parámetros y la covarianza del tipo de retorno. 
+
+            La subtipificación de comportamiento es indecidible en general: si q es la propiedad "el método para x siempre termina", entonces es imposible para un programa (por ejemplo, un compilador) verificar que sea cierto para algún subtipo S de T, incluso si q sí se cumple para T.
+
+            No obstante, el principio es útil para razonar sobre el diseño de jerarquías de clases.
+
+            El principio de sustitución de Liskov impone algunos requisitos estándar sobre las firmas que se han adoptado en los lenguajes de programación orientados a objetos más nuevos (normalmente a nivel de clases en lugar de tipos; consulte subtipos nominales versus estructurales para conocer la distinción):
+
+                Contravarianza de los tipos de parámetros del método en el subtipo.
+
+                Covarianza de los tipos de retorno del método en el subtipo.
+
+                Los métodos del subtipo no pueden generar nuevas excepciones, excepto si son subtipos de excepciones lanzadas por los métodos del supertipo.
+
+
+            Además de los requisitos de firma, el subtipo debe cumplir una serie de condiciones de comportamiento. 
+
+            Estos se detallan en una terminología similar a la de la metodología de diseño por contrato, lo que genera algunas restricciones sobre cómo los contratos pueden interactuar con la herencia:
+
+                Las condiciones previas no se pueden reforzar en el subtipo.
+
+                Las poscondiciones no se pueden debilitar en el subtipo.
+
+                La invariante no se puede debilitar en el subtipo.
+
+                Restricción histórica (la "regla histórica"). 
+
+
+            Se considera que los objetos son modificables sólo a través de sus métodos (encapsulación).
+
+            Debido a que los subtipos pueden introducir métodos que no están presentes en el supertipo, la introducción de estos métodos puede permitir cambios de estado en el subtipo que no están permitidos en el supertipo. 
+
+            La restricción histórica lo prohíbe. 
+
+            Fue el elemento novedoso introducido por Liskov y Wing. 
+
+            Una violación de esta restricción se puede ejemplificar definiendo un punto mutable como un subtipo de un punto inmutable.
+
+            Esto es una violación de la restricción histórica, porque en la historia del punto inmutable, el estado es siempre el mismo después de la creación, por lo que no puede incluir la historia de un punto mutable en general. 
+
+            Sin embargo, los campos agregados al subtipo se pueden modificar de forma segura porque no son observables mediante los métodos de supertipo. Por lo tanto, se puede definir un círculo con centro inmutable y radio mutable como un subtipo de un punto inmutable sin violar la restricción histórica.
+
+
+    Design by contract (DbC):
+
+        Prescribe que los diseñadores de software deben definir especificaciones de interfaz formales, precisas y verificables para los componentes de software, que amplían la definición ordinaria de tipos de datos abstractos con condiciones previas, condiciones posteriores e invariantes.
+
+        Estas especificaciones se denominan "contratos", de acuerdo con una metáfora conceptual de las condiciones y obligaciones de los contratos comerciales.
+
+        El enfoque DbC supone que todos los componentes del cliente que invocan una operación en un componente del servidor cumplirán las condiciones previas especificadas como requeridas para esa operación.
+
+        Cuando esta suposición se considera demasiado arriesgada (como en la informática multicanal o distribuida), se adopta el enfoque inverso, lo que significa que el componente del servidor prueba que todas las condiciones previas relevantes sean verdaderas (antes o mientras se procesa la solicitud del componente del cliente) y responde, con un mensaje de error adecuado si no.
+
+
+    4. Interface segregation:
+
+        En el campo de la ingeniería de software, el principio de segregación de interfaces (ISP) establece que ningún código debe verse obligado a depender de métodos que no utiliza. 
+
+        El ISP divide las interfaces que son muy grandes en otras más pequeñas y específicas para que los clientes sólo tengan que conocer los métodos que les interesan. 
+
+        Estas interfaces reducidas también se denominan interfaces de roles.
+
+        El objetivo del ISP es mantener un sistema desacoplado y, por lo tanto, más fácil de refactorizar, cambiar y volver a implementar. 
+
+        ISP es uno de los cinco principios SÓLIDOS del diseño orientado a objetos, similar al Principio de Alta Cohesión de GRASP.
+
+        Más allá del diseño orientado a objetos, ISP también es un principio clave en el diseño de sistemas distribuidos en general y de microservicios en particular. 
+
+        ISP es uno de los seis principios IDEALES para el diseño de microservicios
+
+        Importancia en el diseño orientado a objetos
+        Dentro del diseño orientado a objetos, las interfaces proporcionan capas de abstracción que simplifican el código y crean una barrera que impide el acoplamiento a las dependencias. 
+
+        Un sistema puede llegar a estar tan acoplado en múltiples niveles que ya no sea posible realizar un cambio en un lugar sin requerir muchos cambios adicionales. 
+
+        El uso de una interfaz o una clase abstracta puede evitar este efecto secundario.
+
+
+        Origen:
+
+            El ISP fue utilizado y formulado por primera vez por Robert C. Martin mientras asesoraba a Xerox.
+
+             Xerox había creado un nuevo sistema de impresión que podía realizar una variedad de tareas como grapar y enviar faxes. 
+
+             El software para este sistema fue creado desde cero. 
+
+             A medida que el software crecía, hacer modificaciones se hacía cada vez más difícil, de modo que incluso el cambio más pequeño requería un ciclo de reimplementación de una hora, lo que hacía que el desarrollo fuera casi imposible.
+
+            El problema de diseño era que casi todas las tareas utilizaban una única clase de Trabajo.
+
+            Cada vez que era necesario realizar un trabajo de impresión o un trabajo de grapado, se realizaba una llamada a la clase Trabajo. 
+
+            Esto resultó en una clase "gorda" con multitud de métodos específicos para una variedad de clientes diferentes. 
+
+            Debido a este diseño, un trabajo de grapas conocería todos los métodos del trabajo de impresión, aunque no fueran útiles.
+
+            La solución sugerida por Martin utilizó lo que hoy se llama el Principio de Segregación de Interfaz.
+
+            Aplicado al software Xerox, se agregó una capa de interfaz entre la clase Trabajo y sus clientes utilizando el Principio de Inversión de Dependencia. 
+
+            En lugar de tener una clase de trabajo grande, se creó una interfaz de trabajo de grapado o una interfaz de trabajo de impresión que serían utilizadas por las clases de grapado o de impresión, respectivamente, llamando a los métodos de la clase de trabajo. 
+
+            Por lo tanto, se creó una interfaz para cada tipo de trabajo, que fue implementada por la clase Job.
+
+
+        Romper principio de Segregación:
+
+            Se da en Desarrollo ágil de software: principios, patrones y prácticas en 'Ejemplo de transacción ATM' y en un artículo también escrito por Robert C. Martin específicamente sobre el ISP.
+
+            Este ejemplo analiza la interfaz de usuario de un cajero automático, que maneja todas las solicitudes, como una solicitud de depósito o una solicitud de retiro, y cómo esta interfaz debe segregarse en interfaces individuales y más específicas.
+
+
+    6. Dependency Inversion. 
+
+        En el diseño orientado a objetos, el principio de inversión de dependencia es una metodología específica para módulos de software débilmente acoplados. 
+
+        Al seguir este principio, las relaciones de dependencia convencionales establecidas desde módulos de alto nivel que establecen políticas hasta módulos de dependencia de bajo nivel se invierten, lo que hace que los módulos de alto nivel sean independientes de los detalles de implementación del módulo de bajo nivel. 
+
+        El principio establece:
+
+            Los módulos de alto nivel no deben importar nada de los módulos de bajo nivel. Ambos deberían depender de abstracciones (por ejemplo, interfaces).
+
+            Las abstracciones no deberían depender de los detalles. Los detalles (implementaciones concretas) deberían depender de abstracciones.
+
+
+        Al dictar que tanto los objetos de alto como los de bajo nivel deben depender de la misma abstracción, este principio de diseño invierte la forma en que algunas personas pueden pensar sobre la programación orientada a objetos.
+
+        La idea detrás de los puntos A y B de este principio es que al diseñar la interacción entre un módulo de alto nivel y uno de bajo nivel, la interacción debe considerarse como una interacción abstracta entre ellos. 
+
+        Esto no sólo tiene implicaciones en el diseño del módulo de alto nivel, sino también en el de bajo nivel: el de bajo nivel debe diseñarse teniendo en cuenta la interacción y puede ser necesario cambiar su interfaz de uso.
+
+
+
+
+|| Agile
+    
+    En el desarrollo de software, las prácticas ágiles (a veces escritas "Agile") incluyen requisitos, descubrimiento y mejora de soluciones a través del esfuerzo colaborativo de equipos autoorganizados y multifuncionales con sus clientes/usuarios finales. 
+
+    Popularizados en el Manifiesto para el desarrollo de software ágil de 2001, estos valores y principios se derivaron de, y sustentan, una amplia gama de marcos de desarrollo de software, incluidos Scrum y Kanban.
+
+    Si bien hay mucha evidencia anecdótica de que la adopción de prácticas y valores ágiles mejora la efectividad de los profesionales, equipos y organizaciones del software, la evidencia empírica es mixta y difícil de encontrar.
+
+
+    Manifiesto: 
+
+        Valores del desarrollo de software ágil
+
+        Basándose en su experiencia combinada en el desarrollo de software y en ayudar a otros a hacerlo, los autores del manifiesto declararon que valoraban:
+
+            Individuos e interacciones sobre procesos y herramientas
+             
+            Software funcional sobre documentación completa
+            
+            Colaboración del cliente sobre la negociación del contrato.
+             
+            Responde al cambio sobre el siguiente plan
+
+        
+        Es decir, si bien ambos lados tienen valor y los elementos de la derecha deben considerarse, los autores consideraron que los elementos de la izquierda deberían tener más influencia en cómo las personas abordan su trabajo.
+
+        Como explicó Scott Ambler:
+
+            Las herramientas y los procesos son importantes, pero es más importante contar con personas competentes que trabajen juntas de manera efectiva.
+            
+            Una buena documentación es útil para ayudar a las personas a comprender cómo se construye el software y cómo usarlo, pero el objetivo principal del desarrollo es crear software, no documentación.
+            
+            Un contrato es importante, pero no sustituye el trabajo en estrecha colaboración con los clientes para descubrir lo que necesitan.
+             
+            Un plan de proyecto es importante, pero no debe ser demasiado rígido para dar cabida a los cambios en la tecnología o el medio ambiente, las prioridades de las partes interesadas y la comprensión de la gente sobre el problema y su solución.
+
+
+    Desarrollo de software:
+
+        El Manifiesto para el Desarrollo Ágil de Software se basa en doce principios:
+
+            1. Satisfacción del cliente mediante la entrega temprana y continua de software valioso.
+
+            2. Bienvenidos los requisitos cambiantes, incluso en las últimas etapas del desarrollo.
+
+            3. Entregar software que funcione con frecuencia (semanas en lugar de meses).
+
+            4. Cooperación estrecha y diaria entre empresarios y desarrolladores.
+
+            5. Los proyectos se construyen en torno a personas motivadas en las que se debe confiar.
+
+            6. La conversación cara a cara es la mejor forma de comunicación (coubicación).
+
+            7. El software funcional es la principal medida del progreso.
+             
+            8. Desarrollo sostenible, capaz de mantener un ritmo constante.
+
+            9. Atención continua a la excelencia técnica y al buen diseño.
+
+            10. La simplicidad (el arte de maximizar la cantidad de trabajo no realizado) es esencial.
+
+            11. Las mejores arquitecturas, requisitos y diseños surgen de equipos autoorganizados.
+
+            12. Periódicamente, el equipo reflexiona sobre cómo ser más eficaz y se adapta en consecuencia.
+
+
+
+|| Adaptative
+    
+    El desarrollo de software adaptativo reemplaza el ciclo en cascada tradicional (waterfall) con una serie repetida de ciclos de especulación, colaboración y aprendizaje. 
+
+    Este ciclo dinámico proporciona un aprendizaje continuo y una adaptación al estado emergente del proyecto. 
+
+    Las características del ciclo de vida de un ASD son que está centrado en la misión, basado en características, iterativo, con límites de tiempo, impulsado por riesgos y tolerante al cambio. 
+
+    Al igual que RAD, ASD también es un antecedente del desarrollo ágil de software.
+
+    La palabra especular se refiere a la paradoja de la planificación: es más probable asumir que todas las partes interesadas están comparativamente equivocadas en ciertos aspectos de la misión del proyecto, al intentar definirla.
+
+    Durante la especulación, se inicia el proyecto y se lleva a cabo la planificación del ciclo adaptativo. 
+
+    La planificación del ciclo adaptativo utiliza información de inicio del proyecto (la declaración de la misión del cliente, las limitaciones del proyecto (por ejemplo, fechas de entrega o descripciones de usuario) y requisitos básicos) para definir el conjunto de ciclos de lanzamiento (incrementos de software) que serán necesarios para el proyecto.
+
+    La colaboración se refiere a los esfuerzos por equilibrar el trabajo basado en partes predecibles del entorno (planificarlas y guiarlas) y adaptarse a la mezcla incierta de cambios causados por diversos factores, como la tecnología, los requisitos, las partes interesadas y los proveedores de software. 
+
+    Los ciclos de aprendizaje, que desafían a todas las partes interesadas, se basan en iteraciones breves de diseño, construcción y pruebas. 
+
+    Durante estas iteraciones, el conocimiento se obtiene cometiendo pequeños errores basados en suposiciones falsas y corrigiéndolos, lo que conduce a una mayor experiencia y, finalmente, a un dominio en el dominio del problema.
+
+
 
 
 
@@ -2293,6 +3936,463 @@
             Generalmente se usan en contenedores ya que ocultan la implementación existente con la abstracción requerida en el lado del desarrollador.
 
 
+
+|| Reference
+
+    Una referencia es un valor que permite a un programa acceder indirectamente a un dato particular, como el valor de una variable o un registro, en la memoria de la computadora o en algún otro dispositivo de almacenamiento. 
+
+    Se dice que la referencia se refiere al dato y acceder al dato se llama desreferenciar la referencia. 
+
+    Una referencia es distinta del dato mismo.
+
+    Una referencia es un tipo de datos abstracto y puede implementarse de muchas maneras. Normalmente, una referencia se refiere a datos almacenados en la memoria de un sistema determinado y su valor interno es la dirección de memoria de los datos, es decir, una referencia se implementa como un puntero. Por esta razón, a menudo se dice que una referencia "señala" los datos. Otras implementaciones incluyen un desplazamiento (diferencia) entre la dirección del dato y alguna dirección "base" fija, un índice o identificador utilizado en una operación de búsqueda en una matriz o tabla, un identificador del sistema operativo, una dirección física en un dispositivo de almacenamiento o una dirección de red como una URL
+
+
+    Representación formal
+
+        Una referencia R es un valor que admite una operación, desreferencia(R), que produce un valor. 
+
+        Por lo general, la referencia se escribe de manera que devuelva valores de un tipo específico, por ejemplo:
+
+        ```
+        
+        interface Reference<T> {
+            T value();
+        }
+
+        ```
+        
+        A menudo, la referencia también admite una operación de asignación store(R, x), lo que significa que es una variable abstracta.
+
+
+    Usos: 
+
+        Las referencias se utilizan ampliamente en programación, especialmente para pasar de manera eficiente datos grandes o mutables como argumentos para procedimientos, o para compartir dichos datos entre varios usos. 
+
+        En particular, una referencia puede apuntar a una variable o registro que contiene referencias a otros datos.
+
+        Esta idea es la base del direccionamiento indirecto y de muchas estructuras de datos vinculados, como las listas vinculadas. 
+
+        Las referencias aumentan la flexibilidad en cuanto a dónde se pueden almacenar los objetos, cómo se asignan y cómo se pasan entre áreas de código. 
+
+        Siempre que se pueda acceder a una referencia a los datos, se puede acceder a los datos a través de ella y no es necesario mover los datos en sí. 
+
+        También facilitan el intercambio de datos entre diferentes áreas de código; cada uno mantiene una referencia a él.
+
+        Las referencias pueden causar una complejidad significativa en un programa, en parte debido a la posibilidad de referencias colgantes y salvajes y en parte porque la topología de los datos con referencias es un gráfico dirigido, cuyo análisis puede ser bastante complicado.
+
+        No obstante, las referencias son aún más sencillas de analizar que los punteros debido a la ausencia de aritmética de punteros.
+
+        El mecanismo de referencias, si varía en su implementación, es una característica fundamental del lenguaje de programación común a casi todos los lenguajes de programación modernos. 
+
+        Incluso algunos lenguajes que no admiten el uso directo de referencias tienen algún uso interno o implícito. 
+
+        Por ejemplo, la convención de llamada por referencia se puede implementar con el uso explícito o implícito de referencias.
+
+
+        Ejemplos:
+
+            Los punteros son el tipo de referencia más primitivo. 
+
+            Debido a su íntima relación con el hardware subyacente, son uno de los tipos de referencias más potentes y eficientes. 
+
+            Sin embargo, también debido a esta relación, los punteros requieren una sólida comprensión por parte del programador de los detalles de la arquitectura de la memoria. 
+
+            Debido a que los punteros almacenan la dirección de una ubicación de memoria, en lugar de un valor directamente, el uso inadecuado de los punteros puede provocar un comportamiento indefinido en un programa, particularmente debido a punteros colgantes o punteros salvajes. 
+
+            Los punteros inteligentes son estructuras de datos opacas que actúan como punteros pero a las que solo se puede acceder a través de métodos particulares.
+
+            Un identificador es una referencia abstracta y puede representarse de varias maneras. 
+
+            Un ejemplo común son los identificadores de archivos (la estructura de datos FILE en la biblioteca de E/S estándar de C), que se utilizan para abstraer el contenido del archivo.
+
+            Por lo general, representa tanto el archivo en sí, como cuando se solicita un bloqueo en el archivo, como una posición específica dentro del contenido del archivo, como cuando se lee un archivo.
+
+            En informática distribuida, la referencia puede contener más que una dirección o identificador; también puede incluir una especificación integrada de los protocolos de red utilizados para localizar y acceder al objeto al que se hace referencia, la forma en que se codifica o serializa la información. 
+
+            Así, por ejemplo, una descripción WSDL de un servicio web remoto puede verse como una forma de referencia; incluye una especificación completa de cómo localizar y vincularse a un servicio web en particular. 
+
+            Una referencia a un objeto distribuido en vivo es otro ejemplo: es una especificación completa sobre cómo construir un pequeño componente de software llamado proxy que posteriormente participará en una interacción entre pares y a través del cual la máquina local puede obtener acceso a datos que se replican o existen sólo como un flujo de mensajes débilmente consistente. 
+
+            En todos estos casos, la referencia incluye el conjunto completo de instrucciones, o una receta, sobre cómo acceder a los datos; en este sentido, cumple el mismo propósito que un identificador o dirección en la memoria.
+
+            Si tenemos un conjunto de claves K y un conjunto de objetos de datos D, cualquier función bien definida (de un solo valor) de K a D ∪ {nulo} define un tipo de referencia, donde nulo es la imagen de una clave que no hace referencia a algo significativo.
+
+            Una representación alternativa de dicha función es un gráfico dirigido llamado gráfico de alcanzabilidad. 
+
+            Aquí, cada dato está representado por un vértice y hay una arista de u a v si el dato en u se refiere al dato en v.
+
+            El grado máximo de salida es uno. 
+
+            Estos gráficos son valiosos en la recolección de basura, donde se pueden usar para separar objetos accesibles de inaccesibles.
+
+
+        Almacenamiento externo e interno:
+
+            En muchas estructuras de datos, los objetos grandes y complejos se componen de objetos más pequeños. 
+
+            Estos objetos normalmente se almacenan de dos maneras:
+
+                1. Con el almacenamiento interno, el contenido del objeto más pequeño se almacena dentro del objeto más grande.
+                 
+                2. Con el almacenamiento externo, los objetos más pequeños se asignan en su propia ubicación y el objeto más grande solo almacena referencias a ellos.
+
+
+            El almacenamiento interno suele ser más eficiente, porque hay un costo de espacio para las referencias y los metadatos de asignación dinámica, y un costo de tiempo asociado con la desreferenciación de una referencia y con la asignación de memoria para los objetos más pequeños. 
+
+            El almacenamiento interno también mejora la localidad de referencia al mantener juntas en la memoria diferentes partes del mismo objeto grande.
+
+            Sin embargo, existen diversas situaciones en las que se prefiere el almacenamiento externo:
+
+                 Si la estructura de datos es recursiva, significa que puede contenerse a sí misma. Esto no se puede representar de forma interna.
+                 
+                 Si el objeto más grande se almacena en un área con espacio limitado, como la pila, entonces podemos evitar quedarnos sin almacenamiento almacenando objetos componentes grandes en otra región de memoria y haciendo referencia a ellos mediante referencias.
+                 
+                 Si los objetos más pequeños pueden variar en tamaño, a menudo resulta inconveniente o costoso cambiar el tamaño del objeto más grande para que aún pueda contenerlos.
+                 
+                 A menudo es más fácil trabajar con las referencias y se adaptan mejor a los nuevos requisitos.
+
+            Algunos lenguajes, como Java, Smalltalk, Python y Scheme, no admiten almacenamiento interno.
+
+            En estos lenguajes, se accede uniformemente a todos los objetos a través de referencias.
+
+
+        Lenguajes: 
+
+            Ensamblador: 
+                
+                En lenguaje ensamblador, es típico expresar referencias utilizando direcciones de memoria sin formato o índices en tablas.
+
+                Funcionan, pero son algo complicados de usar, porque una dirección no dice nada sobre el valor al que apunta, ni siquiera qué tan grande es o cómo interpretarlo; dicha información está codificada en la lógica del programa.
+
+                El resultado es que pueden ocurrir malas interpretaciones en programas incorrectos, causando errores desconcertantes.
+
+
+            C/C++:
+
+                El puntero sigue siendo uno de los tipos de referencias más populares en la actualidad. 
+
+                Es similar a la representación de ensamblador de una dirección sin formato, excepto que lleva un tipo de datos estático que se puede usar en tiempo de compilación para garantizar que los datos a los que hace referencia no se malinterpreten. 
+
+                Sin embargo, debido a que C tiene un sistema de tipos débil que se puede romper mediante conversiones (conversiones explícitas entre varios tipos de punteros y entre tipos de punteros y números enteros), aún es posible una interpretación errónea, aunque más difícil. 
+
+                Su sucesor C++ intentó aumentar la seguridad de tipos de punteros con nuevos operadores de conversión, un tipo de referencia & y punteros inteligentes en su biblioteca estándar, pero aún conservaba la capacidad de eludir estos mecanismos de seguridad por motivos de compatibilidad.
+
+
+            Lenguajes orientados a objetos:
+
+                Varios lenguajes orientados a objetos como Eiffel, Java, C# y Visual Basic han adoptado un tipo de referencia mucho más opaco, generalmente denominado simplemente referencia. 
+
+                Estas referencias tienen tipos como punteros C que indican cómo interpretar los datos a los que hacen referencia, pero son seguros en el sentido de que no pueden interpretarse como una dirección sin formato y no se permiten conversiones no seguras. 
+
+                Las referencias se utilizan ampliamente para acceder y asignar objetos. 
+
+                Las referencias también se utilizan en llamadas a funciones/métodos o en el paso de mensajes, y los recuentos de referencias se utilizan con frecuencia para realizar la recolección de basura de objetos no utilizados.
+
+
+            Python:
+
+                Incluye una amplia gama de referencias.
+
+                Generalmente, los programadores usan id(var) para acceder a la dirección de referencia de una variable var. 
+
+                La referencia en Python es más compleja que C++ u otros lenguajes de programación.
+
+                Una constante (por ejemplo, un número entero 2) es un objeto en Python y, por tanto, tiene una referencia a una dirección fija.
+
+                Cuando el programador llama a a = 2, el programa crea un espacio de memoria para la constante 2 y organiza una referencia a ella.
+
+                Luego, el programa vincula la referencia de a con la dirección de 2, lo que revela que cambiar el valor de una variable numérica cambia la referencia de la misma. 
+
+                Mientras que en los tipos mutables (por ejemplo, un tipo de lista), el cambio de valor no cambiará la referencia de la variable.
+
+                Cuando se pasa una variable como parámetro de función, la función obtiene la referencia de forma predeterminada, no su valor. 
+
+                Para tipos mutables, esto hace que la variable original sea fácil de modificar; para el tipo inmutable, modificar su valor en la función hará que la referencia de la variable temporal en la función se modifique a otro lugar, por lo tanto, no provocará que se cambie la variable original.
+
+
+    Desreferenciar puntero: 
+
+        Un puntero es una "referencia" a un valor almacenado en la memoria. 
+
+        "Desreferenciar" es obtener el valor.
+
+        ```c
+
+        int a = 4 ;
+        int *pA = &a;
+        printf( "La REFERENCIA/número de llamada para la variable `a` es %p\n", pA );
+
+        // El * hace que pA DEREFERENCIA... `a` a través del "número de llamada" `pA`.
+        printf( "%d\n", *pA ); // imprime 4
+
+        ```
+
+
+        Desreferenciar un puntero significa obtener el valor almacenado en la ubicación de memoria señalada por el puntero. 
+
+        El operador * se utiliza para hacer esto y se denomina operador de desreferenciación.
+
+        ```c
+
+        int a = 10;
+        int*ptr = &a;
+
+        printf("%d", *ptr); 
+
+        // Con *ptr estoy desreferenciando el puntero.
+        
+        // Lo que significa que estoy preguntando el valor al que apunta el puntero.
+        
+        // ptr apunta a la ubicación en la memoria de la variable a.
+        
+        // En la ubicación de a, tenemos 10. Entonces, la desreferenciación da este valor.
+
+        // Como tenemos control indirecto sobre la ubicación de a, podemos modificar su contenido usando el puntero. Esta es una forma indirecta de acceder a.
+
+        
+        *ptr = 20; // Ahora el contenido de a ya no es 10 y se ha modificado a 20
+
+        ```
+
+
+    Llamadas por valor, nombre y referencia: 
+
+
+        Llamada por valor: 
+
+            Forma normal, los valores de los parámetros reales se copian en parámetros formales.
+
+
+        Llamada por referencia: 
+
+            En lugar de los parámetros, se pasan sus direcciones y los parámetros formales apuntan a los parámetros reales.
+
+
+        Llamada por nombre: 
+
+            Al igual que las macros, la definición completa de la función reemplaza la llamada a la función y los parámetros formales son solo otro nombre para los parámetros reales.
+
+
+        En Llamada por valor, se pasa una copia de la variable, mientras que en Llamada por referencia, se pasa una variable en sí.
+
+        En Llamada por valor, los argumentos reales y formales se crearán en diferentes ubicaciones de memoria, mientras que en Llamada por referencia, los argumentos reales y formales se crearán en la misma ubicación de memoria.
+
+
+
+
+|| Data type
+    
+    En informática y programación de computadoras, un tipo de datos (o simplemente tipo) es una colección o agrupación de valores de datos, generalmente especificados por un conjunto de valores posibles, un conjunto de operaciones permitidas sobre estos valores y/o una representación de estos valores. como tipos de máquinas. 
+
+    Una especificación de tipo de datos en un programa restringe los posibles valores que puede tomar una expresión, como una variable o una llamada a una función. 
+
+    En datos literales, le dice al compilador o intérprete cómo el programador pretende utilizar los datos.
+
+    La mayoría de los lenguajes de programación admiten tipos de datos básicos de números enteros (de distintos tamaños), números de punto flotante (que se aproximan a los números reales), caracteres y booleanos.
+
+    
+    Características: 
+
+        Se puede especificar un tipo de datos por muchas razones: similitud, conveniencia o para centrar la atención. 
+
+        Con frecuencia es una cuestión de buena organización la que ayuda a comprender definiciones complejas. 
+
+        Casi todos los lenguajes de programación incluyen explícitamente la noción de tipo de datos, aunque los tipos de datos posibles suelen estar restringidos por consideraciones de simplicidad, computabilidad o regularidad. 
+
+        Una declaración explícita de tipo de datos normalmente permite al compilador elegir una representación de máquina eficiente, pero no se debe descartar la organización conceptual que ofrecen los tipos de datos.
+
+        Diferentes lenguajes pueden utilizar diferentes tipos de datos o tipos similares con diferente semántica. 
+
+        Por ejemplo, en el lenguaje de programación Python, int representa un número entero de precisión arbitraria que tiene operaciones numéricas tradicionales como suma, resta y multiplicación. 
+
+        Sin embargo, en el lenguaje de programación Java, el tipo int representa el conjunto de números enteros de 32 bits cuyo valor varía entre −2,147,483,648 y 2,147,483,647, con operaciones aritméticas que se ajustan en caso de desbordamiento. 
+
+        En Rust, este tipo de entero de 32 bits se denomina i32 y entra en pánico si se desborda en el modo de depuración.
+
+        La mayoría de los lenguajes de programación también permiten al programador definir tipos de datos adicionales, generalmente combinando múltiples elementos de otros tipos y definiendo las operaciones válidas del nuevo tipo de datos. 
+
+        Por ejemplo, un programador podría crear un nuevo tipo de datos llamado "número complejo" que incluiría partes reales e imaginarias, o un tipo de datos de color representado por tres bytes que denotan las cantidades de rojo, verde y azul, y una cadena que representa el nombre del color.
+
+        Los tipos de datos se utilizan dentro de los sistemas de tipos, que ofrecen varias formas de definirlos, implementarlos y utilizarlos. 
+
+        En un sistema de tipos, un tipo de datos representa una restricción impuesta a la interpretación de datos, que describe la representación, interpretación y estructura de valores u objetos almacenados en la memoria de la computadora. 
+
+        El sistema de tipos utiliza información sobre el tipo de datos para verificar la exactitud de los programas informáticos que acceden a los datos o los manipulan. 
+
+        Un compilador puede utilizar el tipo estático de un valor para optimizar el almacenamiento que necesita y la elección de algoritmos para las operaciones con el valor. 
+
+        En muchos compiladores de C, por ejemplo, el tipo de datos float se representa en 32 bits, según la especificación IEEE para números de coma flotante de precisión simple.
+
+        Por lo tanto, utilizarán operaciones de microprocesador específicas de punto flotante sobre esos valores (suma de punto flotante, multiplicación, etc.).
+
+
+    Definición:
+
+        Parnas, Shore y Weiss (1976) identificaron cinco definiciones de "tipo" que se utilizaron, a veces implícitamente, en la literatura:
+
+
+        Sintáctico:
+
+            Un tipo es una etiqueta puramente sintáctica asociada a una variable cuando se declara. 
+
+            Aunque son útiles para sistemas de tipos avanzados, como los sistemas de tipos subestructurales, estas definiciones no proporcionan un significado intuitivo de los tipos.
+
+
+        Representación:
+
+            Un tipo se define en términos de una composición de tipos más primitivos (a menudo tipos de máquinas).
+
+
+        Representación y comportamiento:
+
+            Un tipo se define como su representación y un conjunto de operadores que manipulan estas representaciones.
+
+
+        Espacio de valor:
+
+            Un tipo es un conjunto de posibles valores que puede poseer una variable. 
+
+            Tales definiciones permiten hablar de uniones (disjuntas) o productos de tipos cartesianos.
+
+
+        Espacio de valores y comportamiento:
+
+            Un tipo es un conjunto de valores que puede poseer una variable y un conjunto de funciones que se pueden aplicar a estos valores.
+
+
+        La definición en términos de representación se hacía a menudo en lenguajes imperativos como ALGOL y Pascal, mientras que la definición en términos de espacio de valores y comportamiento se usaba en lenguajes de nivel superior como Simula y CLU. 
+
+        Los tipos que incluyen comportamiento se alinean más estrechamente con los modelos orientados a objetos, mientras que un modelo de programación estructurada tendería a no incluir código y se denominan estructuras de datos antiguas y simples.
+
+
+    Clasificación:
+
+        Los tipos de datos se pueden clasificar según varios factores:
+
+            Los tipos de datos primitivos o tipos de datos integrados son tipos integrados en una implementación de lenguaje. 
+
+            Los tipos de datos definidos por el usuario son tipos no primitivos.
+
+            Por ejemplo, los tipos numéricos de Java son primitivos, mientras que las clases están definidas por el usuario.
+
+
+            Un valor de tipo atómico es un elemento de datos único que no se puede dividir en partes que lo componen. 
+
+            Un valor de tipo compuesto o tipo agregado es una colección de elementos de datos a los que se puede acceder individualmente. 
+
+            Por ejemplo, un número entero generalmente se considera atómico, aunque consta de una secuencia de bits, mientras que una matriz de números enteros es ciertamente compuesta.
+
+
+            Los tipos de datos básicos o tipos de datos fundamentales se definen axiomáticamente a partir de nociones fundamentales o mediante la enumeración de sus elementos. 
+
+            Los tipos de datos generados o tipos de datos derivados se especifican, y se definen parcialmente, en términos de otros tipos de datos.
+
+            Todos los tipos básicos son atómicos. 
+
+            Por ejemplo, los números enteros son un tipo básico definido en matemáticas, mientras que una matriz de números enteros es el resultado de aplicar un generador de tipo de matriz al tipo de número entero.
+
+
+        La terminología varía: en la literatura, primitivo, incorporado, básico, atómico y fundamental pueden usarse indistintamente.
+
+
+    Ejemplos:
+
+        Tipos de datos de máquina:
+
+            Todos los datos en computadoras basadas en electrónica digital se representan como bits (alternativas 0 y 1) en el nivel más bajo. 
+
+            La unidad de datos direccionable más pequeña suele ser un grupo de bits llamado byte (normalmente un octeto, que tiene 8 bits). 
+
+            La unidad procesada por instrucciones de código de máquina se llama palabra (a partir de 2011, normalmente 32 o 64 bits).
+
+            Los tipos de datos de máquina exponen o ponen a disposición un control detallado sobre el hardware, pero esto también puede exponer detalles de implementación que hacen que el código sea menos portátil. 
+
+            Por lo tanto, los tipos de máquinas se utilizan principalmente en programación de sistemas o lenguajes de programación de bajo nivel. 
+
+            En los lenguajes de nivel superior, la mayoría de los tipos de datos se abstraen porque no tienen una representación de máquina definida por el lenguaje. 
+
+            El lenguaje de programación C, por ejemplo, proporciona tipos como booleanos, enteros, números de punto flotante, etc., pero las representaciones de bits precisas de estos tipos están definidas por la implementación. 
+
+            El único tipo C con una representación mecánica precisa es el tipo char que representa un byte.
+
+
+        Tipo booleano:
+
+            El tipo booleano representa los valores verdadero y falso. 
+
+            Aunque sólo son posibles dos valores, a menudo se representan como una palabra y no como un solo bit, ya que se requieren más instrucciones de máquina para almacenar y recuperar un bit individual. 
+
+            Muchos lenguajes de programación no tienen un tipo booleano explícito, sino que utilizan un tipo entero e interpretan (por ejemplo) 0 como falso y otros valores como verdadero. 
+
+            Los datos booleanos se refieren a la estructura lógica de cómo se interpreta el lenguaje en el lenguaje de máquina.
+
+            En este caso un booleano 0 se refiere a la lógica Falso. 
+
+            Verdadero siempre es distinto de cero, especialmente uno que se conoce como booleano 1.
+
+
+        Tipos numéricos:
+
+            Casi todos los lenguajes de programación proporcionan uno o más tipos de datos enteros.
+
+            Pueden proporcionar una pequeña cantidad de subtipos predefinidos restringidos a ciertos rangos (como cortos y largos y sus correspondientes variantes sin firmar en C/C++); o permitir a los usuarios definir libremente subrangos como 1..12 (por ejemplo, Pascal/Ada). 
+
+            Si no existe un tipo nativo correspondiente en la plataforma de destino, el compilador los dividirá en código utilizando los tipos que sí existen. 
+
+            Por ejemplo, si se solicita un entero de 32 bits en una plataforma de 16 bits, el compilador lo tratará tácitamente como una matriz de dos enteros de 16 bits.
+
+            Los tipos de datos de coma flotante representan ciertos valores fraccionarios (números racionales, matemáticamente). 
+
+            Aunque tienen límites predefinidos tanto en sus valores máximos como en su precisión, a veces se les llama engañosamente reales (que evocan los números reales matemáticos). 
+
+            Por lo general, se almacenan internamente en la forma a × 2b (donde a y b son números enteros), pero se muestran en la forma decimal familiar.
+
+            Los tipos de datos de punto fijo son convenientes para representar valores monetarios. 
+
+            A menudo se implementan internamente como números enteros, lo que lleva a límites predefinidos.
+
+            Para independizarse de los detalles arquitectónicos, se puede proporcionar un Bignum o un tipo numérico de precisión arbitraria.
+
+            Esto representa un número entero o racional con una precisión limitada únicamente por la memoria disponible y los recursos computacionales en el sistema. 
+
+            Las implementaciones de Bignum de operaciones aritméticas en valores del tamaño de una máquina son significativamente más lentas que las operaciones de máquina correspondientes.
+
+
+        Tipos de cadenas y texto
+
+            Las cadenas son una secuencia de caracteres que se utilizan para almacenar palabras o texto sin formato, la mayoría de las veces lenguajes de marcado textuales que representan texto formateado. 
+
+            Los caracteres pueden ser una letra de algún alfabeto, un dígito, un espacio en blanco, un signo de puntuación, etc.
+
+            Los caracteres se extraen de un conjunto de caracteres como ASCII.
+
+            Los tipos de caracteres y cadenas pueden tener diferentes subtipos según la codificación de caracteres. 
+
+            Se descubrió que el ASCII original de 7 bits de ancho era limitado y fue reemplazado por conjuntos de 8, 16 y 32 bits, que pueden codificar una amplia variedad de alfabetos no latinos (como el hebreo y el chino) y otros símbolos.
+
+            Las cadenas pueden ser de longitud variable o fija, y algunos lenguajes de programación tienen ambos tipos. 
+
+            También podrán subtipificarse por su tamaño máximo.
+
+            Dado que la mayoría de los juegos de caracteres incluyen dígitos, es posible tener una cadena numérica, como "1234".
+
+            Estas cadenas numéricas generalmente se consideran distintas de los valores numéricos como 1234, aunque algunos lenguajes realizan conversiones automáticas entre ellos.
+
+
+        Punteros y referencias:
+
+            El principal tipo derivado no compuesto es el puntero, un tipo de datos cuyo valor se refiere directamente a (o "apunta") a otro valor almacenado en otra parte de la memoria de la computadora usando su dirección. 
+
+            Es un tipo primitivo de referencia. 
+
+            (En términos cotidianos, un número de página de un libro podría considerarse un dato que remite a otro). 
+
+            Los punteros suelen almacenarse en un formato similar a un número entero; sin embargo, intentar eliminar la referencia o "buscar" un puntero cuyo valor nunca fue una dirección de memoria válida provocaría que el programa fallara.
+
+            Para mejorar este problema potencial, los punteros se consideran un tipo separado del tipo de datos al que apuntan, incluso si la representación subyacente es la misma.
+
+    
 
 || Puntero
 
@@ -5656,36 +7756,599 @@
                 Es común en máquinas RISC de 64 bits, explorado en x86 como x32 ABI, y recientemente se ha utilizado en los Apple Watch Series 4 y 5.
 
 
-    Segmentación de memoria: 
-
-        
-
-
     Registro de proceso: 
 
+        El registro del procesador es una ubicación de rápido acceso disponible para el procesador de una computadora. 
+
+        Los registros suelen consistir en una pequeña cantidad de almacenamiento rápido, aunque algunos registros tienen funciones de hardware específicas y pueden ser de sólo lectura o de sólo escritura. 
+
+        En la arquitectura de computadoras, los registros generalmente se abordan mediante mecanismos distintos a la memoria principal, pero en algunos casos se les puede asignar una dirección de memoria, p. DIC PDP-10, TIC 1900.
+
+        Casi todas las computadoras, ya sea con arquitectura de carga/almacenamiento o no, cargan elementos de datos desde una memoria más grande en registros donde se usan para operaciones aritméticas, operaciones bit a bit y otras operaciones, y son manipulados o probados mediante instrucciones de máquina. 
+
+        Los elementos manipulados a menudo se almacenan en la memoria principal, ya sea mediante la misma instrucción o mediante una posterior. 
+
+        Los procesadores modernos utilizan RAM estática o dinámica como memoria principal, a la que normalmente se accede a esta última a través de uno o más niveles de caché.
+
+        Los registros del procesador normalmente se encuentran en la parte superior de la jerarquía de la memoria y proporcionan la forma más rápida de acceder a los datos. 
+
+        El término normalmente se refiere sólo al grupo de registros que están codificados directamente como parte de una instrucción, según lo definido por el conjunto de instrucciones.
+
+        Sin embargo, las CPU modernas de alto rendimiento a menudo tienen duplicados de estos "registros arquitectónicos" para mejorar el rendimiento mediante el cambio de nombre de los registros, lo que permite la ejecución paralela y especulativa. 
+
+        El diseño x86 moderno adquirió estas técnicas alrededor de 1995 con los lanzamientos de Pentium Pro, Cyrix 6x86, Nx586 y AMD K5.
+
+        Cuando un programa de computadora accede repetidamente a los mismos datos, esto se denomina localidad de referencia.
+
+        Mantener valores utilizados con frecuencia en registros puede ser fundamental para el rendimiento de un programa.
+
+        La asignación de registros la realiza un compilador en la fase de generación de código o manualmente un programador en lenguaje ensamblador.
+
+
+            Tamaño:
+
+                Los registros normalmente se miden por la cantidad de bits que pueden contener, por ejemplo, un "registro de 8 bits", un "registro de 32 bits", un "registro de 64 bits" o incluso más. 
+
+                En algunos conjuntos de instrucciones, los registros pueden operar en varios modos, dividiendo su memoria de almacenamiento en partes más pequeñas (de 32 bits en cuatro de 8 bits, por ejemplo) a las que se agregan múltiples datos (vectoriales o una matriz unidimensional de datos). 
+
+                Se puede cargar y operar al mismo tiempo. 
+
+                Normalmente se implementa agregando registros adicionales que asignan su memoria a un registro más grande. 
+
+                Los procesadores que tienen la capacidad de ejecutar instrucciones únicas sobre múltiples datos se denominan procesadores vectoriales.
+
+
+            Tipos
+
+                Un procesador suele contener varios tipos de registros, que se pueden clasificar según los tipos de valores que pueden almacenar o las instrucciones que operan sobre ellos:
+
+                1. Los registros accesibles al usuario se pueden leer o escribir mediante instrucciones de la máquina. La división más común de los registros accesibles al usuario es una división en registros de datos y registros de direcciones.
+
+                    Los registros de datos pueden contener valores de datos numéricos como números enteros y, en algunas arquitecturas, números de punto flotante, así como caracteres, matrices de bits pequeños y otros datos. En algunas arquitecturas más antiguas, como IBM 704, IBM 709 y sucesores, PDP-1, PDP-4/PDP-7/PDP-9/PDP-15, PDP-5/PDP-8 y HP 2100, un registro de datos especial conocido como acumulador se utiliza implícitamente para muchas operaciones.
+
+
+                    Los registros de direcciones contienen direcciones y son utilizados por instrucciones que acceden indirectamente a la memoria primaria.
+
+                        Algunos procesadores contienen registros que solo pueden usarse para contener una dirección o solo para contener valores numéricos (en algunos casos se usan como un registro de índice cuyo valor se agrega como un desplazamiento de alguna dirección); otros permiten que los registros contengan cualquier tipo de cantidad. Existe una amplia variedad de posibles modos de direccionamiento, utilizados para especificar la dirección efectiva de un operando.
+
+                        El puntero de la pila se utiliza para administrar la pila en tiempo de ejecución. En raras ocasiones, otras pilas de datos se abordan mediante registros de direcciones dedicados (máquina de pila).
+
+
+                    Los registros de propósito general (GPR) pueden almacenar tanto datos como direcciones, es decir, son registros combinados de datos/direcciones; En algunas arquitecturas, el archivo de registro está unificado.
+
+
+                    Los GPR también pueden almacenar números de punto flotante.
+                    Los registros de estado contienen valores de verdad que se utilizan a menudo para determinar si alguna instrucción debe o no ejecutarse.
+
+
+                    Los registros de punto flotante (FPR) almacenan números de punto flotante en muchas arquitecturas.
+
+
+                    Los registros constantes contienen valores de solo lectura como cero, uno o pi.
+
+
+                    Los registros vectoriales contienen datos para el procesamiento vectorial realizado mediante instrucciones SIMD (Instrucción única, datos múltiples).
+
+
+                    Los registros de propósito especial (SPR) contienen algunos elementos del estado del programa; suelen incluir el contador de programa, también llamado puntero de instrucción, y el registro de estado; el contador de programa y el registro de estado pueden combinarse en un registro de palabra de estado de programa (PSW). El puntero de pila antes mencionado a veces también se incluye en este grupo.
+
+                    Los microprocesadores integrados también pueden tener registros correspondientes a elementos de hardware especializados.
+
+
+                    En algunas arquitecturas, los registros específicos del modelo (también llamados registros específicos de la máquina) almacenan datos y configuraciones relacionados con el propio procesador. Debido a que sus significados están ligados al diseño de un procesador específico, no se puede esperar que sigan siendo estándar entre generaciones de procesadores.
+
+
+                    Registros de rango de tipos de memoria (MTRR).
+
+
+                2. Instrucciones y se utilizan internamente para las operaciones del procesador.
+
+                El registro de instrucciones contiene la instrucción que se está ejecutando actualmente.
+
+                Registros relacionados con la recuperación de información de la RAM, una colección de registros de almacenamiento ubicados en chips separados de la CPU:
+
+                     Registro de búfer de memoria (MBR), también conocido como registro de datos de memoria (MDR)
+
+                     Registro de dirección de memoria (MAR)
+
+
+                3. Los registros arquitectónicos son los registros visibles para el software y están definidos por una arquitectura. Es posible que no se correspondan con el hardware físico si el cambio de nombre de los registros lo realiza el hardware subyacente.
+
+                Los registros de hardware son similares, pero ocurren fuera de las CPU.
 
 
 
     Almacenamiento de datos: 
 
+        El almacenamiento de datos informáticos es una tecnología que consta de componentes informáticos y medios de grabación que se utilizan para conservar datos digitales. 
+
+        Es una función central y componente fundamental de las computadoras.
+
+        La unidad central de procesamiento (CPU) de una computadora es la que manipula los datos mediante la realización de cálculos.
+
+        En la práctica, casi todas las computadoras utilizan una jerarquía de almacenamiento, que coloca opciones de almacenamiento pequeñas, rápidas pero costosas cerca de la CPU y opciones más lentas pero menos costosas y más grandes, más alejadas.
+
+        Generalmente, las tecnologías rápidas se denominan "memoria", mientras que las tecnologías persistentes más lentas se denominan "almacenamiento".
+
+        Incluso los primeros diseños de computadora, la máquina analítica de Charles Babbage y la máquina analítica de Percy Ludgate, distinguían claramente entre procesamiento y memoria (Babbage almacenaba números como rotaciones de engranajes, mientras que Ludgate almacenaba números como desplazamientos de varillas en lanzaderas). 
+
+        Esta distinción se amplió en la arquitectura Von Neumann, donde la CPU consta de dos partes principales: la unidad de control y la unidad aritmética lógica (ALU). 
+
+        El primero controla el flujo de datos entre la CPU y la memoria, mientras que el segundo realiza operaciones aritméticas y lógicas con los datos.
+
+
+        Funcionalidad:
+
+            Sin una cantidad significativa de memoria, una computadora simplemente podría realizar operaciones fijas y generar el resultado inmediatamente.
+
+            Habría que reconfigurarlo para cambiar su comportamiento. 
+
+            Esto es aceptable para dispositivos como calculadoras de escritorio, procesadores de señales digitales y otros dispositivos especializados. 
+
+            Las máquinas Von Neumann se diferencian por tener una memoria en la que almacenan sus instrucciones y datos de funcionamiento. 
+
+            Estas computadoras son más versátiles porque no necesitan reconfigurar su hardware para cada nuevo programa, sino que simplemente pueden reprogramarse con nuevas instrucciones en memoria; también tienden a ser más simples de diseñar, en el sentido de que un procesador relativamente simple puede mantener el estado entre cálculos sucesivos para generar resultados de procedimientos complejos.
+
+            La mayoría de las computadoras modernas son máquinas von Neumann.
+
+
+        Organización y representación de datos:
+
+            Una computadora digital moderna representa datos utilizando el sistema de numeración binario.
+
+            Texto, números, imágenes, audio y casi cualquier otra forma de información se pueden convertir en una cadena de bits o dígitos binarios, cada uno de los cuales tiene un valor de 0 o 1. 
+
+            La unidad de almacenamiento más común es el byte, igual a 8 bits. 
+
+            Una información puede ser manejada por cualquier computadora o dispositivo cuyo espacio de almacenamiento sea lo suficientemente grande como para acomodar la representación binaria de la información, o simplemente los datos.
+
+            Por ejemplo, las obras completas de Shakespeare, de unas 1.250 páginas impresas, pueden almacenarse en unos cinco megabytes (40 millones de bits) con un byte por carácter.
+
+            Los datos se codifican asignando un patrón de bits a cada carácter, dígito u objeto multimedia. 
+
+            Existen muchos estándares para la codificación (por ejemplo, codificaciones de caracteres como ASCII, codificaciones de imágenes como JPEG y codificaciones de vídeo como MPEG-4).
+
+            Al agregar bits a cada unidad codificada, la redundancia permite que la computadora detecte errores en los datos codificados y los corrija basándose en algoritmos matemáticos. 
+
+            Los errores generalmente ocurren en probabilidades bajas debido a cambios aleatorios de valores de bits, o "fatiga física del bit", pérdida del bit físico en el almacenamiento de su capacidad para mantener un valor distinguible (0 o 1), o debido a errores en inter o intra -comunicación informática. 
+
+            Un cambio de bit aleatorio (por ejemplo, debido a una radiación aleatoria) normalmente se corrige tras la detección. 
+
+            Un bit o un grupo de bits físicos que funcionan mal (no siempre se conoce el bit defectuoso específico; la definición del grupo depende del dispositivo de almacenamiento específico) generalmente se excluye automáticamente, se deja de utilizar por el dispositivo y se reemplaza con otro grupo equivalente que funcione en el dispositivo, donde se restablecen los valores de bits corregidos (si es posible). 
+
+            El método de verificación de redundancia cíclica (CRC) se usa típicamente en comunicaciones y almacenamiento para la detección de errores.
+
+            Luego se vuelve a intentar un error detectado.
+
+            Los métodos de compresión de datos permiten en muchos casos (como en una base de datos) representar una cadena de bits mediante una cadena de bits más corta ("comprimir") y reconstruir la cadena original ("descomprimir") cuando sea necesario.
+
+            Esto utiliza sustancialmente menos almacenamiento (decenas de por ciento) para muchos tipos de datos a costa de más cálculos (comprimir y descomprimir cuando sea necesario).
+
+            Antes de decidir si mantener ciertos datos comprimidos o no, se realiza un análisis de la compensación entre el ahorro de costos de almacenamiento y los costos de los cálculos relacionados y los posibles retrasos en la disponibilidad de los datos.
+
+            Por razones de seguridad, ciertos tipos de datos (por ejemplo, información de tarjetas de crédito) pueden mantenerse cifrados en el almacenamiento para evitar la posibilidad de reconstrucción no autorizada de información a partir de fragmentos de instantáneas de almacenamiento.
+
+
+        Jerarquía de almacenamiento: 
+
+            Generalmente, cuanto más bajo esté un almacenamiento en la jerarquía, menor será su ancho de banda y mayor será su latencia de acceso desde la CPU. 
+
+            Esta división tradicional del almacenamiento en almacenamiento primario, secundario, terciario y fuera de línea también se rige por el costo por bit.
+
+            En el uso contemporáneo, la memoria suele ser una memoria de lectura y escritura de semiconductores rápida pero temporal, generalmente DRAM (RAM dinámica) u otros dispositivos similares.
+
+            El almacenamiento consta de dispositivos de almacenamiento y sus medios a los que la CPU no puede acceder directamente (almacenamiento secundario o terciario), generalmente unidades de disco duro, unidades de discos ópticos y otros dispositivos más lentos que la RAM pero no volátiles (que retienen el contenido cuando se apagan).
+
+
+            Almacenamiento primario:
+
+            El almacenamiento primario (también conocido como memoria principal, memoria interna o memoria principal), a menudo denominado simplemente memoria, es el único al que la CPU puede acceder directamente. 
+
+            La CPU lee continuamente las instrucciones almacenadas allí y las ejecuta según sea necesario. 
+
+            Los datos que se utilicen activamente también se almacenarán allí de forma uniforme.
+
+            Históricamente, las primeras computadoras usaban líneas de retardo, tubos Williams o tambores magnéticos giratorios como almacenamiento primario. 
+
+            En 1954, esos métodos poco fiables fueron reemplazados en su mayor parte por memorias de núcleo magnético.
+
+            La memoria central siguió siendo dominante hasta la década de 1970, cuando los avances en la tecnología de circuitos integrados permitieron que la memoria semiconductora se volviera económicamente competitiva.
+
+            Esto condujo a la moderna memoria de acceso aleatorio (RAM). 
+
+            Es de tamaño pequeño, ligero, pero bastante caro al mismo tiempo. 
+
+            Los tipos particulares de RAM utilizados para el almacenamiento primario son volátiles, lo que significa que pierden la información cuando no están encendidos. 
+
+            Además de almacenar programas abiertos, sirve como caché de disco y búfer de escritura para mejorar el rendimiento de lectura y escritura. 
+
+            Los sistemas operativos toman prestada capacidad de RAM para el almacenamiento en caché siempre que no sea necesaria para ejecutar el software.
+
+            La memoria adicional se puede utilizar como unidad RAM para el almacenamiento temporal de datos de alta velocidad.
+
+            Como se muestra en el diagrama, tradicionalmente hay dos subcapas más del almacenamiento primario, además de la RAM principal de gran capacidad:
+
+                 Los registros del procesador están ubicados dentro del procesador. 
+
+                 Cada registro suele contener una palabra de datos (a menudo de 32 o 64 bits).
+
+                 Las instrucciones de la CPU indican a la unidad lógica aritmética que realice varios cálculos u otras operaciones con estos datos (o con la ayuda de ellos).
+
+                 Los registros son la más rápida de todas las formas de almacenamiento de datos informáticos.
+
+                 La caché del procesador es una etapa intermedia entre los registros ultrarrápidos y la memoria principal mucho más lenta.
+
+                 Se introdujo únicamente para mejorar el rendimiento de las computadoras. 
+
+                 La información más utilizada en la memoria principal simplemente se duplica en la memoria caché, que es más rápida, pero de mucha menor capacidad. 
+
+                 Por otro lado, la memoria principal es mucho más lenta, pero tiene una capacidad de almacenamiento mucho mayor que los registros del procesador. 
+
+                 La configuración de caché jerárquica multinivel también se utiliza comúnmente: la caché primaria es la más pequeña, la más rápida y está ubicada dentro del procesador; la caché secundaria es algo más grande y más lenta.
+
+            La memoria principal está conectada directa o indirectamente a la unidad central de procesamiento a través de un bus de memoria. 
+
+            En realidad, se trata de dos buses (no en el diagrama): un bus de direcciones y un bus de datos. 
+
+            En primer lugar, la CPU envía un número a través de un bus de direcciones, un número llamado dirección de memoria, que indica la ubicación deseada de los datos. Luego lee o escribe los datos en las celdas de memoria utilizando el bus de datos. 
+
+            Además, una unidad de gestión de memoria (MMU) es un pequeño dispositivo entre la CPU y la RAM que recalcula la dirección de memoria real, por ejemplo para proporcionar una abstracción de la memoria virtual u otras tareas.
+
+            Como los tipos de RAM utilizados para el almacenamiento primario son volátiles (no inicializados al inicio), una computadora que contenga solo dicho almacenamiento no tendría una fuente desde la cual leer las instrucciones para iniciar la computadora. 
+
+            Por lo tanto, el almacenamiento primario no volátil que contiene un pequeño programa de inicio (BIOS) se utiliza para arrancar la computadora, es decir, para leer un programa más grande desde el almacenamiento secundario no volátil a la RAM y comenzar a ejecutarlo.
+
+            Una tecnología no volátil utilizada para este propósito se llama ROM, para memoria de sólo lectura (la terminología puede resultar algo confusa ya que la mayoría de los tipos de ROM también son capaces de acceso aleatorio).
+
+            Muchos tipos de "ROM" no son literalmente de sólo lectura, ya que es posible actualizarlos; sin embargo, es lento y la memoria debe borrarse en grandes porciones antes de poder reescribirse. 
+
+            Algunos sistemas integrados ejecutan programas directamente desde la ROM (o similar), porque dichos programas rara vez se modifican.
+
+            Las computadoras estándar no almacenan programas no rudimentarios en ROM y, más bien, utilizan grandes capacidades de almacenamiento secundario, que tampoco es volátil y no es tan costoso.
+
+            Recientemente, almacenamiento primario y almacenamiento secundario en algunos usos hacen referencia a lo que históricamente se denominó, respectivamente, almacenamiento secundario y almacenamiento terciario.
+
+
+            Almacenamiento secundario:
+
+            El almacenamiento secundario (también conocido como memoria externa o almacenamiento auxiliar) se diferencia del almacenamiento primario en que la CPU no puede acceder directamente a él. 
+
+            La computadora generalmente usa sus canales de entrada/salida para acceder al almacenamiento secundario y transfiera los datos deseados al almacenamiento primario.
+
+            El almacenamiento secundario no es volátil (retiene los datos cuando se corta la energía). 
+
+            Los sistemas informáticos modernos suelen tener dos órdenes de magnitud más de almacenamiento secundario que el almacenamiento primario porque el almacenamiento secundario es menos costoso.
+
+            En las computadoras modernas, las unidades de disco duro (HDD) o unidades de estado sólido (SSD) se suelen utilizar como almacenamiento secundario. 
+
+            El tiempo de acceso por byte para HDD o SSD generalmente se mide en milisegundos (milmillonésimas de segundo), mientras que el tiempo de acceso por byte para el almacenamiento primario se mide en nanosegundos (milmillonésimas de segundo). 
+
+            Por tanto, el almacenamiento secundario es significativamente más lento que el almacenamiento primario.
+
+            Los dispositivos de almacenamiento óptico giratorio, como las unidades de CD y DVD, tienen tiempos de acceso aún más prolongados.
+
+            Otros ejemplos de tecnologías de almacenamiento secundario incluyen unidades flash USB, disquetes, cintas magnéticas, cintas de papel, tarjetas perforadas y discos RAM.
+
+            Una vez que el cabezal de lectura/escritura del disco en los HDD alcanza la ubicación adecuada y los datos, es muy rápido acceder a los datos posteriores en la pista.
+
+            Para reducir el tiempo de búsqueda y la latencia rotacional, los datos se transfieren hacia y desde discos en grandes bloques contiguos.
+
+            El acceso secuencial o en bloques a los discos es mucho más rápido que el acceso aleatorio, y se han desarrollado muchos paradigmas sofisticados para diseñar algoritmos eficientes basados en el acceso secuencial y en bloques.
+
+            Otra forma de reducir el cuello de botella de E/S es utilizar varios discos en paralelo para aumentar el ancho de banda entre la memoria primaria y secundaria.
+
+            El almacenamiento secundario suele formatearse según un formato de sistema de archivos, que proporciona la abstracción necesaria para organizar los datos en archivos y directorios, al tiempo que proporciona metadatos que describen el propietario de un determinado archivo, el tiempo de acceso, los permisos de acceso y otra información.
+
+            La mayoría de los sistemas operativos de computadora utilizan el concepto de memoria virtual, lo que permite la utilización de más capacidad de almacenamiento primario de la que está físicamente disponible en el sistema. 
+
+            A medida que la memoria primaria se llena, el sistema mueve los fragmentos (páginas) menos utilizados a un archivo de intercambio o de página en el almacenamiento secundario, recuperándolos más tarde cuando sea necesario. 
+
+            Si se mueven muchas páginas a un almacenamiento secundario más lento, el rendimiento del sistema se degrada.            
+
 
         Block:
 
+            En informática (específicamente transmisión y almacenamiento de datos), un bloque, a veces llamado registro físico, es una secuencia de bytes o bits, que generalmente contiene un número entero de registros y tiene una longitud máxima; un tamaño de bloque. 
+
+            Los datos así estructurados se denominan bloqueados. 
+
+            El proceso de poner datos en bloques se llama bloqueo, mientras que desbloqueo es el proceso de extraer datos de los blocking. 
+
+            Los datos bloqueados normalmente se almacenan en un búfer de datos y se leen o escriben un bloque completo a la vez. 
+
+            El bloque reduce la sobrecarga y acelera el manejo del flujo de datos. 
+
+            Para algunos dispositivos, como los dispositivos de cinta magnética y disco CKD, el bloque reduce la cantidad de almacenamiento externo requerido para los datos.
+
+            El bloque se emplea casi universalmente cuando se almacenan datos en cintas magnéticas de 9 pistas, memoria flash NAND y medios giratorios como disquetes, discos duros y discos ópticos.
+
+            La mayoría de los sistemas de archivos se basan en un dispositivo de bloques, que es un nivel de abstracción del hardware responsable de almacenar y recuperar bloques de datos específicos, aunque el tamaño del bloque en los sistemas de archivos puede ser un múltiplo del tamaño del bloque físico.
+
+            Esto conduce a una ineficiencia de espacio debido a la fragmentación interna, ya que las longitudes de los archivos a menudo no son múltiplos enteros del tamaño del bloque y, por lo tanto, el último bloque de un archivo puede permanecer parcialmente vacío. 
+
+            Esto creará un espacio flojo. 
+
+            Algunos sistemas de archivos más nuevos, como Btrfs y FreeBSD UFS2, intentan resolver este problema mediante técnicas llamadas subasignación de bloques y fusión de cola. 
+
+            Otros sistemas de archivos, como ZFS, admiten tamaños de bloque variables.
+
+            El almacenamiento en bloque normalmente se abstrae mediante un sistema de archivos o un sistema de gestión de bases de datos (DBMS) para que lo utilicen las aplicaciones y los usuarios finales. 
+
+            Los volúmenes físicos o lógicos a los que se accede a través de bloques de E/S pueden ser dispositivos internos a un servidor, conectados directamente a través de SCSI o Fibre Channel, o dispositivos distantes a los que se accede a través de una red de área de almacenamiento (SAN) utilizando un protocolo como iSCSI o AoE. 
+
+            Los DBMS a menudo utilizan su propio bloque de E/S para mejorar el rendimiento y la capacidad de recuperación en comparación con colocar el DBMS sobre un sistema de archivos.
+
+
+    Read–write memory (RWM): 
+
+        La memoria de lectura-escritura, es un tipo de memoria de computadora en la que se puede escribir y leer fácilmente mediante señales eléctricas normalmente asociadas con la ejecución de un software y sin ningún otro proceso físico. 
+
+        El tipo de almacenamiento RAM relacionado significa algo diferente; se refiere a una memoria que puede acceder a cualquier ubicación de la memoria en un período de tiempo constante.
+
+        El término también podría referirse a ubicaciones de memoria que tienen permisos de lectura y escritura. 
+
+        En los sistemas informáticos modernos que utilizan la segmentación de memoria, cada segmento tiene una longitud y un conjunto de permisos asociados.
+
+
+    Segmentación de memoria:
+
+        Es una técnica de gestión de la memoria del sistema operativo que consiste en dividir la memoria principal de una computadora en segmentos o secciones. 
+
+        En un sistema informático que utiliza segmentación, una referencia a una ubicación de memoria incluye un valor que identifica un segmento y un desplazamiento (ubicación de memoria) dentro de ese segmento. 
+
+        Los segmentos o secciones también se utilizan en archivos objeto de programas compilados cuando se vinculan entre sí en una imagen de programa y cuando la imagen se carga en la memoria.
+
+        Los segmentos suelen corresponder a divisiones naturales de un programa, como rutinas individuales o tablas de datos, por lo que la segmentación suele ser más visible para el programador que la paginación sola. 
+
+        Se pueden crear segmentos para módulos de programa o para clases de uso de memoria, como segmentos de código y segmentos de datos.
+
+        Ciertos segmentos pueden compartirse entre programas.
+
+        La segmentación se inventó originalmente como un método mediante el cual el software del sistema podía aislar los procesos (tareas) de software y los datos que estaban utilizando. 
+
+        Su objetivo era aumentar la confiabilidad de los sistemas que ejecutan múltiples procesos simultáneamente.
+
+
+        Implementación de hardware
+
+            En un sistema que utiliza segmentación, las direcciones de memoria de la computadora constan de una identificación de segmento y un desplazamiento dentro del segmento. 
+
+            Una unidad de administración de memoria de hardware (MMU) es responsable de traducir el segmento y el desplazamiento a una dirección física, y de realizar comprobaciones para garantizar que se pueda realizar la traducción y que se permita la referencia a ese segmento y desplazamiento.
+
+            Cada segmento tiene una longitud y un conjunto de permisos (por ejemplo, lectura, escritura, ejecución) asociados. 
+
+            Un proceso solo puede hacer una referencia en un segmento si los permisos permiten el tipo de referencia y si el desplazamiento dentro del segmento está dentro del rango especificado por la longitud del segmento. 
+
+            De lo contrario, se genera una excepción de hardware, como un error de segmentación.
+
+            También se pueden utilizar segmentos para implementar memoria virtual. 
+
+            En este caso cada segmento tiene un indicador asociado que indica si está presente en la memoria principal o no. 
+
+            Si se accede a un segmento que no está presente en la memoria principal, se genera una excepción y el sistema operativo leerá el segmento en la memoria desde el almacenamiento secundario.
+
+            La segmentación es un método para implementar la protección de la memoria. 
+
+            La paginación es otra y se pueden combinar. 
+
+            El tamaño de un segmento de memoria generalmente no es fijo y puede ser tan pequeño como un solo byte.
+
+            La segmentación se ha implementado de varias maneras en distintos hardware, con o sin paginación. 
+
+            La segmentación de la memoria Intel x86 no se ajusta a ninguno de los modelos y se analiza por separado a continuación, y también con mayor detalle en un artículo separado.
+
+
+        x86:
+            
+            Los primeros procesadores x86, comenzando con el Intel 8086, proporcionaban una segmentación de memoria cruda y ninguna protección de la memoria.
+
+            (Cada byte de cada segmento está siempre disponible para cualquier programa). 
+
+            Los registros de segmento de 16 bits permiten 65.536 segmentos; cada segmento comienza en un desplazamiento fijo igual a 16 veces el número del segmento; la granularidad de la dirección inicial del segmento es de 16 bytes. 
+
+            Cada segmento otorga acceso de lectura y escritura a 64 KiB (65,536 bytes) de espacio de direcciones (este límite lo establecen los registros SP y PC de 16 bits; el procesador no realiza comprobaciones de límites). 
+
+            El desplazamiento+la dirección que excede 0xFFFFF se ajusta a 0x00000. 
+
+            Cada segmento de 64 KiB se superpone a los siguientes 4.095 segmentos; cada dirección física se puede indicar mediante 4.096 pares de segmento-desplazamiento.
+
+            Este esquema puede abordar solo 1 MiB (1024 KiB) de memoria física (y E/S asignadas en memoria). 
+
+            (El hardware de memoria expandida opcional puede agregar memoria conmutada por banco bajo control de software). 
+
+            Intel nombró retroactivamente al único modo operativo de estos modelos de CPU x86 "modo real".
+
+            Los procesadores Intel 80286 y posteriores agregan el "modo protegido 286", que conserva el direccionamiento de 16 bits y agrega segmentación (sin paginación) y protección de memoria por segmento.
+
+            Para compatibilidad con versiones anteriores, todas las CPU x86 se inician en "modo real", con los mismos segmentos superpuestos fijos de 64 KiB, sin protección de memoria, solo 1 MiB de espacio de dirección física y algunas diferencias sutiles (área de memoria alta, modo irreal). 
+
+            Para utilizar todo su espacio de direcciones físicas de 24 bits (16 MiB) y sus funciones avanzadas de MMU, un procesador 80286 o posterior debe cambiarse al "modo protegido" mediante software, generalmente el sistema operativo o un extensor de DOS. 
+
+            Si un programa no utiliza los registros de segmento, o solo coloca en ellos los valores que recibe del sistema operativo, entonces se puede ejecutar un código idéntico en modo real o en modo protegido, pero la mayoría del software en modo real calcula nuevos valores para los registros de segmento. rompiendo esta compatibilidad.
+
+            Los procesadores Intel i386 y posteriores agregan el "modo protegido 386", que utiliza direccionamiento de 32 bits, conserva la segmentación y agrega paginación de memoria. 
+
+            En estos procesadores, la tabla de segmentos, en lugar de apuntar a una tabla de páginas para el segmento, contiene la dirección del segmento en la memoria lineal. 
+
+            Cuando la paginación está habilitada, las direcciones en la memoria lineal se asignan a direcciones físicas utilizando una tabla de páginas separada. 
+
+            La mayoría de los sistemas operativos no utilizaron la capacidad de segmentación y optaron por mantener el direccionamiento base en todos los registros de segmento iguales a 0 en todo momento y proporcionar protección e intercambio de memoria por página utilizando solo paginación. 
+
+            Algunos usan el registro CS para proporcionar protección del espacio ejecutable en procesadores que carecen del bit NX o usan los registros FS o GS para acceder al almacenamiento local de subprocesos.
+
+            La arquitectura x86-64 no admite la segmentación en "modo largo" (modo de 64 bits).
+
+            Cuatro de los registros de segmento: CS, SS, DS y ES se fuerzan a 0 y el límite a 264.
+
+            Los registros de segmento FS y GS aún pueden tener una dirección base distinta de cero.
+
+            Esto permite que los sistemas operativos utilicen estos segmentos para fines especiales, como el almacenamiento local de subprocesos.
 
 
 
-|| Call
-
-
-
-
-
-|| Reference
+    RAM: 
 
 
     
 
-|| Data type: 
+    Files: 
+
+        La mayoría de los sistemas de archivos incluyen atributos de archivos y directorios que controlan la capacidad de los usuarios para leer, cambiar, navegar y ejecutar el contenido del sistema de archivos. 
+
+        En algunos casos, las opciones o funciones del menú pueden hacerse visibles u ocultarse según el nivel de permiso del usuario; Este tipo de interfaz de usuario se conoce como basada en permisos.
+
+        Hay dos tipos de permisos ampliamente disponibles: permisos del sistema de archivos POSIX y listas de control de acceso (ACL) que son capaces de realizar un control más específico.
+
+
+        Los permisos en sistemas de archivos tipo Unix se definen en el estándar POSIX.1-2017,[9] que utiliza tres ámbitos o clases conocidos como propietario, grupo y otros. Cuando se crea un archivo, sus permisos están restringidos por la máscara del proceso que lo creó.
+
+
+        Clases:
+
+            Los archivos y directorios son propiedad de un usuario. 
+
+            El propietario determina la clase de usuario del archivo. 
+
+            Se aplican permisos distintos al propietario.
+
+            A los archivos y directorios se les asigna un grupo, que define la clase de grupo del archivo. 
+
+            Se aplican permisos distintos a los miembros del grupo del archivo. 
+
+            El propietario puede ser miembro del grupo del archivo.
+
+            Los usuarios que no son propietarios ni miembros del grupo constituyen la clase otros de un archivo. 
+
+            Se aplican distintos permisos a otros.
+
+            Los permisos efectivos se determinan en función de la primera clase a la que pertenece el usuario en el orden de usuario, grupo y luego otros. 
+
+            Por ejemplo, el usuario propietario del archivo tendrá los permisos otorgados a la clase de usuario independientemente de los permisos asignados a la clase de grupo o a otras clases.
+
+
+        Permisos:
+
+            Los sistemas tipo Unix implementan tres permisos específicos que se aplican a cada clase:
+
+             El permiso de lectura otorga la capacidad de leer un archivo. Cuando se establece para un directorio, este permiso otorga la capacidad de leer los nombres de los archivos en el directorio, pero no de encontrar más información sobre ellos, como contenido, tipo de archivo, tamaño, propiedad o permisos.
+
+
+             El permiso de escritura otorga la posibilidad de modificar un archivo. Cuando se establece para un directorio, este permiso otorga la capacidad de modificar entradas en el directorio, lo que incluye crear archivos, eliminar archivos y cambiarles el nombre. Esto requiere que ejecutar también esté configurado; sin él, el permiso de escritura no tiene sentido para los directorios.
+
+
+             El permiso de ejecución otorga la capacidad de ejecutar un archivo. Este permiso debe establecerse para los programas ejecutables para permitir que el sistema operativo los ejecute. Cuando se configura para un directorio, el permiso de ejecución se interpreta como el permiso de búsqueda: otorga la capacidad de acceder al contenido del archivo y a la metainformación si se conoce su nombre, pero no enumera los archivos dentro del directorio, a menos que también se configure la lectura.
+
+            
+            El efecto de establecer los permisos en un directorio, en lugar de en un archivo, es "uno de los problemas de permisos de archivos más frecuentemente mal entendidos".
+
+            Cuando no se establece un permiso, se deniegan los derechos correspondientes. 
+
+            A diferencia de los sistemas basados en ACL, los permisos en sistemas tipo Unix no se heredan. Los archivos creados dentro de un directorio no necesariamente tienen los mismos permisos que ese directorio.
+
+
+        Cambiar el comportamiento de los permisos con setuid, setgid y bits adhesivos:
+
+            Los sistemas tipo Unix suelen emplear tres modos adicionales. 
+
+            En realidad, estos son atributos, pero se denominan permisos o modos. 
+
+            Estos modos especiales son para un archivo o directorio en general, no por una clase, aunque en la notación simbólica (ver más abajo) el bit setuid se establece en la tríada para el usuario, el bit setgid se establece en la tríada para el grupo y el El bit pegajoso se establece en la tríada para los demás.
+
+             El modo ID de usuario establecido, setuid o SUID. Cuando se ejecuta un archivo con setuid, el proceso resultante asumirá la ID de usuario efectiva proporcionada a la clase propietaria. Esto permite que los usuarios sean tratados temporalmente como root (u otro usuario).
+
+             El permiso de ID de grupo establecido, setgid o SGID. Cuando se ejecuta un archivo con setgid, el proceso resultante asumirá el ID de grupo proporcionado a la clase de grupo. Cuando se aplica setgid a un directorio, los nuevos archivos y directorios creados en ese directorio heredarán su grupo de ese directorio. (El comportamiento predeterminado es utilizar el grupo principal del usuario efectivo al configurar el grupo de nuevos archivos y directorios, excepto en sistemas derivados de BSD que se comportan como si el bit setgid siempre estuviera configurado en todos los directorios (ver Setuid).)
+
+
+             El modo fijo (también conocido como modo Texto). El comportamiento clásico del bit adhesivo en archivos ejecutables ha sido alentar al núcleo a retener la imagen del proceso resultante en la memoria más allá de su terminación; sin embargo, dicho uso del bit adhesivo ahora está restringido sólo a una minoría de sistemas operativos tipo Unix (HP-UX y UnixWare). En un directorio, el permiso fijo evita que los usuarios cambien el nombre, muevan o eliminen archivos contenidos que pertenecen a usuarios distintos a ellos, incluso si tienen permiso de escritura en el directorio. Sólo el propietario del directorio y el superusuario están exentos de esto.
+
+            
+            Estos modos adicionales también se conocen como bit setuid, bit setgid y bit adhesivo, debido a que cada uno de ellos ocupa solo un bit.
+
+
+        Notación de los permisos de Unix:
+
+            Notación simbólica.
+
+            Los permisos de Unix se representan en notación simbólica o en notación octal.
+
+            La forma más común, utilizada por el comando ls -l, es la notación simbólica.
+
+            El primer carácter de la visualización ls indica el tipo de archivo y no está relacionado con los permisos. 
+
+            Los nueve caracteres restantes están en tres conjuntos, cada uno de los cuales representa una clase de permisos como tres caracteres. 
+
+            El primer conjunto representa la clase de usuario. 
+
+            El segundo conjunto representa la clase grupal. 
+
+            El tercer conjunto representa la clase de los demás.
+
+            Cada uno de los tres caracteres representa los permisos de lectura, escritura y ejecución:
+
+                 r si la lectura está permitida, - si no lo está.
+
+                 w si se permite la escritura, - si no lo está.
+
+                 x si la ejecución está permitida, - si no lo está.
+
+            Los siguientes son algunos ejemplos de notación simbólica:
+
+                 -rwxr-xr-x: un archivo normal cuya clase de usuario tiene permisos completos y cuyo grupo y otras clases tienen solo permisos de lectura y ejecución.
+
+                 crw-rw-r--: un archivo de caracteres especiales cuyas clases de usuario y grupo tienen permisos de lectura y escritura y cuyas otras clases solo tienen permiso de lectura.
+
+                 dr-x------: un directorio cuya clase de usuario tiene permisos de lectura y ejecución y cuyo grupo y otras clases no tienen permisos.
+
+            En algunos sistemas de permisos, los símbolos adicionales en la pantalla ls -l representan características de permisos adicionales:
+
+                 El sufijo + (más) indica una lista de control de acceso que puede controlar permisos adicionales.
+                 
+                 . El sufijo (punto) indica que hay un contexto SELinux presente. Los detalles se pueden enumerar con el comando ls -Z.
+
+                 El sufijo @ indica que los atributos de archivo extendidos están presentes.
+
+            Para representar los atributos setuid, setgid y sticky o text, se modifica el carácter ejecutable (x o -).
+
+            Aunque estos atributos afectan al archivo en general, no solo a los usuarios de una clase, el atributo setuid modifica el carácter ejecutable en la tríada para el usuario, el atributo setgid modifica el carácter ejecutable en la tríada para el grupo y el atributo adhesivo o de texto modifica el Carácter ejecutable en la tríada para otros. 
+
+            Para los atributos setuid o setgid, en la primera o segunda tríada, x se convierte en s y - se convierte en S. 
+
+            Para el atributo adhesivo o de texto, en la tercera tríada, x se convierte en t y - se convierte en T. Aquí hay un ejemplo :
+
+                 -rwsr-Sr-t: un archivo cuya clase de usuario tiene permisos de lectura, escritura y ejecución; cuya clase grupal tiene permiso de lectura; cuya clase otros tiene permisos de lectura y ejecución; y que tiene establecidos los atributos setuid, setgid y sticky
+
+
+        Grupo privado de usuarios:
+
+            Algunos sistemas se diferencian del modelo POSIX tradicional de usuarios y grupos al crear un nuevo grupo (un "grupo privado de usuarios") para cada usuario. 
+
+            Suponiendo que cada usuario es el único miembro de su grupo privado de usuarios, este esquema permite utilizar una umask de 002 sin permitir que otros usuarios escriban en archivos recién creados en directorios normales porque dichos archivos están asignados al grupo privado del usuario creador. 
+
+            Sin embargo, cuando es deseable compartir archivos, el administrador puede crear un grupo que contenga los usuarios deseados, crear un directorio de escritura grupal asignado al nuevo grupo y, lo más importante, configurar el directorio como gid.
+
+            Hacerlo setgid hará que los archivos creados en él se asignen al mismo grupo que el directorio y la umask 002 (habilitada mediante el uso de grupos privados de usuarios) garantizará que otros miembros del grupo puedan escribir en esos archivos.
+
+
+
+|| Kernel
+
+
+    User-space: 
+
+
+
+|| System Call
+    
+
+
+
+
+
+|| GPU
+
+
+
+
 
 
 
